@@ -19,7 +19,7 @@ namespace StudentOrganisation.Droid.Services
     {
         public bool IsSignIn()
         {
-            var user = FirebaseAuth.Instance.CurrentUser;
+            var user = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;
             return user != null;
         }
 
@@ -27,9 +27,9 @@ namespace StudentOrganisation.Droid.Services
         {
             try
             {
-                var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+                var user = await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
                 var token = await user.User.GetIdToken(false);
-                return token.ToString();
+                return (string)token;
             }
             catch (FirebaseAuthInvalidUserException e)
             {
@@ -47,7 +47,7 @@ namespace StudentOrganisation.Droid.Services
         {
             try
             {
-                FirebaseAuth.Instance.SignOut();
+                Firebase.Auth.FirebaseAuth.Instance.SignOut();
                 return true;
             }
             catch (Exception)
