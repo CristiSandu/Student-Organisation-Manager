@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\FirebaseAuthentication.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist.xml" />
     <None Include="Info.plist" />
