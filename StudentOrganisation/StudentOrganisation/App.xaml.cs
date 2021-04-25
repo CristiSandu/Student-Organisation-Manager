@@ -12,7 +12,7 @@ namespace StudentOrganisation
         {
             InitializeComponent();
             
-                MainPage = new TestLogin();
+                MainPage = new RegisterPage();
         }
 
         protected override void OnStart()

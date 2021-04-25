@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.RegisterPage">
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="16">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Entry x:Name="FirstNameEntry" Placeholder="First Name"></Entry>
+                <Entry x:Name="LasttNameEntry" Placeholder="Last Name"></Entry>
+            </StackLayout>
+            <Entry x:Name="EmailEntry" Placeholder="Email"></Entry>
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True"></Entry>
+            <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True"></Entry>
+            <Label Text="Date Of Birth"></Label>
+            <DatePicker x:Name="BirthDayDatePicker" DateSelected="BirthDayDatePicker_DateSelected"></DatePicker>
+            <Button Text="Sign Up"></Button>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>
