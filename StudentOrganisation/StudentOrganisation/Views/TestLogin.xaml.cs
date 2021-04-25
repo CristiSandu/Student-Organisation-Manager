@@ -26,7 +26,7 @@ namespace StudentOrganisation.Views
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
-            string token = await auth.LoginWithEmailAndPassword(viewModel.Username, viewModel.Password);
+            string token = await auth.SingInWithEmailAndPassword(viewModel.Username, viewModel.Password);
             if (token != string.Empty)
             {
                 Application.Current.MainPage = new MainPage();

@@ -36,5 +36,11 @@ namespace StudentOrganisation.iOS.Services
                 return false;
             }
         }
+
+        public async Task<string> SingInWithEmailAndPassword(string email, string password)
+        {
+            var user = await Auth.DefaultInstance.CreateUserAsync(email, password);
+            return await user.User.GetIdTokenAsync();
+        }
     }
 }

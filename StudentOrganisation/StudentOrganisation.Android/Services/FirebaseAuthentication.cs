@@ -55,5 +55,25 @@ namespace StudentOrganisation.Droid.Services
                 return false;
             }
         }
+
+        public async Task<string> SingInWithEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                var user = await Firebase.Auth.FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
+                var token = await user.User.GetIdToken(false);
+                return (string)token;
+            }
+            catch (FirebaseAuthInvalidUserException e)
+            {
+                e.PrintStackTrace();
+                return string.Empty;
+            }
+            catch (FirebaseAuthInvalidCredentialsException e)
+            {
+                e.PrintStackTrace();
+                return string.Empty;
+            }
+        }
     }
 }
