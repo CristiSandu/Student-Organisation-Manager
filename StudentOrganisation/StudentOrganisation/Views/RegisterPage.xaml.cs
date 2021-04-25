@@ -16,6 +16,8 @@ namespace StudentOrganisation.Views
     public partial class RegisterPage : ContentPage
     {
         IFirebaseAuthentication auth;
+        string _pass;
+        string _confPass;
         public RegisterPage()
         {
             InitializeComponent();
@@ -24,18 +26,27 @@ namespace StudentOrganisation.Views
 
         private async void BirthDayDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            if (PasswordEntry.Text != ConfirmPasswordEntry.Text)
+          
+        }
+
+        private async void AddUser_Clicked(object sender, EventArgs e)
+        {
+            _pass = PasswordEntry.Text;
+            _confPass = ConfirmPasswordEntry.Text;
+            if (_pass != _confPass)
             {
                 await DisplayAlert("Error!", "Password != ConfirmPassword", "OK");
-                return;
-            }
 
-            string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
-            if (token != string.Empty)
+            }
+            else
             {
-                Application.Current.MainPage = new NavigationPage(new TestLogin());
-            }
 
+                string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
+                if (token != string.Empty)
+                {
+                    Application.Current.MainPage = new NavigationPage(new TestLogin());
+                }
+            }
         }
     }
 }
