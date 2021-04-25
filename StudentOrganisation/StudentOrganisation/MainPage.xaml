@@ -19,6 +19,8 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label x:Name="idUser" />
+        <Button x:Name="singOut" Text="Sing out" Clicked="singOut_Clicked"/>
     </StackLayout>
 
 </ContentPage>

@@ -8,11 +8,20 @@ namespace StudentOrganisation
 {
     public partial class App : Application
     {
+        IFirebaseAuthentication auth;
         public App()
         {
             InitializeComponent();
-            
-                MainPage = new RegisterPage();
+            auth = DependencyService.Get<IFirebaseAuthentication>();
+
+            if (auth.IsSignIn())
+            {
+                MainPage = new NavigationPage( new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage( new TestLogin());
+            }
         }
 
         protected override void OnStart()
