@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1091266147951",
+    "project_id": "studentorganisati",
+    "storage_bucket": "studentorganisati.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091266147951:android:72020a5f274446de20bf9a",
+        "android_client_info": {
+          "package_name": "com.companyname.studentorganisation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091266147951-nd6b1f67u47t9sr87lhbo8b9pc60logp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8FeHJXJj9lCqLSdtCmvr4pUBZiKMpCOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091266147951-nd6b1f67u47t9sr87lhbo8b9pc60logp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
