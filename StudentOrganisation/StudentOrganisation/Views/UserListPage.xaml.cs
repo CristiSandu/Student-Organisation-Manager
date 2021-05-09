@@ -31,8 +31,10 @@ namespace StudentOrganisation.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
            
         }
+       
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
         {

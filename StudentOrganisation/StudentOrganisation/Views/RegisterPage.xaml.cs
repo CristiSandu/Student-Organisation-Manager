@@ -51,7 +51,8 @@ namespace StudentOrganisation.Views
                 user.Id = token;
                 await FirestoreUser.CreateUserFirestore(user);
                 await DisplayAlert("ok", "User created", "ok");
-                Application.Current.MainPage = new NavigationPage(new TestLogin());
+
+                await Shell.Current.GoToAsync("..");
             }
 
         }
