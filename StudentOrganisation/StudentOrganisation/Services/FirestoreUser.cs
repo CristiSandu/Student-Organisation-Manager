@@ -27,7 +27,7 @@ namespace StudentOrganisation.Services
             return user;
         }
 
-        public async Task<bool> UpdateFirestoreUser(Models.User user)
+        public static async Task<bool> UpdateFirestoreUser(Models.User user)
         {
             await CrossCloudFirestore.Current
                                      .Instance
@@ -39,7 +39,7 @@ namespace StudentOrganisation.Services
         }
 
 
-        public async Task<List<Models.User>> GetFirestoreUserFromPath(string path)
+        public static async Task<List<Models.User>> GetFirestoreUserFromPath(string path)
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
@@ -51,7 +51,7 @@ namespace StudentOrganisation.Services
             return new List<Models.User>(users);
         }
 
-        public async Task<List<Models.User>> GetFirestoreAllUser()
+        public static async Task<List<Models.User>> GetFirestoreAllUser()
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance

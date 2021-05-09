@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using StudentOrganisation.Services;
+using System.Threading.Tasks;
 
 namespace StudentOrganisation.ViewModels
 {
@@ -16,6 +18,7 @@ namespace StudentOrganisation.ViewModels
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Debug.WriteLine("In converter");
             switch ((string)value)
             {
                 case "Junior":
@@ -43,11 +46,12 @@ namespace StudentOrganisation.ViewModels
         public RoleToColorConverter roleToColorConverter {get;set;}
         public void FilterByName(string filter)
         {
+            Debug.WriteLine("In FilterByName");
             IList<UserListItem> filteredItems;
             Debug.WriteLine(filter);
             if (!string.IsNullOrWhiteSpace(filter))
             {
-                filteredItems = source.Where(userItemList => userItemList.user.Name.ToLower().Contains(filter.ToLower())).ToList();
+                filteredItems = source.Where(userItemList => userItemList.Name.ToLower().Contains(filter.ToLower())).ToList();
             }
             else
             {
@@ -68,23 +72,12 @@ namespace StudentOrganisation.ViewModels
                     }
                 }
             }
+            Debug.WriteLine($"Users L ={Users.Count}");
         }
         public UserListViewModel()
         {
-            source = new List<UserListItem>
-            {
-                new UserListItem(Name: "Popica von Brailangels", Role: "Mentor", this,Path:"Rome"),
-                new UserListItem(Name: "Matei Popovici", Role: "Junior", this,Path:"Limbaje"),
-                new UserListItem(Name: "Adrian Margineanu", Role: "Mentor", this,Path:"Limbaje"),
-                new UserListItem(Name: "Victor Tudose", Role: "Admin", this,Path:"IoT"),
-                new UserListItem(Name: "Crysti Sandu", Role: "Mentor", this),
-                new UserListItem(Name: "Luci Iliescu", Role: "Dat Afara", this),
-                new UserListItem(Name: "Bogdi Piele", Role: "Mentor", this),
-                new UserListItem(Name: "Robert Raiu", Role: "Mentor", this,Path:"IoT"),
-                new UserListItem(Name: "Stefan Pana", Role: "Junior", this,Path:"IoT"),
-            };
-            roleToColorConverter = new RoleToColorConverter();
-            Users = new ObservableCollection<UserListItem>(source);
+        
         }
+
     }
 }

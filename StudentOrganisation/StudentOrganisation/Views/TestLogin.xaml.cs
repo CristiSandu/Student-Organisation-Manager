@@ -24,16 +24,25 @@ namespace StudentOrganisation.Views
             BindingContext = viewModel = new LoginViewModel();
         }
 
+
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             string token = await auth.LoginWithEmailAndPassword(viewModel.Username, viewModel.Password);
             if (token != string.Empty)
             {
-                Application.Current.MainPage = new NavigationPage( new MainPage(token));
+                try
+                {
+                    await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", token);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                await Shell.Current.GoToAsync("///news");
             }
             else
             {
-                await DisplayAlert("Authentication Failed", "Email or password are incorrect. Try again!", "OK");
                 ShowError();
             }
         }
