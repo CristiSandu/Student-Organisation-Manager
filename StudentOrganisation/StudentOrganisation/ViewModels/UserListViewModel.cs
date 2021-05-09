@@ -79,24 +79,5 @@ namespace StudentOrganisation.ViewModels
         
         }
 
-        public async Task Popullate()
-        {
-            Debug.WriteLine("Before");
-            List<User> userList = (await FirestoreUser.GetFirestoreAllUser());
-            source = userList.Select( user => UserListItem.FromUser(user)).ToList();
-            /*source = new List<UserListItem> {
-
-                new UserListItem { Name= "Matei Popovici", Role = "Junior", PageModel=this },
-                new UserListItem { Name= "Matei Popovici", Role = "Mentor", PageModel=this },
-                new UserListItem { Name= "Matei Popovici", Role = "Member", PageModel=this }
-            };*/
-
-            Users = new ObservableCollection<UserListItem>(source);
-
-            Debug.WriteLine($"userList L ={userList.Count}");
-            Debug.WriteLine($"source L ={source.Count}");
-
-            Debug.WriteLine("Exiting Popullate");
-        }
     }
 }

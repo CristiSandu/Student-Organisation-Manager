@@ -1,7 +1,9 @@
 ﻿using StudentOrganisation.Models;
+using StudentOrganisation.Services;
 using StudentOrganisation.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -31,13 +33,13 @@ namespace StudentOrganisation.Views
         }
         protected async override void OnAppearing()
         {
-
-            await ((UserListViewModel)BindingContext).Popullate();
-
-            Debug.WriteLine("After Popullate");
-
             base.OnAppearing();
 
+            List<User> userList = (await FirestoreUser.GetFirestoreAllUser());
+            var source = userList.Select(user => UserListItem.FromUser(user)).ToList();
+            var Users = new ObservableCollection<UserListItem>(source);
+
+            collectionView.ItemsSource = Users;
         }
        
 
