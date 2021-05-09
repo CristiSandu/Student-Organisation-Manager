@@ -7,6 +7,7 @@ namespace StudentOrganisation.Models
 {
     public class User
     {
+
         public enum Pozition {Junior = 0, Member = 1, Mentor= 2, Admin=3};
 
         public static string CollectionPath = "users";
@@ -46,6 +47,5 @@ namespace StudentOrganisation.Models
                     return Pozition.Junior;
             }
         } 
-
     }
 }
