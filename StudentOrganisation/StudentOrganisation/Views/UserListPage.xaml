@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.UserListPage"
+             xmlns:local="clr-namespace:StudentOrganisation"
+             xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
+             xmlns:controls="clr-namespace:StudentOrganisation.Controllers"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             >
+    <ContentPage.Resources>
+
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" 
+                                        Value="LightSkyBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <ResourceDictionary>
+            <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
+        </ResourceDictionary>
+
+
+        <DataTemplate x:Key="DefaultTemplate">
+
+            <Grid Padding="16" BackgroundColor="{Binding user.Role ,Converter={StaticResource RoleToColorConverter}}" Margin="8">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="1"
+                       Text="{Binding Path=user.Name}"
+                       TextColor="Black"
+                       FontAttributes="Bold" />
+                <Label Grid.Row="1"
+                       Grid.Column="1" 
+                       Text="{Binding Path=user.Role}"
+                       TextColor="Black"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+
+        <controls:UserDataTemplateSelector x:Key="UserSelector"
+                                            Junior="{StaticResource DefaultTemplate}"
+                                            Member="{StaticResource DefaultTemplate}"
+                                            Mentor="{StaticResource DefaultTemplate}"
+                                            Admin="{StaticResource DefaultTemplate}"
+                                            Default="{StaticResource DefaultTemplate}"
+                                            />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Padding="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <SearchBar x:Name="searchBar"
+                   Grid.Row="0"
+                   SearchCommand="{Binding FilterCommand}"
+                   SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                   
+                   Placeholder="Filter">
+                <SearchBar.Behaviors>
+                    
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <CollectionView x:Name="collectionView"
+                            ItemTemplate="{StaticResource UserSelector}"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding Users}"
+                            Grid.Row="1"
+                            >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="8" VerticalItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
