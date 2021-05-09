@@ -44,10 +44,10 @@
                 <yummy:PancakeView.BackgroundGradientStops>
                     <yummy:GradientStopCollection>
                         <yummy:GradientStop
-                            Color="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
+                            Color="Black"
                             Offset="0" />
                         <yummy:GradientStop 
-                            Color="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
+                            Color="Black"
                             Offset="0.20" />
                         <yummy:GradientStop 
                             Color="#fff"
@@ -79,7 +79,7 @@
                         />
                     <StackLayout Grid.Row="1" Orientation="Horizontal">
                         <yummy:PancakeView
-                            BackgroundColor="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
+                            BackgroundColor="Black"
                             
                             CornerRadius="4"
                             >
@@ -94,7 +94,7 @@
 
                         <yummy:PancakeView
                             >
-                            <Label Text="{Binding Path=Path}"
+                            <Label Text="{Binding Path=StudyingPath}"
                                    TextColor="Black"
                                    FontAttributes="Italic"
                                    HorizontalOptions="Center"

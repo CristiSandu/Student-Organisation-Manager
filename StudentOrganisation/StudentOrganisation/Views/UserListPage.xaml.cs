@@ -22,17 +22,22 @@ namespace StudentOrganisation.Views
         {
             InitializeComponent();
             BindingContext = new UserListViewModel();
+            Debug.WriteLine("After new UserListViewModel();");
         }
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             ((UserListViewModel)BindingContext).FilterByName(searchBar.Text);
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
+
+            await ((UserListViewModel)BindingContext).Popullate();
+
+            Debug.WriteLine("After Popullate");
+
             base.OnAppearing();
 
-           
         }
        
 

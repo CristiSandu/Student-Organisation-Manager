@@ -12,7 +12,7 @@ namespace StudentOrganisation.ViewModels
         public UserListViewModel PageModel { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
-        public string Path { get; set; }
+        public string StudyingPath { get; set; }
 
         public static IList<UserListItem> FilterByName(string filter, IList<UserListItem> Source)
         {
@@ -48,7 +48,7 @@ namespace StudentOrganisation.ViewModels
                     break;
             }
 
-            userListItem.Path = user.Path;
+            userListItem.StudyingPath = user.Path;
             return userListItem;
         }
     }

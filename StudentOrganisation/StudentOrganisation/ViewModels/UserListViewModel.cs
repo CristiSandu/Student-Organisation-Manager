@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using StudentOrganisation.Services;
+using System.Threading.Tasks;
 
 namespace StudentOrganisation.ViewModels
 {
@@ -16,6 +18,7 @@ namespace StudentOrganisation.ViewModels
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Debug.WriteLine("In converter");
             switch ((string)value)
             {
                 case "Junior":
@@ -43,6 +46,7 @@ namespace StudentOrganisation.ViewModels
         public RoleToColorConverter roleToColorConverter {get;set;}
         public void FilterByName(string filter)
         {
+            Debug.WriteLine("In FilterByName");
             IList<UserListItem> filteredItems;
             Debug.WriteLine(filter);
             if (!string.IsNullOrWhiteSpace(filter))
@@ -68,11 +72,31 @@ namespace StudentOrganisation.ViewModels
                     }
                 }
             }
+            Debug.WriteLine($"Users L ={Users.Count}");
         }
         public UserListViewModel()
         {
-            
-           
+        
+        }
+
+        public async Task Popullate()
+        {
+            Debug.WriteLine("Before");
+            List<User> userList = (await FirestoreUser.GetFirestoreAllUser());
+            source = userList.Select( user => UserListItem.FromUser(user)).ToList();
+            /*source = new List<UserListItem> {
+
+                new UserListItem { Name= "Matei Popovici", Role = "Junior", PageModel=this },
+                new UserListItem { Name= "Matei Popovici", Role = "Mentor", PageModel=this },
+                new UserListItem { Name= "Matei Popovici", Role = "Member", PageModel=this }
+            };*/
+
+            Users = new ObservableCollection<UserListItem>(source);
+
+            Debug.WriteLine($"userList L ={userList.Count}");
+            Debug.WriteLine($"source L ={source.Count}");
+
+            Debug.WriteLine("Exiting Popullate");
         }
     }
 }
