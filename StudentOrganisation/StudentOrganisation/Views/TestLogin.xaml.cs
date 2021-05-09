@@ -29,7 +29,7 @@ namespace StudentOrganisation.Views
             string token = await auth.LoginWithEmailAndPassword(viewModel.Username, viewModel.Password);
             if (token != string.Empty)
             {
-                Application.Current.MainPage = new NavigationPage( new MainPage(token));
+                await Shell.Current.GoToAsync("///news");
             }
             else
             {

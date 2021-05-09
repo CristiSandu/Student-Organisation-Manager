@@ -17,7 +17,7 @@ namespace StudentOrganisation.Controllers
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
 
-            switch (((UserListItem)item).user.Role )
+            switch (((UserListItem)item).Role)
             {
                 case "Junior":
                     return Junior;

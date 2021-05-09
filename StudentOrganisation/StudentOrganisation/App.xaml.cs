@@ -16,11 +16,11 @@ namespace StudentOrganisation
 
             if (auth.IsSignIn())
             {
-                MainPage = new NavigationPage( new UserListPage());
+                MainPage = new AppShell();
             }
             else
             {
-                MainPage = new NavigationPage( new UserListPage());
+                MainPage = new TestLogin();
             }
         }
 
