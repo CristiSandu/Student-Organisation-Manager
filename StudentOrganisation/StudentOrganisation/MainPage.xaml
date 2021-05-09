@@ -1,19 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.MainPage">
+             x:Class="StudentOrganisation.MainPage"
+             Title="Profile">
 
-    <StackLayout>
-
-        <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding SecondName}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding Email}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding Path}" HorizontalOptions="Center" TextColor="Black"/>
-
-        <Label x:Name="idUser" TextColor="Black" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+    <StackLayout Spacing="10" Padding="10">
+        
+        <StackLayout>
+            <Label Text="Nume" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Prenume" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding SecondName}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Email" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="ID" FontSize="Large" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="idUser" Text="{Binding Id}" TextColor="Black" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Center"/>
+        </StackLayout>
         <Button x:Name="singOut" Text="Sing out" Clicked="singOut_Clicked"/>
         <Button x:Name="getUSER" Text="GEt" Clicked="getUSER_Clicked"/>
-        
+
 
     </StackLayout>
 

@@ -8,7 +8,9 @@
              xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
+             Title="Users List"
              >
+
     <ContentPage.Resources>
 
         <Style TargetType="yummy:PancakeView">
@@ -35,7 +37,7 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-
+    
     <ContentPage.Content>
         <Grid Padding="0,0,0,0">
 

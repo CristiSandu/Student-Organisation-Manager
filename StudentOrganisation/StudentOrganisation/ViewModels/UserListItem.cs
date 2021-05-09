@@ -31,21 +31,29 @@ namespace StudentOrganisation.ViewModels
         public static UserListItem FromUser(User user)
         {
             UserListItem userListItem = new UserListItem();
-            userListItem.Name = user.Name + user.SecondName;
+            userListItem.Name = user.Name +" "+ user.SecondName;
             switch (user.GetPozition())
             {
                 case Pozition.Admin:
-                    userListItem.Role = "Admin";
-                    break;
+                    {
+                        userListItem.Role = "Admin";
+                        break;
+                    }
                 case Pozition.Mentor:
-                    userListItem.Role = "Mentor";
-                    break;
+                    {
+                        userListItem.Role = "Mentor";
+                        break;
+                    }
                 case Pozition.Member:
-                    userListItem.Role = "Member";
-                    break;
+                    {
+                        userListItem.Role = "Member";
+                        break;
+                    }
                 default:
-                    userListItem.Role = "Junior";
-                    break;
+                    {
+                        userListItem.Role = "Junior";
+                        break;
+                    }
             }
 
             userListItem.StudyingPath = user.Path;
