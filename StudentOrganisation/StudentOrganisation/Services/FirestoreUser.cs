@@ -8,15 +8,15 @@ namespace StudentOrganisation.Services
 {
     class FirestoreUser
     {
-        public async Task<bool> CreateUserFirestore(Models.User user)
+        public static async Task<bool> CreateUserFirestore(Models.User user)
         {
             await CrossCloudFirestore.Current.Instance.
-                    Collection(Models.User.CollectionPath).Document()
+                    Collection(Models.User.CollectionPath).Document(user.Id)
                          .SetAsync(user);
             return true;
         }
 
-        public async Task<Models.User> GetFirestoreUser(string id)
+        public static async Task<Models.User> GetFirestoreUser(string id)
         {
             IDocumentSnapshot document = await CrossCloudFirestore.Current
                                         .Instance

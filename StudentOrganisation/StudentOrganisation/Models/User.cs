@@ -31,7 +31,7 @@ namespace StudentOrganisation.Models
         [MapTo("is_present")]
         public bool IsPresent { get; set; }
 
-        public bool IsAdmin => Role > 2;
+        //public bool IsAdmin => Role > 2;
         public Pozition GetPozition()
         {
             switch (Role)

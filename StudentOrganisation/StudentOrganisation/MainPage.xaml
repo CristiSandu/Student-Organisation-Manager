@@ -4,10 +4,17 @@
              x:Class="StudentOrganisation.MainPage">
 
     <StackLayout>
-        
-        <Label Text="ID User" HorizontalOptions="Center" TextColor="Black"/>
+
+        <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="Black"/>
+        <Label Text="{Binding SecondName}" HorizontalOptions="Center" TextColor="Black"/>
+        <Label Text="{Binding Email}" HorizontalOptions="Center" TextColor="Black"/>
+        <Label Text="{Binding Path}" HorizontalOptions="Center" TextColor="Black"/>
+
         <Label x:Name="idUser" TextColor="Black" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
         <Button x:Name="singOut" Text="Sing out" Clicked="singOut_Clicked"/>
+        <Button x:Name="getUSER" Text="GEt" Clicked="getUSER_Clicked"/>
+        
+
     </StackLayout>
 
 </ContentPage>

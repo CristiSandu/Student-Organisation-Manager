@@ -62,7 +62,7 @@ namespace StudentOrganisation.Droid.Services
             {
                 var user = await Firebase.Auth.FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
                 var token = await user.User.GetIdToken(false);
-                return (string)token;
+                return user.User.Uid;
             }
             catch (FirebaseAuthInvalidUserException e)
             {

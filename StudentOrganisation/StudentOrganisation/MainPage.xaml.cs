@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using StudentOrganisation.Services;
 
 namespace StudentOrganisation
 {
@@ -40,6 +41,13 @@ namespace StudentOrganisation
             {
                 Application.Current.MainPage = new TestLogin();
             }
+        }
+
+        private async void getUSER_Clicked(object sender, EventArgs e)
+        {
+            Models.User usr = await FirestoreUser.GetFirestoreUser(_IdUser);
+            //idUser.Text = usr.Name;
+            BindingContext = usr;
         }
     }
 }
