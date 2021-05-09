@@ -2,6 +2,7 @@
 using StudentOrganisation.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,13 @@ namespace StudentOrganisation.Views
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            ((UserListViewModel)BindingContext).FilterItems(searchBar.Text);
+            ((UserListViewModel)BindingContext).FilterByName(searchBar.Text);
         }
+
+        private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
+        {
+            Debug.WriteLine("Muie");
+        }
+
     }
 }

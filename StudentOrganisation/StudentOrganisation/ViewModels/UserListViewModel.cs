@@ -12,17 +12,6 @@ using System.Diagnostics;
 namespace StudentOrganisation.ViewModels
 {
 
-    public class UserListItem
-    {
-        public UserListViewModel PageModel { get; set; }
-        public User user { get; set; }
-        public UserListItem(String Name,String Role, UserListViewModel PageModel)
-        {
-            this.PageModel = PageModel;
-            this.user = new User(Name,Role);
-        }
-    }
-
     public class RoleToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -52,8 +41,7 @@ namespace StudentOrganisation.ViewModels
 
         public ObservableCollection<UserListItem> Users { get; set; }
         public RoleToColorConverter roleToColorConverter {get;set;}
-        public ICommand FilterCommand => new Command<string>(FilterItems);
-        public void FilterItems(string filter)
+        public void FilterByName(string filter)
         {
             IList<UserListItem> filteredItems;
             Debug.WriteLine(filter);
@@ -85,7 +73,7 @@ namespace StudentOrganisation.ViewModels
         {
             source = new List<UserListItem>
             {
-                new UserListItem(Name: "Popica von Brailangels", Role: "Roman Legion", this),
+                new UserListItem(Name: "Popica von Brailangels", Role: "Mentor", this),
                 new UserListItem(Name: "Matei Popovici", Role: "Junior", this),
                 new UserListItem(Name: "Adrian Margineanu", Role: "Mentor", this),
                 new UserListItem(Name: "Victor Tudose", Role: "Admin", this),
@@ -94,7 +82,6 @@ namespace StudentOrganisation.ViewModels
                 new UserListItem(Name: "Bogdi Piele", Role: "Mentor", this),
                 new UserListItem(Name: "Robert Raiu", Role: "Mentor", this),
                 new UserListItem(Name: "Stefan Pana", Role: "Junior", this),
-                new UserListItem(Name: "Dinu Mazur", Role: "Iesi afara", this)
             };
             roleToColorConverter = new RoleToColorConverter();
             Users = new ObservableCollection<UserListItem>(source);
