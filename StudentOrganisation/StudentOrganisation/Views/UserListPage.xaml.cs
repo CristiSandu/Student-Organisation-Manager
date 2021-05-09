@@ -22,5 +22,10 @@ namespace StudentOrganisation.Views
             InitializeComponent();
             BindingContext = new UserListViewModel();
         }
+
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            ((UserListViewModel)BindingContext).FilterItems(searchBar.Text);
+        }
     }
 }

@@ -30,15 +30,15 @@ namespace StudentOrganisation.ViewModels
             switch ((string)value)
             {
                 case "Junior":
-                    return Color.Red;
+                    return Color.FromHex("#4FC1E8");
                 case "Menber":
-                    return Color.Blue;
+                    return Color.FromHex("#AC92EB");
                 case "Mentor":
-                    return Color.Purple;
+                    return Color.FromHex("#FFCE54");
                 case "Admin":
-                    return Color.Green;
+                    return Color.FromHex("#A0D568");
                 default:
-                    return Color.PaleTurquoise;
+                    return Color.FromHex("#B8D8D8");
             }
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -53,14 +53,19 @@ namespace StudentOrganisation.ViewModels
         public ObservableCollection<UserListItem> Users { get; set; }
         public RoleToColorConverter roleToColorConverter {get;set;}
         public ICommand FilterCommand => new Command<string>(FilterItems);
-        void FilterItems(string filter)
+        public void FilterItems(string filter)
         {
             IList<UserListItem> filteredItems;
             Debug.WriteLine(filter);
-            if (filter.Length > 0)
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
                 filteredItems = source.Where(userItemList => userItemList.user.Name.ToLower().Contains(filter.ToLower())).ToList();
+            }
             else
+            {
                 filteredItems = source;
+            }
+            
             foreach (var userItemList in source)
             {
                 if (!filteredItems.Contains(userItemList))

@@ -16,7 +16,7 @@
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" 
+                                <Setter Property="BackgroundColor"
                                         Value="LightSkyBlue" />
                             </VisualState.Setters>
                         </VisualState>
@@ -45,12 +45,12 @@
 
                 <Label Grid.Column="1"
                        Text="{Binding Path=user.Name}"
-                       TextColor="Black"
+                       TextColor="White"
                        FontAttributes="Bold" />
                 <Label Grid.Row="1"
                        Grid.Column="1" 
                        Text="{Binding Path=user.Role}"
-                       TextColor="Black"
+                       TextColor="White"
                        FontAttributes="Italic"
                        VerticalOptions="End" />
             </Grid>
@@ -66,7 +66,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid Padding="0,0,0,0">
+        <Grid Padding="8,0,8,0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -75,13 +75,10 @@
 
             <SearchBar x:Name="searchBar"
                    Grid.Row="0"
-                   SearchCommand="{Binding FilterCommand}"
-                   SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
-                   
-                   Placeholder="Filter">
-                <SearchBar.Behaviors>
-                    
-                </SearchBar.Behaviors>
+                   SearchButtonPressed="searchBar_SearchButtonPressed"
+                   TextChanged="searchBar_SearchButtonPressed"
+                   Placeholder="Filter"
+                   Margin="0,8,0,8">
             </SearchBar>
 
             <CollectionView x:Name="collectionView"
