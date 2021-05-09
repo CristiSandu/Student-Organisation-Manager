@@ -10,10 +10,10 @@ namespace StudentOrganisation.ViewModels
     {
         public UserListViewModel PageModel { get; set; }
         public User user { get; set; }
-        public UserListItem(String Name, String Role, UserListViewModel PageModel)
+        public UserListItem(String Name, String Role,UserListViewModel PageModel, String Path = "Mobile")
         {
             this.PageModel = PageModel;
-            this.user = new User(Name, Role);
+            this.user = new User(Name, Role,Path);
         }
         public static IList<UserListItem> FilterByName(string filter,IList<UserListItem> Source)
         {

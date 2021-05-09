@@ -28,10 +28,15 @@ namespace StudentOrganisation.Views
         {
             ((UserListViewModel)BindingContext).FilterByName(searchBar.Text);
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+           
+        }
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
         {
-            Debug.WriteLine("Muie");
+            
         }
 
     }

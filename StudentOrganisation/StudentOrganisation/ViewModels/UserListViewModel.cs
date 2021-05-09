@@ -73,15 +73,15 @@ namespace StudentOrganisation.ViewModels
         {
             source = new List<UserListItem>
             {
-                new UserListItem(Name: "Popica von Brailangels", Role: "Mentor", this),
-                new UserListItem(Name: "Matei Popovici", Role: "Junior", this),
-                new UserListItem(Name: "Adrian Margineanu", Role: "Mentor", this),
-                new UserListItem(Name: "Victor Tudose", Role: "Admin", this),
+                new UserListItem(Name: "Popica von Brailangels", Role: "Mentor", this,Path:"Rome"),
+                new UserListItem(Name: "Matei Popovici", Role: "Junior", this,Path:"Limbaje"),
+                new UserListItem(Name: "Adrian Margineanu", Role: "Mentor", this,Path:"Limbaje"),
+                new UserListItem(Name: "Victor Tudose", Role: "Admin", this,Path:"IoT"),
                 new UserListItem(Name: "Crysti Sandu", Role: "Mentor", this),
                 new UserListItem(Name: "Luci Iliescu", Role: "Dat Afara", this),
                 new UserListItem(Name: "Bogdi Piele", Role: "Mentor", this),
-                new UserListItem(Name: "Robert Raiu", Role: "Mentor", this),
-                new UserListItem(Name: "Stefan Pana", Role: "Junior", this),
+                new UserListItem(Name: "Robert Raiu", Role: "Mentor", this,Path:"IoT"),
+                new UserListItem(Name: "Stefan Pana", Role: "Junior", this,Path:"IoT"),
             };
             roleToColorConverter = new RoleToColorConverter();
             Users = new ObservableCollection<UserListItem>(source);
