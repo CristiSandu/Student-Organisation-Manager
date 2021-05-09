@@ -6,10 +6,10 @@
              x:Class="StudentOrganisation.AppShell"
             Style="{StaticResource DomesticShell}">
 
-  <!--<ShellItem  Route="login">
+  <ShellItem  Route="login">
         <ShellContent ContentTemplate="{DataTemplate views:TestLogin}"/>
     </ShellItem>
--->
+
     <TabBar Route="news">
         <Tab Title="News" Icon="home.png">
             <ShellContent x:Name="NewsTab"  ContentTemplate="{DataTemplate views:NewsTab }"/>

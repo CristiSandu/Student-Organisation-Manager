@@ -13,14 +13,13 @@ namespace StudentOrganisation
         {
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
-
             if (auth.IsSignIn())
             {
                 MainPage = new AppShell();
             }
             else
             {
-                MainPage = new AppShell();
+                MainPage = new TestLogin();
             }
         }
 

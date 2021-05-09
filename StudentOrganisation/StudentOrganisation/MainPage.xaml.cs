@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using StudentOrganisation.Services;
 
 namespace StudentOrganisation
@@ -31,23 +32,35 @@ namespace StudentOrganisation
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             idUser.Text = _IdUser;
         }
 
-        private void singOut_Clicked(object sender, EventArgs e)
+        private async void singOut_Clicked(object sender, EventArgs e)
         {
             var signedOut = auth.SignOut();
             if (signedOut)
             {
-                Application.Current.MainPage = new TestLogin();
+                SecureStorage.Remove("isLogged");
+                await Shell.Current.GoToAsync("///login");
             }
         }
-
         private async void getUSER_Clicked(object sender, EventArgs e)
         {
-            Models.User usr = await FirestoreUser.GetFirestoreUser(_IdUser);
+           
             //idUser.Text = usr.Name;
-            BindingContext = usr;
+            try
+            {
+                var oauthToken = await SecureStorage.GetAsync("isLogged");
+                idUser.Text = oauthToken;
+                Models.User usr = await FirestoreUser.GetFirestoreUser(oauthToken);
+                BindingContext = usr;
+            }
+            catch (Exception ex)
+            {
+                // Possible that device doesn't support secure storage on device.
+            }
+            
         }
     }
 }
