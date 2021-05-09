@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using StudentOrganisation.ViewModels;
 using StudentOrganisation.Services;
+using StudentOrganisation.Models;
 
 namespace StudentOrganisation.Views
 {
@@ -26,7 +27,7 @@ namespace StudentOrganisation.Views
 
         private async void BirthDayDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-          
+
         }
 
         private async void AddUser_Clicked(object sender, EventArgs e)
@@ -36,17 +37,23 @@ namespace StudentOrganisation.Views
             if (_pass != _confPass)
             {
                 await DisplayAlert("Error!", "Password != ConfirmPassword", "OK");
-
+                return;
             }
-            else
+
+
+            string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
+            if (token != string.Empty)
             {
-
-                string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
-                if (token != string.Empty)
-                {
-                    Application.Current.MainPage = new NavigationPage(new TestLogin());
-                }
+                User user = new User();
+                user.Name = FirstNameEntry.Text;
+                user.SecondName = LasttNameEntry.Text;
+                user.Email = EmailEntry.Text;
+                user.Id = token;
+                await FirestoreUser.CreateUserFirestore(user);
+                await DisplayAlert("ok", "User created", "ok");
+                Application.Current.MainPage = new NavigationPage(new TestLogin());
             }
+
         }
     }
 }

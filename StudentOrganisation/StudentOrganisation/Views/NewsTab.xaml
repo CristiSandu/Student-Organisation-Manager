@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.NewsTab">
+    <ContentPage.Content>
+
+        <StackLayout  VerticalOptions="CenterAndExpand">
+            <CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Stiri"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            <Label Text="Descriere"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                   Grid.Column="1"
+                                   Grid.RowSpan="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Link-uri utile"
+                   HorizontalOptions="FillAndExpand"/>
+
+            <CollectionView x:Name="links"
+                            SelectionChanged="links_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="Descriere"
+                               HorizontalOptions="FillAndExpand"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
