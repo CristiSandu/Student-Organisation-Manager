@@ -20,7 +20,7 @@ namespace StudentOrganisation
             }
             else
             {
-                MainPage = new TestLogin();
+                MainPage = new AppShell();
             }
         }
 
