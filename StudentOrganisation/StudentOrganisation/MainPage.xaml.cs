@@ -52,7 +52,7 @@ namespace StudentOrganisation
             try
             {
                 var oauthToken = await SecureStorage.GetAsync("isLogged");
-                Models.User usr = await FirestoreUser.GetFirestoreUser(oauthToken);
+                Models.User usr = await UserProvider.GetFirestoreUser(oauthToken);
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
