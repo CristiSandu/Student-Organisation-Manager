@@ -22,6 +22,7 @@ namespace StudentOrganisation.Services
             IQuerySnapshot query = await _cloud
                                     .Collection(NewsModel.CollectionPath)
                                     .WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
+                                    .OrderBy("date")
                                     .GetAsync();
 
             IEnumerable<NewsModel> news = query.ToObjects<NewsModel>();
