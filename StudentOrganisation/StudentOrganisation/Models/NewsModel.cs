@@ -5,8 +5,10 @@ using System.Text;
 
 namespace StudentOrganisation.Models
 {
-    class NewsModel
+    public class NewsModel
     {
+        public static string CollectionPath = "news";
+
         [MapTo("title")]
         public string Title { get; set; }
         [MapTo("content")]
