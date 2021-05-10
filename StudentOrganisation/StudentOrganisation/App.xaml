@@ -17,9 +17,6 @@
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
             </Style>
 
-            
-
-
             <Style x:Key="MainTitleStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="Large"/>

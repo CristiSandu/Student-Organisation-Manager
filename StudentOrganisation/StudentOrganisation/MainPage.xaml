@@ -24,7 +24,12 @@
         </StackLayout>
         <Button x:Name="singOut" Text="Sign out" Style="{StaticResource ButtonCheckedStyle}" Clicked="singOut_Clicked"/>
         <Button x:Name="getUSER" Text="GEt" Style="{StaticResource ButtonCheckedStyle}" Clicked="getUSER_Clicked"/>
-
+        <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
+        <Button x:Name="addPhoto" 
+                Text="" 
+                Clicked="addPhoto_Clicked" 
+                BackgroundColor="Transparent"
+                CornerRadius="100"/>
 
     </StackLayout>
 
