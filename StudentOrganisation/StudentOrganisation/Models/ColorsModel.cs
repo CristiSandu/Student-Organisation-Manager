@@ -5,14 +5,13 @@ using System.Text;
 
 namespace StudentOrganisation.Models
 {
-    public class LinksModel
+    public class ColorsModel
     {
-        public static string CollectionPath = "websites"
+
+        public static string CollectionPath = "colors";
         [MapTo("title")]
         public string Title { get; set; }
-        [MapTo("url")]
-        public string URL { get; set; }
-        [MapTo("date")]
-        public DateTime Date { get; set; }
+        [MapTo("color")]
+        public string Color { get; set; }
     }
 }
