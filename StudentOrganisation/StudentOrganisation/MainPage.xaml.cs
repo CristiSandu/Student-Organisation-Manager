@@ -15,6 +15,7 @@ namespace StudentOrganisation
     public partial class MainPage : ContentPage
     {
         IFirebaseAuthentication auth;
+        Models.User usr;
         string _IdUser;
         public MainPage()
         {
@@ -52,7 +53,7 @@ namespace StudentOrganisation
             try
             {
                 var oauthToken = await SecureStorage.GetAsync("isLogged");
-                Models.User usr = await FirestoreUser.GetFirestoreUser(oauthToken);
+                usr = await FirestoreUser.GetFirestoreUser(oauthToken);
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
@@ -64,6 +65,27 @@ namespace StudentOrganisation
                 // Possible that device doesn't support secure storage on device.
             }
             
+        }
+
+        private async void addPhoto_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var result_photo = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                {
+                    Title = "Pick a photo!"
+                });
+                var stream = await result_photo.OpenReadAsync();
+
+                // testProfile.Source = ImageSource.FromStream(() => stream);
+              //testProfile.Source = 
+                    string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
+
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine($"CapturePhotoAsync THREW: {ex.Message}");
+            }
         }
     }
 }
