@@ -16,6 +16,7 @@ namespace StudentOrganisation
     {
         IFirebaseAuthentication auth;
         Models.User usr;
+        string _url;
         string _IdUser;
         public MainPage()
         {
@@ -30,11 +31,14 @@ namespace StudentOrganisation
             _IdUser = id;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            usr = await UserProvider.GetFirestoreUser(await SecureStorage.GetAsync("isLogged"));
+            _url = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
             idUser.Text = _IdUser;
+            testProfile.Source = _url;
+
         }
 
         private async void singOut_Clicked(object sender, EventArgs e)
@@ -82,7 +86,6 @@ namespace StudentOrganisation
                 // testProfile.Source = ImageSource.FromStream(() => stream);
               //testProfile.Source = 
                     string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
-                testProfile.Source = url;
             }
             catch (NullReferenceException ex)
             {
