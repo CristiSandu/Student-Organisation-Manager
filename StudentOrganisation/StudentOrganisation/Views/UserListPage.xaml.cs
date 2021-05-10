@@ -35,7 +35,7 @@ namespace StudentOrganisation.Views
         {
             base.OnAppearing();
 
-            List<User> userList = (await FirestoreUser.GetFirestoreAllUser());
+            List<User> userList = (await UserProvider.GetFirestoreAllUser());
 
             ((UserListViewModel)BindingContext).source = userList.Select(user => UserListItem.FromUser(user)).ToList();
             ((UserListViewModel)BindingContext).Users = new ObservableCollection<UserListItem>(((UserListViewModel)BindingContext).source);
