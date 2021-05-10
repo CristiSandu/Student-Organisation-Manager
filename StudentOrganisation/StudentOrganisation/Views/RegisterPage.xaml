@@ -14,7 +14,7 @@
             <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True"></Entry>
             <Label Text="Date Of Birth"></Label>
             <DatePicker x:Name="BirthDayDatePicker" DateSelected="BirthDayDatePicker_DateSelected"></DatePicker>
-            <Button x:Name ="AddUser" Text="Sign Up" Clicked="AddUser_Clicked"></Button>
+            <Button x:Name ="AddUser" Text="Sign Up" Clicked="AddUser_Clicked" Style="{StaticResource ButtonCheckedStyle}"></Button>
         </StackLayout>
 
 

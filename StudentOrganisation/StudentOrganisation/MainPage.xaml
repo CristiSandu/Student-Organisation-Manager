@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.MainPage">
+             x:Class="StudentOrganisation.MainPage"
+             Title="Profile">
 
     <StackLayout Spacing="10" Padding="10">
         
@@ -21,8 +22,8 @@
             <Label Text="ID" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
             <Label x:Name="idUser" Text="{Binding Id}" TextColor="Black" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Center"/>
         </StackLayout>
-        <Button x:Name="singOut" Text="Sign out" Clicked="singOut_Clicked"/>
-        <Button x:Name="getUSER" Text="GEt" Clicked="getUSER_Clicked"/>
+        <Button x:Name="singOut" Text="Sign out" Style="{StaticResource ButtonCheckedStyle}" Clicked="singOut_Clicked"/>
+        <Button x:Name="getUSER" Text="GEt" Style="{StaticResource ButtonCheckedStyle}" Clicked="getUSER_Clicked"/>
 
 
     </StackLayout>

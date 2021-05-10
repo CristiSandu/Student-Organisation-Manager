@@ -4,14 +4,20 @@
              x:Class="StudentOrganisation.App">
     <Application.Resources>
         <ResourceDictionary>
+
+            <Color x:Key="AccentColor">#00B6F0</Color>
+            <Color x:Key="AccentColorDark">#203a61</Color>
+
+            
             <Style x:Key="DomesticShell" TargetType="Element" >
-                <Setter Property="Shell.BackgroundColor" Value="#203a61" />
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource AccentColorDark}" />
                 <Setter Property="Shell.ForegroundColor" Value="#E1E2E1" />
                 <Setter Property="Shell.TitleColor"      Value="#E1E2E1" />
                 <Setter Property="Shell.DisabledColor"   Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
             </Style>
 
+            
 
 
             <Style x:Key="MainTitleStyle" TargetType="Label">
@@ -29,6 +35,23 @@
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="Padding" Value="10"/>
             </Style>
+
+            <Style x:Key="ButtonUnCheckStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
+            <Style x:Key="ButtonCheckedStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
 
 
         </ResourceDictionary>

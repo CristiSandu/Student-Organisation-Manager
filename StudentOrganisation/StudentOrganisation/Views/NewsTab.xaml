@@ -24,9 +24,10 @@
                                 <Label Text="{Binding Title}"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Label Text="Descriere"
+                                   Style="{StaticResource TitleStyle}"
+                                   HorizontalOptions="Start"
+                                   />
+                                <Label Text="{Binding Description}"
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    HorizontalOptions="Start"
@@ -42,7 +43,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Label Text="Link-uri utile"
+            <Label Text="Links" Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand"/>
 
             <CollectionView x:Name="links"
@@ -52,7 +53,8 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="Descriere"
+                        <Frame Style="{StaticResource FrameNewsStyle}" BackgroundColor="#69A8AA">
+                            <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
                                HorizontalOptions="FillAndExpand"/>
                         </Frame>
                     </DataTemplate>
