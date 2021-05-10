@@ -80,7 +80,7 @@ namespace StudentOrganisation
                 // testProfile.Source = ImageSource.FromStream(() => stream);
               //testProfile.Source = 
                     string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
-
+                testProfile.Source = url;
             }
             catch (NullReferenceException ex)
             {

@@ -7,7 +7,7 @@ namespace StudentOrganisation.Models
 {
     public class LinksModel
     {
-        public static string CollectionPath = "websites"
+        public static string CollectionPath = "websites";
         [MapTo("title")]
         public string Title { get; set; }
         [MapTo("url")]

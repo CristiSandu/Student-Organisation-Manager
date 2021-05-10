@@ -28,7 +28,7 @@
         <Button x:Name="addPhoto" 
                 Text="" 
                 Clicked="addPhoto_Clicked" 
-                BackgroundColor="Transparent"
+                BackgroundColor="Blue"
                 CornerRadius="100"/>
 
     </StackLayout>
