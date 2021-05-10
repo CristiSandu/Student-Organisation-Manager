@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views ="clr-namespace:StudentOrganisation.Views"
+             xmlns:defaults ="clr-namespace:StudentOrganisation"
+             x:Class="StudentOrganisation.AppShell"
+            Style="{StaticResource DomesticShell}">
+
+  <ShellItem  Route="login">
+        <ShellContent ContentTemplate="{DataTemplate views:TestLogin}"/>
+    </ShellItem>
+
+    <TabBar Route="news">
+        <Tab Title="News" Icon="home.png">
+            <ShellContent x:Name="NewsTab"  ContentTemplate="{DataTemplate views:NewsTab }"/>
+        </Tab>
+        <Tab Icon="list.png"  Title="Users">
+            <ShellContent x:Name="UsersTab"  ContentTemplate="{DataTemplate views:UserListPage}"/>
+        </Tab>
+        <Tab Icon="pie.png"  Title="Profile">
+            <ShellContent x:Name="chartsTab"  ContentTemplate="{DataTemplate defaults:MainPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>

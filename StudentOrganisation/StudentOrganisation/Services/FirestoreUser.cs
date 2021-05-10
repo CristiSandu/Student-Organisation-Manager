@@ -56,7 +56,6 @@ namespace StudentOrganisation.Services
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .OrderBy("role",true)
                                      .GetAsync();
 
             IEnumerable<Models.User> users = query.ToObjects<Models.User>();

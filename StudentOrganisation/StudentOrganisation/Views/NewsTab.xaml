@@ -4,8 +4,13 @@
              x:Class="StudentOrganisation.Views.NewsTab">
     <ContentPage.Content>
 
-        <StackLayout  VerticalOptions="CenterAndExpand">
-            <CollectionView>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="5">
+            <Label Text="News"  Style="{StaticResource MainTitleStyle}"
+                   HorizontalOptions="FillAndExpand"/>
+            <CollectionView x:Name="newsList" >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid VerticalOptions="FillAndExpand">
@@ -20,9 +25,9 @@
                             <Label Text="Stiri"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Label Text="Descriere"
+                                   Style="{StaticResource TitleStyle}"
+                                   HorizontalOptions="Start"/>
+                                <Label Text="{Binding Description}"
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    HorizontalOptions="Center"
@@ -37,14 +42,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Label Text="Link-uri utile"
+            <Label Text="Links" Style="{StaticResource MainTitleStyle}"  
                    HorizontalOptions="FillAndExpand"/>
 
             <CollectionView x:Name="links"
                             SelectionChanged="links_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="Descriere"
+                        <Frame BackgroundColor="CadetBlue" CornerRadius="10" Padding="10">
+                            <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
                                HorizontalOptions="FillAndExpand"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

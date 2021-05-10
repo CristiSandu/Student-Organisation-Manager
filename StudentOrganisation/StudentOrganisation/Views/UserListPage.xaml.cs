@@ -31,7 +31,13 @@ namespace StudentOrganisation.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-           
+
+            List<User> userList = (await FirestoreUser.GetFirestoreAllUser());
+
+            ((UserListViewModel)BindingContext).source = userList.Select(user => UserListItem.FromUser(user)).ToList();
+            ((UserListViewModel)BindingContext).Users = new ObservableCollection<UserListItem>(((UserListViewModel)BindingContext).source);
+
+            collectionView.ItemsSource = ((UserListViewModel)BindingContext).Users;
         }
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)

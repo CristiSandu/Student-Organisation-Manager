@@ -3,15 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.MainPage">
 
-    <StackLayout>
-
-        <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding SecondName}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding Email}" HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="{Binding Path}" HorizontalOptions="Center" TextColor="Black"/>
-
-        <Label x:Name="idUser" TextColor="Black" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Button x:Name="singOut" Text="Sing out" Clicked="singOut_Clicked"/>
+    <StackLayout Spacing="10" Padding="10">
+        
+        <StackLayout>
+            <Label Text="Nume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Prenume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding SecondName}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Email" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="ID" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
+            <Label x:Name="idUser" Text="{Binding Id}" TextColor="Black" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Center"/>
+        </StackLayout>
+        <Button x:Name="singOut" Text="Sign out" Clicked="singOut_Clicked"/>
         <Button x:Name="getUSER" Text="GEt" Clicked="getUSER_Clicked"/>
         
 
