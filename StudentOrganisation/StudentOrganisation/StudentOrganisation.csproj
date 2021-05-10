@@ -11,11 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IMG\home.svg" />
+    <None Remove="IMG\list.svg" />
+    <None Remove="IMG\pie.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
     <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.763-beta" />
     <PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SharedImage Include="IMG\home.svg" BaseSize="50,50" />
+    <SharedImage Include="IMG\list.svg" BaseSize="50,50" />
+    <SharedImage Include="IMG\pie.svg" BaseSize="50,50" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewsTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

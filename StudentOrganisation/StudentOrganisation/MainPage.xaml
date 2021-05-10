@@ -23,7 +23,7 @@
         </StackLayout>
         <Button x:Name="singOut" Text="Sign out" Clicked="singOut_Clicked"/>
         <Button x:Name="getUSER" Text="GEt" Clicked="getUSER_Clicked"/>
-        
+
 
     </StackLayout>
 

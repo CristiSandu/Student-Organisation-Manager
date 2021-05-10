@@ -2,6 +2,7 @@
 using StudentOrganisation.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -16,8 +17,8 @@ namespace StudentOrganisation.Controllers
         public DataTemplate Default { get; set; }
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-
-            switch (((UserListItem)item).user.Role )
+            Debug.WriteLine("In OnSelectTemplate");
+            switch (((UserListItem)item).Role)
             {
                 case "Junior":
                     return Junior;

@@ -1,7 +1,9 @@
 ﻿using StudentOrganisation.Models;
+using StudentOrganisation.Services;
 using StudentOrganisation.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -22,13 +24,14 @@ namespace StudentOrganisation.Views
         {
             InitializeComponent();
             BindingContext = new UserListViewModel();
+            Debug.WriteLine("After new UserListViewModel();");
         }
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             ((UserListViewModel)BindingContext).FilterByName(searchBar.Text);
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -39,6 +42,7 @@ namespace StudentOrganisation.Views
 
             collectionView.ItemsSource = ((UserListViewModel)BindingContext).Users;
         }
+       
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
         {
