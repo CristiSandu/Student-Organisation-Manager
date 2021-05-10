@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentOrganisation.Services
 {
-    class FirestoreUser
+    class UserProvider
     {
         public static async Task<bool> CreateUserFirestore(Models.User user)
         {
@@ -49,6 +49,18 @@ namespace StudentOrganisation.Services
 
             IEnumerable<Models.User> users = query.ToObjects<Models.User>();
             return new List<Models.User>(users);
+        }
+
+        public static async Task<Models.User> SetUserPresent(Models.User user)
+        {
+            user.IsPresent = true;
+            
+            bool result = await UpdateFirestoreUser(user);
+            if (!result)
+            {
+                return null;
+            }
+            return user;
         }
 
         public static async Task<List<Models.User>> GetFirestoreAllUser()

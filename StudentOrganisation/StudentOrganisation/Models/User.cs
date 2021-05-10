@@ -19,33 +19,15 @@ namespace StudentOrganisation.Models
         public string SecondName { get; set; }
         [MapTo("email")]
         public string Email { get; set; }
-        [MapTo("picture_url")]
-        public string PictureURL { get; set; }
         [MapTo("path")]
-        public string Path { get; set; }
+        public List<string> Path { get; set; }
         [MapTo("stars")]
         public int Stars { get; set; }
         [MapTo("role")]
-        private int Role { get; set; }
+        public int Role { get; set; }
         [MapTo("highlists")]
         public List<string> Highlits {get; set;}
         [MapTo("is_present")]
         public bool IsPresent { get; set; }
-
-        //public bool IsAdmin => Role > 2;
-        public Pozition GetPozition()
-        {
-            switch (Role)
-            {
-                case 3:
-                    return Pozition.Admin;
-                case 2:
-                    return Pozition.Mentor;
-                case 1:
-                    return Pozition.Member;
-                default:
-                    return Pozition.Junior;
-            }
-        } 
     }
 }

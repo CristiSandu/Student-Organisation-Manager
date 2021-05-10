@@ -32,19 +32,19 @@ namespace StudentOrganisation.ViewModels
         {
             UserListItem userListItem = new UserListItem();
             userListItem.Name = user.Name +" "+ user.SecondName;
-            switch (user.GetPozition())
+            switch (user.Role)
             {
-                case Pozition.Admin:
+                case 3:
                     {
                         userListItem.Role = "Admin";
                         break;
                     }
-                case Pozition.Mentor:
+                case 2:
                     {
                         userListItem.Role = "Mentor";
                         break;
                     }
-                case Pozition.Member:
+                case 1:
                     {
                         userListItem.Role = "Member";
                         break;
@@ -56,7 +56,7 @@ namespace StudentOrganisation.ViewModels
                     }
             }
 
-            userListItem.StudyingPath = user.Path;
+            userListItem.StudyingPath = user.Path.First();
             return userListItem;
         }
     }

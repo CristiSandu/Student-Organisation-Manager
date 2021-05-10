@@ -49,7 +49,7 @@ namespace StudentOrganisation.Views
                 user.SecondName = LasttNameEntry.Text;
                 user.Email = EmailEntry.Text;
                 user.Id = token;
-                await FirestoreUser.CreateUserFirestore(user);
+                await UserProvider.CreateUserFirestore(user);
                 await DisplayAlert("ok", "User created", "ok");
 
                 await Shell.Current.GoToAsync("..");
