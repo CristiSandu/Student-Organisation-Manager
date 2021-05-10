@@ -7,6 +7,8 @@ namespace StudentOrganisation.Models
 {
     public class ColorsModel
     {
+
+        public static string CollectionPath = "colors";
         [MapTo("title")]
         public string Title { get; set; }
         [MapTo("color")]
