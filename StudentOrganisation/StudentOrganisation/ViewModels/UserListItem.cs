@@ -35,20 +35,25 @@ namespace StudentOrganisation.ViewModels
             switch (user.Role)
             {
                 case 3:
-                    userListItem.Role = "Admin";
-                    break;
-
+                    {
+                        userListItem.Role = "Admin";
+                        break;
+                    }
                 case 2:
-                    userListItem.Role = "Mentor";
-                    break;
-
+                    {
+                        userListItem.Role = "Mentor";
+                        break;
+                    }
                 case 1:
-                    userListItem.Role = "Member";
-                    break;
-
+                    {
+                        userListItem.Role = "Member";
+                        break;
+                    }
                 default:
-                    userListItem.Role = "Junior";
-                    break;
+                    {
+                        userListItem.Role = "Junior";
+                        break;
+                    }
             }
             
             userListItem.StudyingPath = ( user.Path??(new List<string> { "No path"} ) ).First();
