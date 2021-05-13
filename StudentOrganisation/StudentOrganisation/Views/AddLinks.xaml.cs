@@ -30,7 +30,6 @@ namespace StudentOrganisation.Views
         private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
-
         }
     }
 }

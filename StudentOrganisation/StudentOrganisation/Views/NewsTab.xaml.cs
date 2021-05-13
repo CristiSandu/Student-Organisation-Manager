@@ -39,10 +39,7 @@ namespace StudentOrganisation.Views
         public NewsTab()
         {
             InitializeComponent();
-
         }
-
-       
 
         protected async override void OnAppearing()
         {
@@ -58,9 +55,6 @@ namespace StudentOrganisation.Views
         {
             NewsModel news = e.CurrentSelection.FirstOrDefault() as NewsModel;
 
-            //var uri = $"{nameof(ViewNews)}?Title=\"{news.Title}\"&Content=\"{news.Content}\"&Description=\"{news.Description}\"&Date=\"{news.Date}\"";
-            //await Shell.Current.GoToAsync(uri);
-
             if (e.CurrentSelection != null)
             {
                 await Navigation.PushAsync(new ViewNews
@@ -74,6 +68,7 @@ namespace StudentOrganisation.Views
         private async void links_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LinksModel link = e.CurrentSelection.FirstOrDefault() as LinksModel;
+            
             try
             {
                 await Browser.OpenAsync(link.URL, BrowserLaunchMode.SystemPreferred);
@@ -92,7 +87,6 @@ namespace StudentOrganisation.Views
         private async void AddNewsBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddNews ());
-            //await Shell.Current.GoToAsync($"{nameof(AddLinks)}");
         }
     }
 }

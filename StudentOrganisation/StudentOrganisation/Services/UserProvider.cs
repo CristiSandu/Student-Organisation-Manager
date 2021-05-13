@@ -51,6 +51,19 @@ namespace StudentOrganisation.Services
             return new List<Models.User>(users);
         }
 
+        public static async Task<Dictionary<string, int>> CountPerRole()
+        {
+            // Junior = 0, Member = 1, Mentor = 2, Admin = 3
+            List<string> str = new List<string> { "Mobile", "Limbaje", "AI","IoT","Azure","Gaming"};
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            foreach (string s in str)
+            {
+                List<Models.User> lst = await GetFirestoreUserFromPath(s);
+                dict[s] = lst.Count;
+            }
+            return dict;
+        }
+
         public static async Task<Models.User> SetUserPresent(Models.User user)
         {
             user.IsPresent = true;

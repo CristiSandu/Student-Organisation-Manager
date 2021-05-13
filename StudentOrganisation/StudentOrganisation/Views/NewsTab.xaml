@@ -6,7 +6,7 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name ="AddNewsBtn" Text="News"
+        <ToolbarItem x:Name ="AddNewsBtn" Text="News" 
                  IconImageSource="delete.png"
                  Order="Primary"
                  Priority="0"
@@ -73,11 +73,16 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Style="{StaticResource FrameNewsStyle}" BackgroundColor="#69A8AA">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
+                            <StackLayout Spacing="-3">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
                                         HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
                                    HorizontalOptions="End"
+                                   VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Label Text="{Binding URL}"
+                                   HorizontalOptions="Start"
                                    VerticalOptions="Center"/>
                             </StackLayout>
                         </Frame>
