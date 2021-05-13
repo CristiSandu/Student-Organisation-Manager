@@ -18,7 +18,9 @@
         <StackLayout VerticalOptions="CenterAndExpand" Padding="5">
             <Label Text="News"  Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand"/>
-            <CollectionView x:Name="newsList" >
+            <CollectionView x:Name="newsList"  
+                            SelectionMode="Single" 
+                            SelectionChanged="newsList_SelectionChanged" >
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
                 </CollectionView.ItemsLayout>
@@ -64,8 +66,13 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Style="{StaticResource FrameNewsStyle}" BackgroundColor="#69A8AA">
-                            <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
-                               HorizontalOptions="FillAndExpand"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
+                                        HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Center"/>
+                            </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

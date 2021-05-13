@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentOrganisation.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,12 +51,20 @@ namespace StudentOrganisation.Views
             base.OnAppearing();
             var list = await Services.NewsProvider.GetAll();
             newsList.ItemsSource = list;
-            links.ItemsSource = _links;
+            links.ItemsSource = await Services.LinksProvider.GetAll();
         }
 
         private async void AddNewsBtn_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"{nameof(AddNews)}");
+            await Shell.Current.GoToAsync($"{nameof(AddLinks)}");
+        }
+
+        private async void newsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NewsModel news = e.CurrentSelection.FirstOrDefault() as NewsModel;
+
+            var uri = $"{nameof(ViewNews)}?Title=\"{news.Title}\"&Content=\"{news.Content}\"&Description=\"{news.Description}\"&Date=\"{news.Date}\"";
+            await Shell.Current.GoToAsync(uri);
         }
     }
 }

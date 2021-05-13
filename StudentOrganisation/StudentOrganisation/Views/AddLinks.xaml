@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.AddLinks"
+             Title="Add Link">
+    <ContentPage.Content>
+        <StackLayout Spacing="32" Padding="0,32,0,0">
+            <StackLayout Spacing="24" Padding="16">
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout>
+                        <Label x:Name="DescriprionName" Text="Description" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="Descriprion" Text="{Binding Title}"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout>
+                        <Label x:Name="DescriprionURL" Text="URL" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="URL" Text="{Binding URL}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                    <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>
+                    <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

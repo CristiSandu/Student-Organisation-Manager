@@ -18,6 +18,8 @@ namespace StudentOrganisation
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(AddNews), typeof(AddNews));
+            Routing.RegisterRoute(nameof(AddLinks), typeof(AddLinks));
+            Routing.RegisterRoute(nameof(ViewNews), typeof(ViewNews));
         }
 
         public AppShell(string token)
