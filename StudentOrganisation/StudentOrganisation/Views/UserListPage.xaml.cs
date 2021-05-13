@@ -33,16 +33,15 @@ namespace StudentOrganisation.Views
         }
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
-
             List<User> userList = (await UserProvider.GetFirestoreAllUser());
 
             ((UserListViewModel)BindingContext).source = userList.Select(user => UserListItem.FromUser(user)).ToList();
             ((UserListViewModel)BindingContext).Users = new ObservableCollection<UserListItem>(((UserListViewModel)BindingContext).source);
-
+            
             collectionView.ItemsSource = ((UserListViewModel)BindingContext).Users;
+            base.OnAppearing();
         }
-       
+
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
         {

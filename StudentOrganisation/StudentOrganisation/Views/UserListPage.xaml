@@ -94,25 +94,8 @@
                         <DataTemplate>
                             <yummy:PancakeView CornerRadius="8,0,0,8"
                                Border="{yummy:BorderMarkup Color=#ccc, Thickness='4'}"
-                               BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1"
+                               BackgroundColor="White"
                                >
-
-                                <yummy:PancakeView.BackgroundGradientStops>
-                                    <yummy:GradientStopCollection>
-                                        <yummy:GradientStop
-                            Color="Black"
-                            Offset="0" />
-                                        <yummy:GradientStop 
-                            Color="Black"
-                            Offset="0.20" />
-                                        <yummy:GradientStop 
-                            Color="#fff"
-                            Offset="0.2001" />
-                                        <yummy:GradientStop 
-                            Color="#fff"
-                            Offset="1" />
-                                    </yummy:GradientStopCollection>
-                                </yummy:PancakeView.BackgroundGradientStops>
 
                                 <Grid Margin="8" Padding="16">
                                     <Grid.RowDefinitions>
@@ -126,48 +109,41 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label
-                           Text="{Binding Path=Name}"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           VerticalOptions="Start"
-                           HorizontalOptions="Start"
-                           Grid.ColumnSpan="2"
-                        />
+                                       Text="{Binding Path=Name}"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Start"
+                                       Grid.ColumnSpan="2"
+                                    />
                                     <StackLayout Grid.Row="1" Orientation="Horizontal">
                                         <yummy:PancakeView
-                            BackgroundColor="Black"
-                            
-                            CornerRadius="4"
-                            >
+                                            BackgroundColor="Black"
+                                            CornerRadius="4" >
                                             <Label Text="{Binding Path=Role}"
-                                   TextColor="White"
-                                   FontAttributes="Italic"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   Padding="8,0,8,0" 
-                                   />
+                                               TextColor="White"
+                                               FontAttributes="Italic"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               Padding="8,0,8,0" 
+                                            />
                                         </yummy:PancakeView>
 
-                                        <yummy:PancakeView
-                            >
+                                        <yummy:PancakeView>
                                             <Label Text="{Binding Path=StudyingPath}"
-                                   TextColor="Black"
-                                   FontAttributes="Italic"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
+                                               TextColor="Black"
+                                               FontAttributes="Italic"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
                                         </yummy:PancakeView>
                                     </StackLayout>
                                 </Grid>
                             </yummy:PancakeView>
                         </DataTemplate>
-
                     </CollectionView.ItemTemplate>
-
                 </CollectionView>
             </Frame>
-
         </Grid>
-
 
     </ContentPage.Content>
 </ContentPage>
