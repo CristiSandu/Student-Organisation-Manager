@@ -31,7 +31,7 @@ namespace StudentOrganisation.ViewModels
         public static UserListItem FromUser(User user)
         {
             UserListItem userListItem = new UserListItem();
-            userListItem.Name = user.Name +" "+ user.SecondName;
+            userListItem.Name = (user.Name)??"" +" "+ (user.SecondName) ?? "";
             switch (user.Role)
             {
                 case 3:
@@ -55,8 +55,8 @@ namespace StudentOrganisation.ViewModels
                         break;
                     }
             }
-
-            userListItem.StudyingPath = user.Path.First();
+            
+            userListItem.StudyingPath = ( user.Path??(new List<string> { "No path"} ) ).First();
             return userListItem;
         }
     }

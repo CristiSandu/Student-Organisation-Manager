@@ -46,9 +46,7 @@ namespace StudentOrganisation.ViewModels
         public RoleToColorConverter roleToColorConverter {get;set;}
         public void FilterByName(string filter)
         {
-            Debug.WriteLine("In FilterByName");
             IList<UserListItem> filteredItems;
-            Debug.WriteLine(filter);
             if (!string.IsNullOrWhiteSpace(filter))
             {
                 filteredItems = source.Where(userItemList => userItemList.Name.ToLower().Contains(filter.ToLower())).ToList();
@@ -72,7 +70,6 @@ namespace StudentOrganisation.ViewModels
                     }
                 }
             }
-            Debug.WriteLine($"Users L ={Users.Count}");
         }
         public UserListViewModel()
         {
