@@ -35,9 +35,9 @@ namespace StudentOrganisation.Views
             base.OnAppearing();
         }
 
-        private void CancelBtn_Clicked(object sender, EventArgs e)
+        private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.Views.ViewNews">
+             x:Class="StudentOrganisation.Views.ViewNews"
+             Title="Event">
     <ContentPage.Content>
         <StackLayout Spacing="24">
             <StackLayout Padding="16,16,16,0" Spacing="16">
@@ -11,7 +12,7 @@
                             <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
                             <Label x:Name="NewsTitle" Text="{Binding Title}" />
                         </StackLayout>
-                        <Label x:Name="NewsDate" TextColor="Gray" Text="{Binding Date}" HorizontalOptions="End"/>
+                        <Label x:Name="NewsDate" TextColor="Gray" Text="{Binding Date}" VerticalOptions="Center" HorizontalOptions="End"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}">

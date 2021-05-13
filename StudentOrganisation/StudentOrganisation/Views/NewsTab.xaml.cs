@@ -54,17 +54,34 @@ namespace StudentOrganisation.Views
             links.ItemsSource = await Services.LinksProvider.GetAll();
         }
 
-        private async void AddNewsBtn_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync($"{nameof(AddLinks)}");
-        }
+       
 
         private async void newsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NewsModel news = e.CurrentSelection.FirstOrDefault() as NewsModel;
 
-            var uri = $"{nameof(ViewNews)}?Title=\"{news.Title}\"&Content=\"{news.Content}\"&Description=\"{news.Description}\"&Date=\"{news.Date}\"";
-            await Shell.Current.GoToAsync(uri);
+            //var uri = $"{nameof(ViewNews)}?Title=\"{news.Title}\"&Content=\"{news.Content}\"&Description=\"{news.Description}\"&Date=\"{news.Date}\"";
+            //await Shell.Current.GoToAsync(uri);
+
+            if (e.CurrentSelection != null)
+            {
+                await Navigation.PushAsync(new ViewNews
+                {
+                    BindingContext = news
+                });
+
+            }
+        }
+
+        private async void AddLinsBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddLinks());
+        }
+
+        private async void AddNewsBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddNews ());
+            //await Shell.Current.GoToAsync($"{nameof(AddLinks)}");
         }
     }
 }

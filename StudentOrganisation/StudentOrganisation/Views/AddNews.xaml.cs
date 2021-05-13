@@ -23,13 +23,14 @@ namespace StudentOrganisation.Views
         private async void SaveBtn_Clicked(object sender, EventArgs e)
         {
             await Services.NewsProvider.Create(_news);
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
+
 
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
         }
     }
 }

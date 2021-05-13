@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace StudentOrganisation.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabsPages : ContentPage
+    public partial class TabsPages : TabbedPage
     {
         public TabsPages()
         {

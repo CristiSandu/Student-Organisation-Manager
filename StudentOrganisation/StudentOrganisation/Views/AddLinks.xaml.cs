@@ -24,12 +24,13 @@ namespace StudentOrganisation.Views
         {
             _link.Date = DateTime.Now;
             await Services.LinksProvider.Create(_link);
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
+
         }
     }
 }

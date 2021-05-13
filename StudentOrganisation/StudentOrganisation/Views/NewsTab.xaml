@@ -6,11 +6,17 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name ="AddNewsBtn" Text="Search"
+        <ToolbarItem x:Name ="AddNewsBtn" Text="News"
                  IconImageSource="delete.png"
                  Order="Primary"
                  Priority="0"
                   Clicked="AddNewsBtn_Clicked"/>
+
+        <ToolbarItem x:Name ="AddLinsBtn" Text="Links"
+                 IconImageSource="delete.png"
+                 Order="Primary"
+                 Priority="0"
+                  Clicked="AddLinsBtn_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
