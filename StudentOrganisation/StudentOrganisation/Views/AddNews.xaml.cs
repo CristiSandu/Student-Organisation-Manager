@@ -17,6 +17,7 @@ namespace StudentOrganisation.Views
         public AddNews()
         {
             InitializeComponent();
+            _news.Date = DateTime.Now;
             BindingContext = _news;
         }
 
