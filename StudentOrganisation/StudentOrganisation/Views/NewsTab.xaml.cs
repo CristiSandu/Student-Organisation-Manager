@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace StudentOrganisation.Views
 {
@@ -41,10 +42,7 @@ namespace StudentOrganisation.Views
 
         }
 
-        private void links_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
 
         protected async override void OnAppearing()
         {
@@ -70,6 +68,19 @@ namespace StudentOrganisation.Views
                     BindingContext = news
                 });
 
+            }
+        }
+
+        private async void links_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LinksModel link = e.CurrentSelection.FirstOrDefault() as LinksModel;
+            try
+            {
+                await Browser.OpenAsync(link.URL, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                // An unexpected error occured. No browser may be installed on the device.
             }
         }
 

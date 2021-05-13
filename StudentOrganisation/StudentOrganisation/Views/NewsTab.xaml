@@ -65,6 +65,7 @@
                    HorizontalOptions="FillAndExpand"/>
 
             <CollectionView x:Name="links"
+                            SelectionMode="Single"
                             SelectionChanged="links_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
