@@ -38,13 +38,24 @@ namespace StudentOrganisation.Views
         {
             InitializeComponent();
 
-            newsList.ItemsSource = news;
-            links.ItemsSource = _links;
         }
 
         private void links_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            var list = await Services.NewsProvider.GetAll();
+            newsList.ItemsSource = list;
+            links.ItemsSource = _links;
+        }
+
+        private async void AddNewsBtn_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(AddNews)}");
         }
     }
 }

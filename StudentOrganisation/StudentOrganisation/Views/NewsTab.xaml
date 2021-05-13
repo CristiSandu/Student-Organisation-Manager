@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.NewsTab"
              Title="News">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name ="AddNewsBtn" Text="Search"
+                 IconImageSource="delete.png"
+                 Order="Primary"
+                 Priority="0"
+                  Clicked="AddNewsBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
 
         <StackLayout VerticalOptions="CenterAndExpand" Padding="5">

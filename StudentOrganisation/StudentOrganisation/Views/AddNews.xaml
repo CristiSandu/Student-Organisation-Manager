@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.AddNews"
+             Title="Add News"
+             >
+    <ContentPage.Content>
+        <StackLayout Spacing="24">
+            <StackLayout Padding="16,16,16,0" Spacing="16">
+                <Frame Style="{StaticResource FrameAddNews}" >
+                    <StackLayout>
+                        <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="NewsTitle" Text="{Binding Title}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout >
+                        <Label x:Name="DescriprionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="NewsDescription" Text="{Binding Description}" />
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameAddNews}" >
+                    <StackLayout>
+                        <Label x:Name="DescriptionCont" Text="News Content" Style="{StaticResource TitleStyle}" />
+                        <Editor x:Name="NewsContent" HeightRequest="100" Text="{Binding Content}"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource FrameAddNews}" >
+                    <StackLayout>
+                        <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
+                        <DatePicker x:Name="NewsDate" TextColor="Gray" Date="{Binding Date}"/>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>
+                <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
