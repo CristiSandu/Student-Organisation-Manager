@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.Views.RegisterPage">
+             x:Class="StudentOrganisation.Views.RegisterPage"
+             Title="Register">
     <ContentPage.Content>
-
+        <!--
         <StackLayout VerticalOptions="CenterAndExpand" Padding="16">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Entry x:Name="FirstNameEntry" Placeholder="First Name" Text="{Binding Name}"></Entry>
@@ -17,6 +18,91 @@
             <Button x:Name ="AddUser" Text="Sign Up" Clicked="AddUser_Clicked" Style="{StaticResource ButtonCheckedStyle}"></Button>
         </StackLayout>
 
+-->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Padding="20" Spacing="60">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Register User" Style="{StaticResource MainTitleStyle}" FontSize="40" HorizontalOptions="Start"  FontFamily="Itim"/>
+                <Image Source="user-plus.png" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Grid ColumnSpacing="10" RowSpacing="15" Padding="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".65*" />
+                    <RowDefinition Height=".65*" />
+                    <RowDefinition Height=".65*" /> 
+                    <RowDefinition Height=".65*" />
+                    <RowDefinition Height=".65*" />
+                </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width=".5*" />
+
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8" Padding="0,-7,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nume"/>
+                            <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry x:Name="FirstNameEntry" Text="{Binding Name}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Column="1" Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Prenume" VerticalOptions="Center"/>
+                            <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry Grid.Column="1" x:Name="LasttNameEntry"  Text="{Binding SecondName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Email"/>
+                            <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry Grid.ColumnSpan="2" Grid.Row="1" x:Name="EmailEntry" Text="{Binding Email}" />
+                    </StackLayout>
+                </Frame>
+                <Frame  Grid.Row="2" Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <Label Text="Select Path"/>
+                        <Picker x:Name="PathPicker" Grid.Row="2" 
+                                TitleColor="Gray" SelectedIndexChanged="PathPicker_SelectedIndexChanged"/>
+                         </StackLayout>
+                </Frame>
+                <Frame  Grid.Row="2"  Grid.Column="1"  Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <Label Text="Select Highlight"/>
+                        <Picker x:Name="HighlightsPicker" Grid.Row="2" Grid.Column="1" 
+                            TitleColor="Gray" SelectedIndexChanged="HighlightsPicker_SelectedIndexChanged"/>
+                    </StackLayout>
+                </Frame>
+                <Frame  Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Password"/>
+                            <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry Grid.ColumnSpan="2" Grid.Row="3"  x:Name="PasswordEntry"  IsPassword="True"/>
+                    </StackLayout>
+                </Frame>
+                <Frame  Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Confirm Password"/>
+                            <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry Grid.ColumnSpan="2" Grid.Row="4" x:Name="ConfirmPasswordEntry" IsPassword="True"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>
+                <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

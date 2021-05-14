@@ -15,6 +15,13 @@
     <None Remove="IMG\delete.svg" />
     <None Remove="IMG\home.svg" />
     <None Remove="IMG\list.svg" />
+    <None Remove="IMG\plus.svg" />
+    <None Remove="IMG\user-plus.svg" />
+    <None Remove="Resources\Fonts\Itim-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\Itim-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +40,8 @@
     <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
     <SharedImage Include="IMG\home.svg" />
     <SharedImage Include="IMG\list.svg" />
+    <SharedImage Include="IMG\plus.svg" />
+    <SharedImage Include="IMG\user-plus.svg"  BaseSize="50,50" />
   </ItemGroup>
 
   <ItemGroup>

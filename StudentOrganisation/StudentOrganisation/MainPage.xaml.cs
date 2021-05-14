@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using StudentOrganisation.Views;
 
 namespace StudentOrganisation
 {
