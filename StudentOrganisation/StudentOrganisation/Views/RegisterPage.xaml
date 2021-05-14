@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.RegisterPage"
+             NavigationPage.HasNavigationBar="False"
              Title="Register">
     <ContentPage.Content>
         <!--
@@ -19,7 +20,7 @@
         </StackLayout>
 
 -->
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Padding="20" Spacing="60">
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Padding="16,48,16,32" Spacing="56">
             <StackLayout Orientation="Horizontal">
                 <Label Text="Register User" Style="{StaticResource MainTitleStyle}" FontSize="40" HorizontalOptions="Start"  FontFamily="Itim"/>
                 <Image Source="user-plus.png" HorizontalOptions="EndAndExpand"/>
