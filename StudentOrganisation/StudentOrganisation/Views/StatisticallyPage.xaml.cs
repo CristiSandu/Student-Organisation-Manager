@@ -69,7 +69,6 @@ namespace StudentOrganisation.Views
             {
                 _latsButton = btn;
             }
-
         }
     }
 }
