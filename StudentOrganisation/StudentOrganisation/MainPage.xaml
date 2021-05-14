@@ -2,34 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.MainPage"
+             xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              Title="Profile">
 
-    <StackLayout Spacing="10" Padding="10">
-        
-        <StackLayout>
-            <Label Text="Nume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name ="AddNewsBtn" Text="News" 
+                 IconImageSource="log_out.png"
+                 Order="Primary"
+                 Priority="0"
+                  Clicked="singOut_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="8" Padding="64">
+
+        <Grid>
+            <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
+            <Grid.Effects>
+                <tt:TouchEffect Capture="True"
+                            TouchAction="Photo_Clicked"/>
+            </Grid.Effects>
+        </Grid>
+
+        <StackLayout Orientation="Horizontal">
+            <Image Source="user.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
+            <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
         </StackLayout>
-        <StackLayout>
-            <Label Text="Prenume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label Text="{Binding SecondName}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
-        </StackLayout>
-        <StackLayout>
-            <Label Text="Email" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Image Source="mail.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
             <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
         </StackLayout>
-        <StackLayout>
-            <Label Text="ID" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label x:Name="idUser" Text="{Binding Id}" TextColor="Black" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Center"/>
-        </StackLayout>
-        <Button x:Name="singOut" Text="Sign out" Style="{StaticResource ButtonCheckedStyle}" Clicked="singOut_Clicked"/>
-        <Button x:Name="getUSER" Text="GEt" Style="{StaticResource ButtonCheckedStyle}" Clicked="getUSER_Clicked"/>
-        <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
-        <Button x:Name="addPhoto" 
-                Text="" 
-                Clicked="addPhoto_Clicked" 
-                BackgroundColor="Blue"
-                CornerRadius="100"/>
 
     </StackLayout>
 

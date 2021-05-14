@@ -32,9 +32,9 @@ namespace StudentOrganisation
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            getUser();
             usr = await UserProvider.GetFirestoreUser(await SecureStorage.GetAsync("isLogged"));
             _url = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
-            idUser.Text = _IdUser;
             testProfile.Source = _url;
 
         }
@@ -45,10 +45,10 @@ namespace StudentOrganisation
             if (signedOut)
             {
                 SecureStorage.Remove("isLogged");
-                ((App)Application.Current).MainPage = new NavigationPage(new TestLogin());
+                ((App)Application.Current).MainPage = new NavigationPage(new Views.TestLogin());
             }
         }
-        private async void getUSER_Clicked(object sender, EventArgs e)
+        private async void getUser()
         {
            
             //idUser.Text = usr.Name;
@@ -61,7 +61,7 @@ namespace StudentOrganisation
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
-                idUser.Text = oauthToken;
+                NameLabel.Text = usr.Name + " " + usr.SecondName;
 
             }
             catch (Exception ex)
@@ -71,7 +71,7 @@ namespace StudentOrganisation
             
         }
 
-        private async void addPhoto_Clicked(object sender, EventArgs e)
+        private async void Photo_Clicked(object sender, EventArgs e)
         {
             try
             {
