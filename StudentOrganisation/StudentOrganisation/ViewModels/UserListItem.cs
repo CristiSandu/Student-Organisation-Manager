@@ -32,7 +32,7 @@ namespace StudentOrganisation.ViewModels
 
         public async void setImageUrl(User user)
         {
-            ImageURL = await Services.FirebaseStorageProvider.GetProfilePictureUrl(user);
+            ImageURL = (await Services.FirebaseStorageProvider.GetProfilePictureUrl(user)) ?? "blank-profile.png";
         }
 
         public static UserListItem FromUser(User user)

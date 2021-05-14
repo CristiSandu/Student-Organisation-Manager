@@ -20,7 +20,6 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-
         <StackLayout VerticalOptions="CenterAndExpand" Padding="5">
             <Label Text="News"  Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand"/>

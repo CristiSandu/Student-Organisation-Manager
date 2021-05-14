@@ -45,7 +45,7 @@ namespace StudentOrganisation
             if (signedOut)
             {
                 SecureStorage.Remove("isLogged");
-                ((App)Application.Current).MainPage = new NavigationPage(new TestLogin());
+                ((App)Application.Current).MainPage = new NavigationPage(new Views.TestLogin());
             }
         }
         private async void getUSER_Clicked(object sender, EventArgs e)

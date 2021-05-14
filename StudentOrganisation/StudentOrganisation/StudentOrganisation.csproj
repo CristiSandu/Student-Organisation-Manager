@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IMG\blank-profile.svg" />
     <None Remove="IMG\chart.svg" />
     <None Remove="IMG\delete.svg" />
     <None Remove="IMG\home.svg" />
@@ -29,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SharedImage Include="IMG\blank-profile.svg" BaseSize="100,100"/>
     <SharedImage Include="IMG\chart.svg" />
     <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
     <SharedImage Include="IMG\home.svg" />
