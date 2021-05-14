@@ -18,20 +18,10 @@ namespace StudentOrganisation.ViewModels
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Debug.WriteLine("In converter");
-            switch ((string)value)
-            {
-                case "Junior":
-                    return Color.FromHex("#4FC1E8");
-                case "Menber":
-                    return Color.FromHex("#AC92EB");
-                case "Mentor":
-                    return Color.FromHex("#FFCE54");
-                case "Admin":
-                    return Color.FromHex("#A0D568");
-                default:
-                    return Color.FromHex("#B8D8D8");
-            }
+            string Ret="#cccccc";
+            string Search= (string)value;
+            UserListViewModel.colors.TryGetValue(Search, out Ret);
+            return Color.FromHex( Ret ?? "#cccccc");
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -40,10 +30,9 @@ namespace StudentOrganisation.ViewModels
     }
     public class UserListViewModel
     {
+        public static Dictionary<string, string> colors;
         public List<UserListItem> source { get; set; }
-
         public ObservableCollection<UserListItem> Users { get; set; }
-        public RoleToColorConverter roleToColorConverter {get;set;}
         public void FilterByName(string filter)
         {
             IList<UserListItem> filteredItems;
@@ -71,9 +60,18 @@ namespace StudentOrganisation.ViewModels
                 }
             }
         }
+
+        public async Task InitColors()
+        {
+            colors["Junior"] = (await ColorsProvider.GetColorFor("Junior")) ?? "#cccccc";
+            colors["Member"] = (await ColorsProvider.GetColorFor("Member")) ?? "#cccccc";
+            colors["Mentor"] = (await ColorsProvider.GetColorFor("Mentor")) ?? "#cccccc";
+            colors["Admin"] = (await ColorsProvider.GetColorFor("Admin")) ?? "#cccccc";
+        }
+
         public UserListViewModel()
         {
-        
+            colors = new Dictionary<string, string>();
         }
 
     }

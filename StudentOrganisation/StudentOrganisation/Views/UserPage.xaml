@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.Views.UserPage">
+             x:Class="StudentOrganisation.Views.UserPage"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             >
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Frame HorizontalOptions="Center" WidthRequest="70" HeightRequest="70" CornerRadius="35" Padding="0" >
+                <Image HeightRequest="35"/>
+            </Frame>
+            
+            <Label Text="Place:"/>
+            <Entry IsEnabled="false"/>
+            <Label Text="Name"/>
+            <Entry IsEnabled="false"/>
+
+            <Button Text="Update my profile" HorizontalOptions="CenterAndExpand" VerticalOptions="End"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
