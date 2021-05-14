@@ -6,23 +6,23 @@
             android:TabbedPage.ToolbarPlacement="Bottom" 
              android:TabbedPage.IsSwipePagingEnabled="False"
              NavigationPage.HasNavigationBar="False" 
-            xmlns:local="clr-namespace:StudentOrganisation.Views"
+            xmlns:view="clr-namespace:StudentOrganisation.Views"
             xmlns:local2="clr-namespace:StudentOrganisation">
     <NavigationPage Title="News" IconImageSource="home.png" BarTextColor="White" >
         <x:Arguments>
-            <local:NewsTab/>
+            <view:NewsTab/>
         </x:Arguments>
     </NavigationPage>
 
     <NavigationPage Title="Users" IconImageSource="list.png" BarTextColor="White">
         <x:Arguments>
-            <local:UserListPage/>
+            <view:UserListPage/>
         </x:Arguments>
     </NavigationPage>
 
     <NavigationPage Title="Profile"  IconImageSource="chart.png" BarTextColor="White ">
         <x:Arguments>
-            <local2:MainPage/>
+            <view:StatisticallyPage/>
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>
