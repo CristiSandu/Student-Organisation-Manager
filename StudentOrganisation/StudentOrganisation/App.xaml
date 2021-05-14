@@ -53,6 +53,7 @@
                 <Setter Property="CornerRadius" Value="5"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
 
 
