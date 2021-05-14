@@ -39,7 +39,7 @@ namespace StudentOrganisation.Views
 
                 }
 
-                await Shell.Current.GoToAsync("///news");
+                await Navigation.PushAsync(new TabsPages());
             }
             else
             {

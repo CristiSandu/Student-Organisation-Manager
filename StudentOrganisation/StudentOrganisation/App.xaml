@@ -9,13 +9,13 @@
             <Color x:Key="AccentColorDark">#203a61</Color>
 
             
-            <Style x:Key="DomesticShell" TargetType="Element" >
+            <!--<Style x:Key="DomesticShell" TargetType="Element" >
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource AccentColorDark}" />
                 <Setter Property="Shell.ForegroundColor" Value="#E1E2E1" />
                 <Setter Property="Shell.TitleColor"      Value="#E1E2E1" />
                 <Setter Property="Shell.DisabledColor"   Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-            </Style>
+            </Style>-->
 
             <Style x:Key="MainTitleStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -47,6 +47,12 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
                 <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
+            <Style x:Key="FrameAddNews" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
             </Style>
 
 

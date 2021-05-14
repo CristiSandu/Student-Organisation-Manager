@@ -11,6 +11,7 @@ namespace StudentOrganisation.Services
         private static IFirestore _cloud = CrossCloudFirestore.Current.Instance;
         public static async Task<bool> Create(NewsModel news)
         {
+            news.Date = news.Date.AddHours(3);
             await _cloud.Collection(NewsModel.CollectionPath)
                         .Document(news.Title.Replace(" ", "_"))
                         .SetAsync(news);
@@ -21,7 +22,7 @@ namespace StudentOrganisation.Services
         {
             IQuerySnapshot query = await _cloud
                                     .Collection(NewsModel.CollectionPath)
-                                    .WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
+                                    .WhereGreaterThanOrEqualsTo("date", DateTime.Now)
                                     .OrderBy("date")
                                     .GetAsync();
 

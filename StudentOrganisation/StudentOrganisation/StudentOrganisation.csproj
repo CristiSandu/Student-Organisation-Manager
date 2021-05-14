@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,9 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IMG\chart.svg" />
+    <None Remove="IMG\delete.svg" />
     <None Remove="IMG\home.svg" />
     <None Remove="IMG\list.svg" />
-    <None Remove="IMG\pie.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,9 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SharedImage Include="IMG\home.svg" BaseSize="50,50" />
-    <SharedImage Include="IMG\list.svg" BaseSize="50,50" />
-    <SharedImage Include="IMG\pie.svg" BaseSize="50,50" />
+    <SharedImage Include="IMG\chart.svg" />
+    <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
+    <SharedImage Include="IMG\home.svg" />
+    <SharedImage Include="IMG\list.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,16 +44,28 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddLinks.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddNews.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewsTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RegisterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\TabsPages.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\TestLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewNews.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

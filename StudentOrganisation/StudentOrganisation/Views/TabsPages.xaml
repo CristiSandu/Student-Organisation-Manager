@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.TabsPages"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom" 
+             android:TabbedPage.IsSwipePagingEnabled="False"
+             NavigationPage.HasNavigationBar="False" 
+            xmlns:local="clr-namespace:StudentOrganisation.Views"
+            xmlns:local2="clr-namespace:StudentOrganisation">
+    <NavigationPage Title="News" IconImageSource="home.png" BarTextColor="White" >
+        <x:Arguments>
+            <local:NewsTab/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Users" IconImageSource="list.png" BarTextColor="White">
+        <x:Arguments>
+            <local:UserListPage/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Profile"  IconImageSource="chart.png" BarTextColor="White ">
+        <x:Arguments>
+            <local2:MainPage/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

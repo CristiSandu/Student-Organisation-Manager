@@ -17,12 +17,14 @@ namespace StudentOrganisation.Views
     public partial class RegisterPage : ContentPage
     {
         IFirebaseAuthentication auth;
+        User user = new User();
         string _pass;
         string _confPass;
         public RegisterPage()
         {
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
+            BindingContext = user;
         }
 
         private async void BirthDayDatePicker_DateSelected(object sender, DateChangedEventArgs e)
@@ -44,11 +46,6 @@ namespace StudentOrganisation.Views
             string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
             if (token != string.Empty)
             {
-                User user = new User();
-                user.Name = FirstNameEntry.Text;
-                user.SecondName = LasttNameEntry.Text;
-                user.Email = EmailEntry.Text;
-                user.Id = token;
                 await UserProvider.CreateUserFirestore(user);
                 await DisplayAlert("ok", "User created", "ok");
 

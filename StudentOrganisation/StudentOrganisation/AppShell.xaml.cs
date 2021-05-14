@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using StudentOrganisation.Views;
 
 namespace StudentOrganisation
 {
@@ -16,6 +17,9 @@ namespace StudentOrganisation
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(AddNews), typeof(AddNews));
+            Routing.RegisterRoute(nameof(AddLinks), typeof(AddLinks));
+            Routing.RegisterRoute(nameof(ViewNews), typeof(ViewNews));
         }
 
         public AppShell(string token)
