@@ -48,7 +48,7 @@
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Column="1" Style="{StaticResource FrameAddNews}">
-                    <StackLayout Spacing="-8"  Padding="0,-7,0,20">
+                    <StackLayout  Spacing="-8"  Padding="0,-7,0,20">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Prenume" VerticalOptions="Center"/>
                             <Label Text="*" TextColor="Red"  VerticalOptions="Center"/>
