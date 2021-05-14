@@ -13,6 +13,8 @@ namespace StudentOrganisation.ViewModels
         public string Name { get; set; }
         public string Role { get; set; }
         public string StudyingPath { get; set; }
+        public string ImageURL { get; set; }
+        public string Color { get; set; }
 
         public static IList<UserListItem> FilterByName(string filter, IList<UserListItem> Source)
         {
@@ -26,6 +28,11 @@ namespace StudentOrganisation.ViewModels
                 filteredItems = Source;
             }
             return filteredItems;
+        }
+
+        public async void setImageUrl(User user)
+        {
+            ImageURL = await Services.FirebaseStorageProvider.GetProfilePictureUrl(user);
         }
 
         public static UserListItem FromUser(User user)
@@ -57,6 +64,8 @@ namespace StudentOrganisation.ViewModels
             }
             
             userListItem.StudyingPath = ( user.Path??(new List<string> { "No path"} ) ).First();
+            userListItem.setImageUrl(user);
+
             return userListItem;
         }
     }

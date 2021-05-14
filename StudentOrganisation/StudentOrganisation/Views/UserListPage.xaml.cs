@@ -24,7 +24,6 @@ namespace StudentOrganisation.Views
         {
             InitializeComponent();
             BindingContext = new UserListViewModel();
-            Debug.WriteLine("After new UserListViewModel();");
         }
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
@@ -35,14 +34,17 @@ namespace StudentOrganisation.Views
         {
             List<User> userList = (await UserProvider.GetFirestoreAllUser());
 
-            ((UserListViewModel)BindingContext).source = userList.Select(user => UserListItem.FromUser(user)).ToList();
-            ((UserListViewModel)BindingContext).Users = new ObservableCollection<UserListItem>(((UserListViewModel)BindingContext).source);
-            
-            collectionView.ItemsSource = ((UserListViewModel)BindingContext).Users;
+            UserListViewModel model = ((UserListViewModel)BindingContext);
+            await model.InitColors();
+            model.source = userList.Select(user => UserListItem.FromUser(user)).ToList();
+            model.Users = new ObservableCollection<UserListItem>(model.source);
+            foreach(var user in model.Users)
+            {
+                user.PageModel = model;
+            }
+            collectionView.ItemsSource = model.Users;
             base.OnAppearing();
         }
-
-
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
         {
             

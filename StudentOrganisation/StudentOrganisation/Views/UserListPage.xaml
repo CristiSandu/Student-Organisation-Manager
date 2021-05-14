@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.UserListPage"
-             xmlns:local="clr-namespace:StudentOrganisation"
              xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
-             xmlns:controls="clr-namespace:StudentOrganisation.Controllers"
              xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
@@ -65,13 +63,13 @@
                 BackgroundColor="White">
 
                 <Path
-                Margin="24,0,0,0"
-                Data="M370.216,459.3c10.2,11.1,15.8,25.6,15.8,40.6v442c0,26.601,32.1,40.101,51.1,21.4l123.3-141.3c16.5-19.8,25.6-29.601,25.6-49.2V500c0-15,5.7-29.5,15.8-40.601L955.615,75.5c26.5-28.8,6.101-75.5-33.1-75.5h-873c-39.2,0-59.7,46.6-33.1,75.5L370.216,459.3z"
-                HeightRequest="24"
-                WidthRequest="24"
-                Fill="Gray"
-                Aspect="Uniform"
-                HorizontalOptions="Start"
+                    Margin="24,0,0,0"
+                    Data="M370.216,459.3c10.2,11.1,15.8,25.6,15.8,40.6v442c0,26.601,32.1,40.101,51.1,21.4l123.3-141.3c16.5-19.8,25.6-29.601,25.6-49.2V500c0-15,5.7-29.5,15.8-40.601L955.615,75.5c26.5-28.8,6.101-75.5-33.1-75.5h-873c-39.2,0-59.7,46.6-33.1,75.5L370.216,459.3z"
+                    HeightRequest="24"
+                    WidthRequest="24"
+                    Fill="Gray"
+                    Aspect="Uniform"
+                    HorizontalOptions="Start"
                 />
 
                 <Grid.Effects>
@@ -92,48 +90,69 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <yummy:PancakeView CornerRadius="8,0,0,8"
+                            <yummy:PancakeView CornerRadius="8"
                                Border="{yummy:BorderMarkup Color=#ccc, Thickness='4'}"
                                BackgroundColor="White"
                                >
-
                                 <Grid Margin="8" Padding="16">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="2*" />
-                                        <RowDefinition Height="1*" />
-                                    </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
 
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Frame
+                                        Grid.RowSpan="2"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="45"
+                                        HeightRequest="70"                                       
+                                        CornerRadius="35"
+                                        Padding="0"
+                                        Margin="0"
+                                        >
+                                        <Image Aspect="AspectFill" Source="{Binding ImageURL}" HeightRequest="35"/>
+                                    </Frame>
+
                                     <Label
+                                       Grid.Column="1"
                                        Text="{Binding Path=Name}"
                                        TextColor="Black"
                                        FontAttributes="Bold"
-                                       VerticalOptions="Start"
+                                       VerticalOptions="Center"
                                        HorizontalOptions="Start"
-                                       Grid.ColumnSpan="2"
                                     />
-                                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                    <StackLayout
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Orientation="Horizontal"
+                                            HorizontalOptions="End"
+                                        >
+                                        
                                         <yummy:PancakeView
-                                            BackgroundColor="Black"
+                                            HorizontalOptions="End"
+                                            BackgroundColor="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
                                             CornerRadius="4" >
                                             <Label Text="{Binding Path=Role}"
                                                TextColor="White"
                                                FontAttributes="Italic"
-                                               HorizontalOptions="Center"
+                                               HorizontalOptions="End"
                                                VerticalOptions="Center"
-                                               Padding="8,0,8,0" 
+                                               Padding="8,0,8,0"
                                             />
                                         </yummy:PancakeView>
 
-                                        <yummy:PancakeView>
+                                        <yummy:PancakeView
+                                            HorizontalOptions="End">
                                             <Label Text="{Binding Path=StudyingPath}"
                                                TextColor="Black"
                                                FontAttributes="Italic"
-                                               HorizontalOptions="Center"
+                                               HorizontalOptions="End"
                                                VerticalOptions="Center" />
                                         </yummy:PancakeView>
                                     </StackLayout>

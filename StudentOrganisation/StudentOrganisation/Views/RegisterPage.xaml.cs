@@ -29,7 +29,7 @@ namespace StudentOrganisation.Views
 
         private async void BirthDayDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-
+            
         }
 
         private async void AddUser_Clicked(object sender, EventArgs e)
