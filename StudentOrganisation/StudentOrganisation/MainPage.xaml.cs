@@ -47,7 +47,10 @@ namespace StudentOrganisation
             if (signedOut)
             {
                 SecureStorage.Remove("isLogged");
-                await Shell.Current.GoToAsync("///login");
+                Navigation.InsertPageBefore(new TestLogin(), this);
+
+                App.MainPage = new TestLogin();
+                await Navigation.PopAsync();
             }
         }
         private async void getUSER_Clicked(object sender, EventArgs e)

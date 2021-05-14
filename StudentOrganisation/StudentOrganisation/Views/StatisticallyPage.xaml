@@ -8,31 +8,29 @@
     
         <Grid Padding="10" >
             <Grid.RowDefinitions>
-                <RowDefinition Height=".8*" />
-                <RowDefinition Height=".8*" />
+                <RowDefinition Height=".65*" />
+                <RowDefinition Height=".65*" />
                 <RowDefinition Height="8*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".5*" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Filter1" Style="{StaticResource ButtonCheckedStyle}" />
-            <Button Grid.Column="1" x:Name="Filter2" Style="{StaticResource ButtonCheckedStyle}"/>
-            <Button Grid.Column="2"  x:Name="Filter3" Style="{StaticResource ButtonCheckedStyle}" />
-            <Button Grid.Column="3"  x:Name="Filter4" Style="{StaticResource ButtonCheckedStyle}" />
+            <Button x:Name="Filter1" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Column="1" x:Name="Filter2" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Column="2"  x:Name="Filter3" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Column="3"  x:Name="Filter4" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
 
-            <Button Grid.Row="1"  x:Name="Filter11" Style="{StaticResource ButtonCheckedStyle}" />
-            <Button Grid.Row="1" Grid.Column="1" x:Name="Filter12" Style="{StaticResource ButtonCheckedStyle}" />
-            <Button Grid.Row="1" Grid.Column="2" x:Name="Filter13" Style="{StaticResource ButtonCheckedStyle}" />
-            <Button Grid.Row="1" Grid.Column="3" x:Name="Filter14" Style="{StaticResource ButtonCheckedStyle}" />
+            <Button Grid.Row="1"  x:Name="Filter11" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Row="1" Grid.Column="1" x:Name="Filter12" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Row="1" Grid.Column="2" x:Name="Filter13" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+            <Button Grid.Row="1" Grid.Column="3" x:Name="Filter14" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
 
-            <Frame Grid.ColumnSpan="4" Grid.Row="2" BackgroundColor="Red">
             <microcharts:ChartView Grid.ColumnSpan="4" Grid.Row="2" x:Name="chartView" HeightRequest ="150" WidthRequest="150" />
-            </Frame>
             <!--
             <Image Grid.RowSpan="2"
                             Source="{Binding Path=Name, Converter={StaticResource stringToColor}}"

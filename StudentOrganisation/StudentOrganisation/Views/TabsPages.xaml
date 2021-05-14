@@ -22,7 +22,7 @@
 
     <NavigationPage Title="Profile"  IconImageSource="chart.png" BarTextColor="White ">
         <x:Arguments>
-            <view:StatisticallyPage/>
+            <local2:MainPage/>
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>
