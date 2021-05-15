@@ -44,7 +44,7 @@ namespace StudentOrganisation.Services
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .WhereEqualsTo("path", path)
+                                     .WhereArrayContains("path", path)
                                      .GetAsync();
 
             IEnumerable<Models.User> users = query.ToObjects<Models.User>();
