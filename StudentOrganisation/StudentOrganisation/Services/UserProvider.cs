@@ -38,7 +38,6 @@ namespace StudentOrganisation.Services
             return true;
         }
 
-
         public static async Task<List<Models.User>> GetFirestoreUserFromPath(string path)
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
@@ -51,30 +50,6 @@ namespace StudentOrganisation.Services
             return new List<Models.User>(users);
         }
 
-
-        public static async Task<List<Models.User>> GetJuniorsForMentor(Models.User user)
-        {
-            IQuerySnapshot query = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection(Models.User.CollectionPath)
-                                     .WhereEqualsTo("mentor", user.Id)
-                                     .GetAsync();
-
-            IEnumerable<Models.User> users = query.ToObjects<Models.User>();
-            return new List<Models.User>(users);
-        }
-
-        public static async Task<bool> AddStarForUser(Models.User user)
-        {
-            user.Stars++;
-            await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection(Models.User.CollectionPath)
-                                     .Document(user.Id)
-                                     .UpdateAsync(user);
-
-            return true;
-        }
         public static async Task<List<Models.User>> GetFirestoreUserFromRole(int role)
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
@@ -100,12 +75,12 @@ namespace StudentOrganisation.Services
         }
 
 
-        public static async Task<List<Models.User>> GetFirestoreUserFromHighlitPerPath(string highlit, string path)
+        public static async Task<List<Models.User>> GetFirestoreUserFromHighlitPerPath(string highlit,string path)
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .WhereArrayContains("path", path)
+                                     .WhereArrayContains("path",path)
                                      .WhereArrayContains("highlists", highlit)
                                      .GetAsync();
 
@@ -118,7 +93,7 @@ namespace StudentOrganisation.Services
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .OrderBy("stars", true)
+                                     .OrderBy("stars",true)
                                      .LimitTo(count)
                                      .GetAsync();
 
@@ -162,10 +137,34 @@ namespace StudentOrganisation.Services
             return dict;
         }
 
+        public static async Task<Dictionary<string, int>> CountPerHighlitsPerPath(string path)
+        {
+            List<string> str = new List<string> { "MVP", "Alpha", "Beta", "Gold" };
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            foreach (string s in str)
+            {
+                List<Models.User> lst = await GetFirestoreUserFromHighlitPerPath(s,path);
+                dict[s] = lst.Count;
+            }
+            return dict;
+        }
+
+        public static async Task<Dictionary<string, int>> CountPerHighlits()
+        {
+            List<string> str = new List<string> {"MVP", "Alpha", "Beta", "Gold"};
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            foreach (string s in str)
+            {
+                List<Models.User> lst = await GetFirestoreUserFromHighlit(s);
+                dict[s] = lst.Count;
+            }
+            return dict;
+        }
+
         public static async Task<Dictionary<string, int>> CountPerRole()
         {
             // Junior = 0, Member = 1, Mentor = 2, Admin = 3
-            Dictionary<string, int> dict = new Dictionary<string, int>();
+            Dictionary<string, int> dict = new Dictionary<string, int>();`
             List<Models.User> lst = await GetFirestoreUserFromRole(0);
             dict["Junior"] = lst.Count;
             lst = await GetFirestoreUserFromRole(1);
