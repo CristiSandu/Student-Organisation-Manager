@@ -51,6 +51,32 @@ namespace StudentOrganisation.Services
             return new List<Models.User>(users);
         }
 
+
+        public static async Task<List<Models.User>> GetJuniorsForMentor(Models.User user)
+        {
+            IQuerySnapshot query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection(Models.User.CollectionPath)
+                                     .WhereEqualsTo("mentor", user.Id)
+                                     .GetAsync();
+
+            IEnumerable<Models.User> users = query.ToObjects<Models.User>();
+            return new List<Models.User>(users);
+        }
+
+        public static async Task<bool> AddStarForUser(Models.User user)
+        {
+            user.Stars++;
+            await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection(Models.User.CollectionPath)
+                                     .Document(user.Id)
+                                     .UpdateAsync(user);
+
+            return true;
+        }
+
+
         public static async Task<Dictionary<string, int>> CountPerRole()
         {
             // Junior = 0, Member = 1, Mentor = 2, Admin = 3
