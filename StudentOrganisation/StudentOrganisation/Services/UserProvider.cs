@@ -76,7 +76,6 @@ namespace StudentOrganisation.Services
             return true;
         }
 
-
         public static async Task<Dictionary<string, int>> CountPerRole()
         {
             // Junior = 0, Member = 1, Mentor = 2, Admin = 3
