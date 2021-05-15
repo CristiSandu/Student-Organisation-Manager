@@ -30,6 +30,15 @@ namespace StudentOrganisation.Services
             return new List<NewsModel>(news);
         }
 
+        public static async Task<bool> Delete(NewsModel news)
+        {
+            await _cloud.Collection(NewsModel.CollectionPath)
+                        .Document(news.Title.Replace(" ", "_"))
+                        .DeleteAsync();
+
+            return true;
+        }
+
         public static async Task<bool> Update(NewsModel news)
         {
             await _cloud.Collection(NewsModel.CollectionPath)

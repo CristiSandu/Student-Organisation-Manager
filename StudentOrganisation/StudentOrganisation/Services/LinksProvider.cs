@@ -26,6 +26,14 @@ namespace StudentOrganisation.Services
             IEnumerable<LinksModel> links = query.ToObjects<LinksModel>();
             return new List<LinksModel>(links);
         }
+        
+        public static async Task<bool> Delete(LinksModel link)
+        {
+               await _cloud.Collection(LinksModel.CollectionPath)
+                            .Document(link.Title.Replace(" ", "_"))
+                            .DeleteAsync();
+            return true;
+        }
 
         public static async Task<bool> Update(LinksModel link)
         {

@@ -26,7 +26,7 @@ namespace StudentOrganisation.Views
         public async Task CreateStatistics()
         {
             Entry entry;
-            Dictionary<string, int> dict = await Services.UserProvider.CountPerRole();
+            Dictionary<string, int> dict = await Services.UserProvider.CountPerPath();
             List<Entry> entry_list = new List<Entry>();
             foreach (var kvp in dict)
             {
