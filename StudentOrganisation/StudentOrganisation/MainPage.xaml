@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.MainPage"
              xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
              Title="Profile">
 
     <ContentPage.ToolbarItems>
@@ -14,9 +16,17 @@
 
     </ContentPage.ToolbarItems>
 
-    <StackLayout Spacing="8" Padding="64">
+    <ContentPage.Resources>
 
-        <Grid>
+        <ResourceDictionary>
+            <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="16" Padding="32">
+
+        <Grid Margin="0,0,0,64">
             <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
             <Grid.Effects>
                 <tt:TouchEffect Capture="True"
@@ -25,14 +35,25 @@
         </Grid>
 
         <StackLayout Orientation="Horizontal">
-            <Image Source="user.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
-            <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+            <Image Source="user.png" Aspect="AspectFill" HeightRequest="36" WidthRequest="36"/>
+            <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <Image Source="mail.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
-            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <yummy:PancakeView Padding="8" Border="{yummy:BorderMarkup Color=#ffc107, Thickness='4'}" CornerRadius="8" BackgroundColor="White">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="star.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
+                    <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
+                </StackLayout>
+            </yummy:PancakeView>
+
+        </StackLayout>
+        
 
     </StackLayout>
 

@@ -17,6 +17,7 @@
     <None Remove="IMG\list.svg" />
     <None Remove="IMG\log_out.svg" />
     <None Remove="IMG\mail.svg" />
+    <None Remove="IMG\star.svg" />
     <None Remove="IMG\user.svg" />
   </ItemGroup>
 
@@ -38,6 +39,7 @@
     <SharedImage Include="IMG\list.svg" />
     <SharedImage Include="IMG\log_out.svg" />
     <SharedImage Include="IMG\mail.svg" />
+    <SharedImage Include="IMG\star.svg" />
     <SharedImage Include="IMG\user.svg" />
   </ItemGroup>
 
