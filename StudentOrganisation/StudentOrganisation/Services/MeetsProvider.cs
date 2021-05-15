@@ -31,6 +31,30 @@ namespace StudentOrganisation.Services
             return new List<MeetsModel>(meet);
         }
 
+        public static async Task<List<MeetsModel>> GetForAperiod(DateTime start, DateTime end)
+        {
+            IQuerySnapshot query = await _cloud
+                                    .Collection(MeetsModel.CollectionPath)
+                                    .WhereGreaterThanOrEqualsTo("date", start)
+                                    .WhereLessThan("date", end)
+                                    .GetAsync();
+
+            IEnumerable<MeetsModel> meet = query.ToObjects<MeetsModel>();
+            return new List<MeetsModel>(meet);
+        }
+
+        public static async Task<Dictionary<int, int>> CountPerYear(int year)
+        {
+            List<int> list = new List<int> {1,2,3,4,5,6,7,8,9,10,11,12};
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            foreach (int month in list)
+            {
+                List<MeetsModel> lst = await GetForAperiod(new DateTime(year,month,0),new DateTime(year,month,0).AddMonths(1));
+                dict[month] = lst.Count;
+            }
+            return dict;
+        }
+
         public static async Task<List<MeetsModel>> GetMeetsWhereUserWasPresent(User user)
         {
             IQuerySnapshot query = await _cloud
@@ -52,6 +76,15 @@ namespace StudentOrganisation.Services
                 return null;
             }
             return meet;
+        }
+
+        public static async Task<bool> Delete(MeetsModel meet)
+        {
+            await _cloud.Collection(MeetsModel.CollectionPath)
+                        .Document(meet.Title.Replace(" ", "_"))
+                        .DeleteAsync();
+
+            return true;
         }
 
         public static async Task<bool> Update(MeetsModel meet)
