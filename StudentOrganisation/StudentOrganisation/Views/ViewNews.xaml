@@ -12,7 +12,7 @@
                             <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
                             <Label x:Name="NewsTitle" Text="{Binding Title}" />
                         </StackLayout>
-                        <Label x:Name="NewsDate" TextColor="Gray" Text="{Binding Date}" VerticalOptions="Center" HorizontalOptions="End"/>
+                        <Label x:Name="NewsDate" TextColor="Gray" Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" VerticalOptions="Center" HorizontalOptions="End"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}">

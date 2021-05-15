@@ -7,8 +7,9 @@
 
             <Color x:Key="AccentColor">#00B6F0</Color>
             <Color x:Key="AccentColorDark">#203a61</Color>
-
+            <Color x:Key="DefaultTextColor">#737373</Color>
             
+
             <!--<Style x:Key="DomesticShell" TargetType="Element" >
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource AccentColorDark}" />
                 <Setter Property="Shell.ForegroundColor" Value="#E1E2E1" />
