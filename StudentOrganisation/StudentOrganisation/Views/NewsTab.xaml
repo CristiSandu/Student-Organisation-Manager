@@ -5,29 +5,24 @@
              Title="News">
 
 
-   
+
 
     <ContentPage.Content>
 
         <StackLayout VerticalOptions="CenterAndExpand" Padding="10,16,10,0" Spacing="16">
-                     <!--
-            <StackLayout Orientation="Horizontal">
-                <Label Text="News"  Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                <Button ImageSource="plus.png" BackgroundColor="Red" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
-            </StackLayout>
-        -->
-        <CollectionView x:Name="newsList"  
-                            SelectionMode="Single" 
-                            SelectionChanged="newsList_SelectionChanged" >
 
-            <CollectionView.Header>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="News"  Style="{StaticResource MainTitleStyle}"
+            <CollectionView x:Name="newsList"  
+                        SelectionMode="Single" 
+                        SelectionChanged="newsList_SelectionChanged"
+                        >
+
+                <CollectionView.Header>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="News"  Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                    <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
-                </StackLayout>
-            </CollectionView.Header>
+                        <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
+                    </StackLayout>
+                </CollectionView.Header>
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
                 </CollectionView.ItemsLayout>
@@ -35,7 +30,6 @@
                     <DataTemplate>
                         <Frame BackgroundColor="Tan" CornerRadius="10" Padding="10">
                             <Grid VerticalOptions="FillAndExpand" >
-
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
@@ -61,13 +55,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-<!--
-            <StackLayout Orientation="Horizontal" >
-                <Label Text="Links" Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
-            </StackLayout>
--->
+
 
             <CollectionView x:Name="links"
                             SelectionMode="Single"
@@ -80,7 +68,7 @@
                         <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
                     </StackLayout>
                 </CollectionView.Header>
-                    <CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>

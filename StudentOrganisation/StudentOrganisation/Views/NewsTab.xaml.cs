@@ -49,7 +49,6 @@ namespace StudentOrganisation.Views
             newsList.ItemsSource = list;
             links.ItemsSource = await Services.LinksProvider.GetAll();
         }
-
        
 
         private async void newsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,11 +57,12 @@ namespace StudentOrganisation.Views
 
             if (e.CurrentSelection != null)
             {
+                
                 await PopupNavigation.Instance.PushAsync(new ViewNews
                 {
                     BindingContext = news
                 });
-
+                
             }
         }
 
