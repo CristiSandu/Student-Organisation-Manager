@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using SkiaSharp;
 using Microcharts;
+using Rg.Plugins.Popup.Services;
 
 namespace StudentOrganisation.Views
 {
@@ -31,6 +32,9 @@ namespace StudentOrganisation.Views
             chartView.Chart = cht;
         }
 
-        
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+        }
     }
 }

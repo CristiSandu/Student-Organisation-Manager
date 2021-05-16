@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IMG\arrow.svg" />
     <None Remove="IMG\chart.svg" />
     <None Remove="IMG\delete.svg" />
     <None Remove="IMG\home.svg" />
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SharedImage Include="IMG\arrow.svg"  BaseSize="30,30" />
     <EmbeddedResource Include="Resources\Fonts\Itim-Regular.ttf" />
   </ItemGroup>
 

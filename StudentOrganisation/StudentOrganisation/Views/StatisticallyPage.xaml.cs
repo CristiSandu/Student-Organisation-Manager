@@ -48,7 +48,7 @@ namespace StudentOrganisation.Views
         {
             base.OnAppearing();
             await CreateStatistics();
-            chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+           // chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
         }
 
         private async void Filter1_Clicked(object sender, EventArgs e)

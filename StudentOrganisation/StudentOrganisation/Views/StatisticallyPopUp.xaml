@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.StatisticallyPopUp"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             xmlns:rg="http://rotorgames.com"
-             >
+             xmlns:rg="http://rotorgames.com">
 
     <StackLayout VerticalOptions="Center" Padding="10" >
         <Frame BackgroundColor="White" CornerRadius="20">
             <StackLayout>
-                <microcharts:ChartView  x:Name="chartView" Chart="{Binding cht}" HeightRequest ="300" WidthRequest="150" />
-                <StackLayout Orientation="Horizontal">
+                <microcharts:ChartView  x:Name="chartView" HeightRequest ="300" WidthRequest="150" />
+                <StackLayout Orientation="Horizontal" >
                     <Label Text="Users Per Path" TextColor="{StaticResource DefaultTextColor}" FontAttributes="Bold" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
-                    <Button ImageSource="delete.png" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent"/>
+                    <Button x:Name="BackButton" ImageSource="arrow.png" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" Clicked="BackButton_Clicked" />
                 </StackLayout>
             </StackLayout>
         </Frame>
