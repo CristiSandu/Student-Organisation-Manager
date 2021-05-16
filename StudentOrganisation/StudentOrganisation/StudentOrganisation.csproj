@@ -29,6 +29,7 @@
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
     <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -41,7 +42,7 @@
     <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
     <SharedImage Include="IMG\home.svg" />
     <SharedImage Include="IMG\list.svg" />
-    <SharedImage Include="IMG\mslearn.png" BaseSize="500,500"/>
+    <SharedImage Include="IMG\mslearn.png" BaseSize="500,500" />
     <SharedImage Include="IMG\plus.svg" />
     <SharedImage Include="IMG\user-plus.svg" BaseSize="50,50" />
   </ItemGroup>

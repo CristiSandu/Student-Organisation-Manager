@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Rg.Plugins.Popup.Services;
 
 namespace StudentOrganisation.Views
 {
@@ -57,7 +58,7 @@ namespace StudentOrganisation.Views
 
             if (e.CurrentSelection != null)
             {
-                await Navigation.PushAsync(new ViewNews
+                await PopupNavigation.Instance.PushAsync(new ViewNews
                 {
                     BindingContext = news
                 });
