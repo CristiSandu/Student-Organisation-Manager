@@ -23,9 +23,9 @@
             <Frame Style="{StaticResource FrameAddNews}" Grid.Row ="1"  CornerRadius="0">
                 <StackLayout  Grid.Row ="1"  Spacing="0" >
                 
-                <StackLayout Padding="0,0,0,10">
-                    <Label x:Name="NrUser"  Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label x:Name="DescriptionNrUser" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <StackLayout Padding="0,0,0,10" HorizontalOptions="Center">
+                        <Label x:Name="NrUser" Text="{Binding Statistics1}"  Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="DescriptionNrUser" Text="Users"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </StackLayout>
                 
             </StackLayout>
@@ -34,8 +34,8 @@
                 <StackLayout Grid.Row ="1" Grid.Column="1" >
                 
                     <StackLayout Padding="0,0,0,10">
-                        <Label x:Name="NrUser2" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label x:Name="DescriptionNrUser2" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="NrUser2" Text="{Binding Statistics2}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="DescriptionNrUser2" Text="Total Juniors"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </StackLayout>
                 
             </StackLayout>
@@ -43,24 +43,22 @@
 
             <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" CornerRadius="0">
             <StackLayout Grid.Row="2" >
-                
-                    <StackLayout Padding="0,0,0,10">
-                    <Label x:Name="NrUser3" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label x:Name="DescriptionNrUser3" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
-                </StackLayout>
+                    <StackLayout Padding="0,0,0,0" HorizontalOptions="Center">
+                        <Label x:Name="NrUser3" Text="{Binding Statistics3}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="Max Distinction" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="DescriptionNrUser3" Text="{Binding Description3}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
                   
             </StackLayout>
             </Frame>
 
             <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" Grid.Column="1" CornerRadius="0">
             <StackLayout Grid.Row="2" Grid.Column="1">
-                
-
                     <StackLayout Padding="0,0,0,10">
-                        <Label x:Name="NrUser4" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label x:Name="DescriptionNrUser4" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="NrUser4" Text="{Binding Statistics4}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="Max Path" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="DescriptionNrUser4" Text="{Binding Description4}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </StackLayout>
-               
             </StackLayout>
             </Frame>
 
@@ -70,9 +68,9 @@
                 <ScrollView Orientation="Horizontal">
                     <StackLayout Orientation="Horizontal">
                         <Button x:Name="Filter1" Text="PATH"  Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
-                        <Button Grid.Column="1" x:Name="Filter2" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
-                        <Button Grid.Column="2"  x:Name="Filter3" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
-                        <Button Grid.Column="3"  x:Name="Filter4" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+                        <Button Grid.Column="1" x:Name="Filter2" Text="Role" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+                        <Button Grid.Column="2"  x:Name="Filter3" Text="HighL" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+                        <Button Grid.Column="3"  x:Name="Filter4" Text="Stars" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
 
                         <Button Grid.Row="1"  x:Name="Filter11" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
                         <Button Grid.Row="1" Grid.Column="1" x:Name="Filter12" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
