@@ -10,6 +10,7 @@ using Microcharts;
 using SkiaSharp;
 using Entry = Microcharts.ChartEntry;
 using System.Collections.ObjectModel;
+using Rg.Plugins.Popup.Services;
 
 namespace StudentOrganisation.Views
 {
@@ -47,16 +48,20 @@ namespace StudentOrganisation.Views
         {
             base.OnAppearing();
             await CreateStatistics();
-            chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+           // chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
         }
 
-        private void Filter1_Clicked(object sender, EventArgs e)
+        private async void Filter1_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             if (btn.Style == (Style)Application.Current.Resources["ButtonCheckedStyle"])
                 btn.Style = (Style)Application.Current.Resources["ButtonUnCheckStyle"];
             else
                 btn.Style = (Style)Application.Current.Resources["ButtonCheckedStyle"];
+
+            await PopupNavigation.Instance.PushAsync(new StatisticallyPopUp(_entrys));
+                
+
 
             if (_latsButton != null)
             {

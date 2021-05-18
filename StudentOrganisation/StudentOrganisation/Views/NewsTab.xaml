@@ -2,108 +2,109 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.NewsTab"
+             xmlns:converter ="clr-namespace:StudentOrganisation.Convertors"
+             xmlns:viewModels ="clr-namespace:StudentOrganisation.ViewModels"
              Title="News">
 
+ 
 
-   
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DescriptionConvertor x:Key="ShowDescription"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="logOut" Text="LogOut" Clicked="logOut_Clicked"/>
+    </ContentPage.ToolbarItems>
+
 
     <ContentPage.Content>
+        <RefreshView x:Name="refreshView" RefreshColor="Teal" Refreshing="RefreshView_Refreshing"> 
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="10,16,10,0" Spacing="16">
 
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="10,16,10,0" Spacing="16">
-                     <!--
-            <StackLayout Orientation="Horizontal">
-                <Label Text="News"  Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                <Button ImageSource="plus.png" BackgroundColor="Red" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
-            </StackLayout>
-        -->
-        <CollectionView x:Name="newsList"  
-                            SelectionMode="Single" 
-                            SelectionChanged="newsList_SelectionChanged" >
+                <CollectionView x:Name="newsList"  
+                        SelectionMode="Single" 
+                        SelectionChanged="newsList_SelectionChanged"
+                       
+                        >
 
-            <CollectionView.Header>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="News"  Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                    <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
-                </StackLayout>
-            </CollectionView.Header>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="Tan" CornerRadius="10" Padding="10">
-                            <Grid VerticalOptions="FillAndExpand" >
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Title}"
+                    <CollectionView.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="News"  Style="{StaticResource MainTitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                            <Button x:Name="buttonNews" ImageSource="plus.png" IsVisible="False"  BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Tan" CornerRadius="10" Padding="10">
+                                <Grid VerticalOptions="FillAndExpand" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Title}"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                    Style="{StaticResource TitleStyle}"
                                    HorizontalOptions="Start"
                                    />
-                                <Label Text="{Binding Description}"
+                                    <Label Text="{Binding Path=Content, Converter={StaticResource ShowDescription}}"
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    HorizontalOptions="Start"
                                    VerticalOptions="Center"/>
-                                <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
                                    Grid.Column="1"
                                    Grid.RowSpan="2"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-<!--
-            <StackLayout Orientation="Horizontal" >
-                <Label Text="Links" Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
-            </StackLayout>
--->
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-            <CollectionView x:Name="links"
+
+                <CollectionView x:Name="links"
                             SelectionMode="Single"
-                            SelectionChanged="links_SelectionChanged">
+                            SelectionChanged="links_SelectionChanged"
+                                >
 
-                <CollectionView.Header>
-                    <StackLayout Orientation="Horizontal" >
-                        <Label Text="Links" Style="{StaticResource MainTitleStyle}"
+                    <CollectionView.Header>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="Links" Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                        <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
-                    </StackLayout>
-                </CollectionView.Header>
+                            <Button x:Name="buttonLink" ImageSource="plus.png" IsVisible="false" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
+                        </StackLayout>
+                    </CollectionView.Header>
                     <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Style="{StaticResource FrameNewsStyle}" BackgroundColor="#69A8AA">
-                            <StackLayout Spacing="-3">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource FrameNewsStyle}" BackgroundColor="#69A8AA">
+                                <StackLayout Spacing="-3">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Title}" Style="{StaticResource TitleStyle}"
                                         HorizontalOptions="StartAndExpand"/>
-                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                        <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
                                    HorizontalOptions="End"
                                    VerticalOptions="Center"/>
-                                </StackLayout>
-                                <Label Text="{Binding URL}"
+                                    </StackLayout>
+                                    <Label Text="{Binding URL}"
                                    HorizontalOptions="Start"
                                    VerticalOptions="Center"/>
-                            </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-        </StackLayout>
-
+            </StackLayout>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using StudentOrganisation.Models;
+﻿using Rg.Plugins.Popup.Services;
+using StudentOrganisation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,33 +12,27 @@ using Xamarin.Forms.Xaml;
 namespace StudentOrganisation.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty(nameof(Title), nameof(Title))]
-    [QueryProperty(nameof(Content), nameof(Content))]
-    [QueryProperty(nameof(Description), nameof(Description))]
-    [QueryProperty(nameof(Date), nameof(Date))]
+ 
 
-    public partial class ViewNews : ContentPage
+    public partial class ViewNews 
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string Description { get; set; }
-        public string Date { get; set; }
-        NewsModel newsMod;
+      
         public ViewNews()
         {
             InitializeComponent();
-            newsMod = new NewsModel { Title = Title, Content = Content, Description = Description };
-            int i = 0;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
+        }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            NewsModel news = (NewsModel)BindingContext;
+            int i = 0;
+            await Services.NewsProvider.Delete(news);
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

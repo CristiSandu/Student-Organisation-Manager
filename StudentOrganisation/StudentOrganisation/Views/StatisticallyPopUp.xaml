@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.StatisticallyPopUp"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:rg="http://rotorgames.com">
+
+    <StackLayout VerticalOptions="Center" Padding="10" >
+        <Frame BackgroundColor="White" CornerRadius="20">
+            <StackLayout>
+                <microcharts:ChartView  x:Name="chartView" HeightRequest ="300" WidthRequest="150" />
+                <StackLayout Orientation="Horizontal" >
+                    <Label Text="Users Per Path" TextColor="{StaticResource DefaultTextColor}" FontAttributes="Bold" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
+                    <Button x:Name="BackButton" ImageSource="arrow.png" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" Clicked="BackButton_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</rg:PopupPage>
