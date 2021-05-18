@@ -34,6 +34,8 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
                     <Button x:Name="CancelBtn" Text="Back" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+                    <Button x:Name="DeleteBtn" Text="Delete" Style="{StaticResource ButtonUnCheckStyle}" Clicked="DeleteBtn_Clicked" />
+
                 </StackLayout>
             </StackLayout>
         </Frame>

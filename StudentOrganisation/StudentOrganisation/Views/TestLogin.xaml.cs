@@ -34,7 +34,7 @@ namespace StudentOrganisation.Views
                 {
                     await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", token);
                     Models.User usr = await UserProvider.GetFirestoreUser(token);
-                    App._role = usr.Role;
+                    await Xamarin.Essentials.SecureStorage.SetAsync("Role", usr.Role.ToString());
                 }
                 catch (Exception ex)
                 {

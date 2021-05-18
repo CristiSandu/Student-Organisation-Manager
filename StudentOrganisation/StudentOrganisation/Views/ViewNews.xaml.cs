@@ -26,5 +26,13 @@ namespace StudentOrganisation.Views
         {
             await PopupNavigation.Instance.PopAsync();
         }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            NewsModel news = (NewsModel)BindingContext;
+            int i = 0;
+            await Services.NewsProvider.Delete(news);
+            await PopupNavigation.Instance.PopAsync();
+        }
     }
 }

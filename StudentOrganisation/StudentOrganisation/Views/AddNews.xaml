@@ -13,12 +13,6 @@
                         <Entry x:Name="NewsTitle" Text="{Binding Title}"/>
                     </StackLayout>
                 </Frame>
-                <Frame Style="{StaticResource FrameAddNews}">
-                    <StackLayout >
-                        <Label x:Name="DescriprionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
-                        <Entry x:Name="NewsDescription" Text="{Binding Description}" />
-                    </StackLayout>
-                </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
                         <Label x:Name="DescriptionCont" Text="News Content" Style="{StaticResource TitleStyle}" />
