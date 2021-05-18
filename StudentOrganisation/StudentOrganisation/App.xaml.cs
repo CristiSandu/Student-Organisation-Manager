@@ -9,6 +9,8 @@ namespace StudentOrganisation
     public partial class App : Application
     {
         IFirebaseAuthentication auth;
+        public static int _role = 0;
+
         public App()
         {
             InitializeComponent();

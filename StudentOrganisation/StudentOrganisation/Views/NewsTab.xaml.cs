@@ -45,6 +45,11 @@ namespace StudentOrganisation.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            if(App._role == 2 || App._role == 3)
+            {
+                buttonLink.IsVisible = true;
+                buttonNews.IsVisible = true;
+            }
             var list = await Services.NewsProvider.GetAll();
             newsList.ItemsSource = list;
             links.ItemsSource = await Services.LinksProvider.GetAll();

@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.NewsTab"
+             xmlns:converter ="clr-namespace:StudentOrganisation.Convertors"
              Title="News">
 
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DescriptionConvertor x:Key="ShowDescription"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
 
     <ContentPage.Content>
@@ -18,9 +23,8 @@
 
                 <CollectionView.Header>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="News"  Style="{StaticResource MainTitleStyle}"
-                   HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                        <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
+                        <Label Text="News"  Style="{StaticResource MainTitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                        <Button x:Name="buttonNews" ImageSource="plus.png" IsVisible="False"  BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddNewsBtn_Clicked"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout>
@@ -40,7 +44,7 @@
                                    Style="{StaticResource TitleStyle}"
                                    HorizontalOptions="Start"
                                    />
-                                <Label Text="{Binding Description}"
+                                <Label Text="{Binding Path=Content, Converter={StaticResource ShowDescription}}"
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    HorizontalOptions="Start"
@@ -65,7 +69,7 @@
                     <StackLayout Orientation="Horizontal" >
                         <Label Text="Links" Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                        <Button ImageSource="plus.png" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
+                        <Button x:Name="buttonLink" ImageSource="plus.png" IsVisible="False" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout>

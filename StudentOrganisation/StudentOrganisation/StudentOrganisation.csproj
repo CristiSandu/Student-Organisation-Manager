@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SharedImage Include="IMG\arrow.svg"  BaseSize="30,30" />
+    <SharedImage Include="IMG\arrow.svg" BaseSize="30,30" />
     <EmbeddedResource Include="Resources\Fonts\Itim-Regular.ttf" />
   </ItemGroup>
 
