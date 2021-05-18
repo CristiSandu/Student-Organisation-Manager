@@ -13,11 +13,10 @@ namespace StudentOrganisation.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNews : ContentPage
     {
-        NewsModel _news = new NewsModel();
+        NewsModel _news = new NewsModel { Date = DateTime.Now};
         public AddNews()
         {
             InitializeComponent();
-            _news.Date = DateTime.Now;
             BindingContext = _news;
         }
 
@@ -25,8 +24,6 @@ namespace StudentOrganisation.Views
         {
             await Services.NewsProvider.Create(_news);
             await Navigation.PopAsync();
-
-
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)

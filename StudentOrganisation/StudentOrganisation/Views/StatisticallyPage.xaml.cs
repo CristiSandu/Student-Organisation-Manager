@@ -28,10 +28,12 @@ namespace StudentOrganisation.Views
         {
             Entry entry;
             Dictionary<string, int> dict = await Services.UserProvider.CountPerPath();
+            int nrOfUsers =0;
             List<Entry> entry_list = new List<Entry>();
             foreach (var kvp in dict)
             {
                 string color = await Services.ColorsProvider.GetColorFor(kvp.Key);
+                nrOfUsers += kvp.Value;
                 entry = new Entry(kvp.Value)
                 {
                     Color = SKColor.Parse(color),
@@ -42,6 +44,8 @@ namespace StudentOrganisation.Views
                 if (!_entrys.Any(x => x.Label == kvp.Key))
                     _entrys.Add(entry);
             }
+
+            NrUser.Text = nrOfUsers.ToString();
         }
 
         protected async override void OnAppearing()

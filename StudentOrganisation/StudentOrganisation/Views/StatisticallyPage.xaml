@@ -6,7 +6,7 @@
              Title="Statistically" >
     <ContentPage.Content>
 
-        <Grid Padding="0" ColumnSpacing="0" RowSpacing="10">
+        <Grid Padding="0" ColumnSpacing="0" RowSpacing="-1">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".12*" />
                 <RowDefinition Height="*" />
@@ -20,43 +20,49 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-
-            <StackLayout  Grid.Row ="1"  Spacing="0" >
-                <Frame Style="{StaticResource FrameAddNews}" CornerRadius="0">
+            <Frame Style="{StaticResource FrameAddNews}" Grid.Row ="1"  CornerRadius="0">
+                <StackLayout  Grid.Row ="1"  Spacing="0" >
+                
                 <StackLayout Padding="0,0,0,10">
-                    <Label x:Name="NrUser" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label x:Name="NrUser"  Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                     <Label x:Name="DescriptionNrUser" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </StackLayout>
-                </Frame>
+                
             </StackLayout>
-
-            <StackLayout Grid.Row ="1" Grid.Column="1" >
-                <Frame Style="{StaticResource FrameAddNews}" CornerRadius="0">
+            </Frame>
+            <Frame Style="{StaticResource FrameAddNews}"  Grid.Row ="1" Grid.Column="1" CornerRadius="0">
+                <StackLayout Grid.Row ="1" Grid.Column="1" >
+                
                     <StackLayout Padding="0,0,0,10">
                         <Label x:Name="NrUser2" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Label x:Name="DescriptionNrUser2" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </StackLayout>
-                </Frame>
+                
             </StackLayout>
+            </Frame>
 
+            <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" CornerRadius="0">
             <StackLayout Grid.Row="2" >
-                <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" CornerRadius="0">
+                
                     <StackLayout Padding="0,0,0,10">
                     <Label x:Name="NrUser3" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                     <Label x:Name="DescriptionNrUser3" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </StackLayout>
-                    </Frame>
+                  
             </StackLayout>
+            </Frame>
 
+            <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" Grid.Column="1" CornerRadius="0">
             <StackLayout Grid.Row="2" Grid.Column="1">
-                <Frame Style="{StaticResource FrameAddNews}" Grid.Row="2" Grid.Column="1" CornerRadius="0">
+                
 
                     <StackLayout Padding="0,0,0,10">
                         <Label x:Name="NrUser4" Text="80" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Label x:Name="DescriptionNrUser4" Text="Users" Style="{StaticResource MainTitleStyle}" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </StackLayout>
-                </Frame>
+               
             </StackLayout>
+            </Frame>
 
             <Image Source="mslearn.png" HeightRequest="150" VerticalOptions="Center" Grid.Row="3"  Grid.ColumnSpan="2" HorizontalOptions="Center" />
 

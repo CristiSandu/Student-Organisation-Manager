@@ -16,6 +16,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="logOut" Text="LogOut" Clicked="logOut_Clicked"/>
+
     </ContentPage.ToolbarItems>
 
 

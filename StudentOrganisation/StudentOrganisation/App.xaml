@@ -8,8 +8,9 @@
             <Color x:Key="AccentColor">#00B6F0</Color>
             <Color x:Key="AccentColorDark">#203a61</Color>
             <Color x:Key="DefaultTextColor">#737373</Color>
-            
+            <Color x:Key="DeleteRed">#FF3300</Color>
 
+            
             <!--<Style x:Key="DomesticShell" TargetType="Element" >
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource AccentColorDark}" />
                 <Setter Property="Shell.ForegroundColor" Value="#E1E2E1" />
@@ -40,6 +41,8 @@
                 <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
                 <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
                 <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+
             </Style>
 
             <Style x:Key="ButtonCheckedStyle" TargetType="Button">
@@ -47,6 +50,14 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
+            <Style x:Key="DeleteButtonStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource DeleteRed}"/>
                 <Setter Property="BorderWidth" Value="2"/>
             </Style>
 

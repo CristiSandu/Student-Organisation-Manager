@@ -33,9 +33,9 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                    <Button x:Name="UpdateBtn" IsVisible="false" Text="Update" Style="{StaticResource ButtonCheckedStyle}" Clicked="UpdateBtn_Clicked" />
+                    <Button x:Name="DeleteBtn" IsVisible="false" Text="Delete" Style="{StaticResource DeleteButtonStyle}" Clicked="DeleteBtn_Clicked" />
                     <Button x:Name="CancelBtn" Text="Back" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
-                    <Button x:Name="DeleteBtn" Text="Delete" Style="{StaticResource ButtonUnCheckStyle}" Clicked="DeleteBtn_Clicked" />
-
                 </StackLayout>
             </StackLayout>
         </Frame>
