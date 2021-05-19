@@ -50,8 +50,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\AddMeets.xaml.cs">
-      <DependentUpon>AddMeets.xaml</DependentUpon>
+    <Compile Update="Views\AddMeet.xaml.cs">
+      <DependentUpon>AddMeet.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -65,7 +65,7 @@
     <EmbeddedResource Update="Views\AddLinks.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AddMeets.xaml">
+    <EmbeddedResource Update="Views\AddMeet.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AddNews.xaml">

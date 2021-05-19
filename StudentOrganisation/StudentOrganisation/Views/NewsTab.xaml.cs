@@ -102,6 +102,11 @@ namespace StudentOrganisation.Views
             await Navigation.PushAsync(new AddNews ());
         }
 
+        private async void meetsPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddMeet());
+        }
+
         private void logOut_Clicked(object sender, EventArgs e)
         {
             var signedOut = auth.SignOut();

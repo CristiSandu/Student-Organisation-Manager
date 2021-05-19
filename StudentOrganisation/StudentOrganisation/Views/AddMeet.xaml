@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.AddMeet"
-             Title="Add Meets"
+             Title="Add Meet"
              >
     <ContentPage.Content>
         <StackLayout Spacing="24">
@@ -15,20 +15,20 @@
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
-                        <Label x:Name="DescriptionDesc" Text="Meet Description" Style="{StaticResource TitleStyle}" />
+                        <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
                         <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
-                        <Label x:Name="DescriptionLocation" Text="Meet Location" Style="{StaticResource TitleStyle}" />
-                        <Editor x:Name="MeetLocation" HeightRequest="100" Text="{Binding Location}"/>
+                        <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
-                        <Label x:Name="DescriptionLink" Text="Meet Link" Style="{StaticResource TitleStyle}" />
-                        <Editor x:Name="MeetLink" HeightRequest="100" Text="{Binding link}"/>
+                        <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="MeetLink" Text="{Binding link}"/>
                     </StackLayout>
                 </Frame>
                 
