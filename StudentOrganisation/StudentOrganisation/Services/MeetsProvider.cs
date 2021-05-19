@@ -22,9 +22,9 @@ namespace StudentOrganisation.Services
         {
             IQuerySnapshot query = await _cloud
                                     .Collection(MeetsModel.CollectionPath)
-                                    .WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
-                                    .WhereGreaterThanOrEqualsTo("role", role)
-                                    .OrderBy("date")
+                                    //.WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
+                                    .WhereLessThanOrEqualsTo("role", role)
+                                    .OrderBy("role")
                                     .GetAsync();
 
             IEnumerable<MeetsModel> meet = query.ToObjects<MeetsModel>();
