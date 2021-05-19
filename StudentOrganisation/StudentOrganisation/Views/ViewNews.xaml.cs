@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
 namespace StudentOrganisation.Views
@@ -20,6 +21,18 @@ namespace StudentOrganisation.Views
         public ViewNews()
         {
             InitializeComponent();
+            
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            string role = await SecureStorage.GetAsync("Role");
+            if (role == "2" || role == "3")
+            {
+                DeleteBtn.IsVisible = true;
+                UpdateBtn.IsVisible = true;
+            }
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)
@@ -33,6 +46,14 @@ namespace StudentOrganisation.Views
             int i = 0;
             await Services.NewsProvider.Delete(news);
             await PopupNavigation.Instance.PopAsync();
+        }
+
+        private async void UpdateBtn_Clicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync(new Views.AddNews
+            //{
+            //    BindingContext = sender as NewsModel
+            //});
         }
     }
 }

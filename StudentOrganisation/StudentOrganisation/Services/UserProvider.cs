@@ -8,6 +8,7 @@ namespace StudentOrganisation.Services
 {
     class UserProvider
     {
+       
         public static async Task<bool> CreateUserFirestore(Models.User user)
         {
             await CrossCloudFirestore.Current.Instance.
@@ -27,6 +28,8 @@ namespace StudentOrganisation.Services
             return user;
         }
 
+
+
         public static async Task<bool> UpdateFirestoreUser(Models.User user)
         {
             await CrossCloudFirestore.Current
@@ -34,7 +37,7 @@ namespace StudentOrganisation.Services
                                      .Collection(Models.User.CollectionPath)
                                      .Document(user.Id)
                                      .UpdateAsync(user);
-            
+
             return true;
         }
 
@@ -99,12 +102,12 @@ namespace StudentOrganisation.Services
         }
 
 
-        public static async Task<List<Models.User>> GetFirestoreUserFromHighlitPerPath(string highlit,string path)
+        public static async Task<List<Models.User>> GetFirestoreUserFromHighlitPerPath(string highlit, string path)
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .WhereArrayContains("path",path)
+                                     .WhereArrayContains("path", path)
                                      .WhereArrayContains("highlists", highlit)
                                      .GetAsync();
 
@@ -117,7 +120,7 @@ namespace StudentOrganisation.Services
             IQuerySnapshot query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
-                                     .OrderBy("stars",true)
+                                     .OrderBy("stars", true)
                                      .LimitTo(count)
                                      .GetAsync();
 
@@ -129,11 +132,19 @@ namespace StudentOrganisation.Services
         {
             List<string> str = new List<string> { "Mobile", "Limbaje", "AI", "IoT", "Azure", "Gaming" };
             Dictionary<string, int> dict = new Dictionary<string, int>();
+            int max = 0;
+            string keyMax = "1";
             foreach (string s in str)
             {
                 List<Models.User> lst = await GetFirestoreUserFromPath(s);
                 dict[s] = lst.Count;
+                if (dict[s] > max)
+                {
+                    max = dict[s];
+                    keyMax = s;
+                }
             }
+            //dict[keyMax.ToLower()] = max;
             return dict;
         }
 
@@ -153,13 +164,23 @@ namespace StudentOrganisation.Services
         {
             List<string> str = new List<string> { "MVP", "Alpha", "Beta", "Gold" };
             Dictionary<string, int> dict = new Dictionary<string, int>();
+            int max = 0;
+            string keyMax = "1";
             foreach (string s in str)
             {
                 List<Models.User> lst = await GetFirestoreUserFromHighlit(s);
                 dict[s] = lst.Count;
+                if (dict[s] > max)
+                {
+                    max = dict[s];
+                    keyMax = s;
+                }
             }
+            //dict[keyMax.ToLower()] = max;
+
             return dict;
         }
+
 
         public static async Task<Dictionary<string, int>> CountPerRole()
         {
@@ -174,6 +195,13 @@ namespace StudentOrganisation.Services
             lst = await GetFirestoreUserFromRole(3);
             dict["Admin"] = lst.Count;
             return dict;
+        }
+
+        public async static Task<int> CountAll()
+        {
+            // Junior = 0, Member = 1, Mentor = 2, Admin = 3
+            List<Models.User> users = await GetFirestoreAllUser();
+            return users.Count;
         }
 
         public static async Task<Models.User> SetUserPresent(Models.User user)

@@ -23,15 +23,6 @@ namespace StudentOrganisation.Views
             InitializeComponent();
         }
 
-        public StatisticallyPopUp(ObservableCollection<Entry> entry)
-        {
-            InitializeComponent( );
-
-            _entry = entry;
-            Chart cht = new DonutChart { Entries = _entry, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
-            chartView.Chart = cht;
-        }
-
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
