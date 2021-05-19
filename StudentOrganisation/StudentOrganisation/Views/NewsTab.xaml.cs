@@ -50,7 +50,7 @@ namespace StudentOrganisation.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           string role = await SecureStorage.GetAsync("Role");
+            string role = await SecureStorage.GetAsync("Role");
             if(role == "2" || role == "3")
             {
                 buttonLink.IsVisible = true;
