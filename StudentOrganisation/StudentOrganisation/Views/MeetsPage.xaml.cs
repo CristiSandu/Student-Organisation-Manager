@@ -17,21 +17,6 @@ namespace StudentOrganisation.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MeetsPage : ContentPage
     {
-        List<Models.MeetsModel> meets = new List<Models.MeetsModel> { new Models.MeetsModel
-        {
-            Title = "Meet 1",
-            Description = "Description for meet 1",
-            Date = DateTime.Now
-        } , new Models.MeetsModel{
-            Title = "Meet 2",
-            Description = "Description for meet 2",
-            Date = DateTime.Now
-        }, new Models.MeetsModel{
-            Title = "Meet 3",
-            Description = "Description for meet 3",
-            Date = DateTime.Now
-        }};
-
         ObservableCollection<MeetsModel> _meetsList;
 
         public MeetsPage()
@@ -57,7 +42,7 @@ namespace StudentOrganisation.Views
 
             if (e.CurrentSelection != null)
             {
-                await PopupNavigation.Instance.PushAsync(new ViewNews //TODO: to be changed to ViewMeet
+                await PopupNavigation.Instance.PushAsync(new ViewMeet //TODO: to be changed to ViewMeet
                 {
                     BindingContext = meets
                 });
