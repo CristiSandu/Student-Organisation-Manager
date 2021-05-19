@@ -16,6 +16,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="logOut" Text="LogOut" Clicked="logOut_Clicked"/>
+        <ToolbarItem Order="Secondary" x:Name="addMeet" Text="AddMeet" Clicked="addMeet_Clicked"/>
         <ToolbarItem Order="Secondary" x:Name="meetsPage" Text="MeetsPage" Clicked="meetsPage_Clicked"/>
     </ContentPage.ToolbarItems>
 
