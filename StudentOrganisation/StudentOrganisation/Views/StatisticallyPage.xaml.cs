@@ -20,6 +20,13 @@ namespace StudentOrganisation.Views
     {
         ObservableCollection<Entry> _entrys = new ObservableCollection<Entry>();
         Models.MainStatisticsModel mainStatistics = new Models.MainStatisticsModel();
+        Dictionary<string, StatisticsModel> stats = new Dictionary<string, StatisticsModel>()
+        {
+            {"PATH", new StatisticsModel() },
+            {"ROLE", new StatisticsModel() },
+            {"HIGHL", new StatisticsModel() },
+            {"STARS", new StatisticsModel() }
+        };
         StatisticsModel _stat;
         Button _latsButton = null;
         public StatisticallyPage()
@@ -69,13 +76,21 @@ namespace StudentOrganisation.Views
             //    NrUser4.Text = dict2[list3[0]].ToString();
             //    DescriptionNrUser4.Text = $"Max Memeber in {list3[0].ToUpper()}";
 
+            stats["PATH"] = await Models.StatisticsModel.GetStatisticByName("PATH");
+            stats["ROLE"] = await Models.StatisticsModel.GetStatisticByName("ROLE");
+            stats["HIGHL"] = await Models.StatisticsModel.GetStatisticByName("HIGHL");
+            stats["STARS"] = await Models.StatisticsModel.GetStatisticByName("STARS");
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            refreshViewStat.IsRefreshing = true;
             await mainStatistics.MainStatGen();
+            await CreateDefaultStat();
             BindingContext = mainStatistics;
+            refreshViewStat.IsRefreshing = false;
+
             // chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
         }
 
@@ -87,9 +102,30 @@ namespace StudentOrganisation.Views
             else
                 btn.Style = (Style)Application.Current.Resources["ButtonCheckedStyle"];
 
-
-            _stat = await Models.StatisticsModel.GetStatisticByName(btn.Text);
-            await PopupNavigation.Instance.PushAsync(new StatisticallyPopUp { BindingContext = _stat });
+            StatisticsModel st;
+            if (btn.Text != null)
+            {
+                if (btn.Text.ToUpper() == "PATH")
+                {
+                    st = stats["PATH"];
+                }
+                else if (btn.Text.ToUpper() == "ROLE")
+                {
+                    st = stats["ROLE"];
+                }
+                else if (btn.Text.ToUpper() == "HIGHL")
+                {
+                    st = stats["HIGHL"];
+                }
+                else
+                {
+                    st = stats["STARS"];
+                }
+            }else
+            {
+                st = stats["STARS"];
+            }
+            await PopupNavigation.Instance.PushAsync(new StatisticallyPopUp { BindingContext = st });
 
 
             if (_latsButton != null)
@@ -104,6 +140,11 @@ namespace StudentOrganisation.Views
             {
                 _latsButton = btn;
             }
+        }
+
+        private void refreshView_Refreshing(object sender, EventArgs e)
+        {
+            OnAppearing();
         }
     }
 }

@@ -35,6 +35,7 @@ namespace StudentOrganisation.Models
             else if (name.ToLower() == "highl")
             {
                 dict = await Services.UserProvider.CountPerHighlits();
+                statisticsModel.Name = "Users Per Highlits";
 
             }
             else if (name.ToLower() == "stars")
@@ -50,14 +51,14 @@ namespace StudentOrganisation.Models
                     {
                         Color = SKColor.Parse(chartColor.ToHex().ToString()),
                         ValueLabelColor = SKColor.Parse(chartColor.ToHex().ToString()),
-                        Label = $"{user.Name}",
+                        Label = $"{user.Name} {user.SecondName.Substring(0, 1)}.",
                         ValueLabel = $"{user.Stars}"
                     };
 
                     entry_list.Add(entry);
                 }
 
-                statisticsModel.Chr = new PointChart { Entries = entry_list, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
 
                 return statisticsModel;
             }
@@ -83,7 +84,7 @@ namespace StudentOrganisation.Models
                 entry_list.Add(entry);
             }
 
-            statisticsModel.Chr = new PointChart { Entries = entry_list, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+            statisticsModel.Chr = new DonutChart { Entries = entry_list, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
             return statisticsModel;
         }
     }
