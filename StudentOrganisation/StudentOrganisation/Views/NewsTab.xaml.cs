@@ -50,7 +50,7 @@ namespace StudentOrganisation.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           string role = await SecureStorage.GetAsync("Role");
+            string role = await SecureStorage.GetAsync("Role");
             if(role == "2" || role == "3")
             {
                 buttonLink.IsVisible = true;
@@ -91,8 +91,7 @@ namespace StudentOrganisation.Views
             }
         }
 
-
-        private async void AddLinsBtn_Clicked(object sender, EventArgs e)
+        private async void AddLinksBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddLinks());
         }
@@ -118,6 +117,18 @@ namespace StudentOrganisation.Views
         {
             OnAppearing();
             refreshView.IsRefreshing = false;
+        }
+
+
+        private async void meetsPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MeetsPage());
+        }
+
+
+        private async void addMeet_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddMeet());
         }
     }
 }
