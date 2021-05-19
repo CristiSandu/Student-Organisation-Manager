@@ -91,8 +91,7 @@ namespace StudentOrganisation.Views
             }
         }
 
-
-        private async void AddLinsBtn_Clicked(object sender, EventArgs e)
+        private async void AddLinksBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddLinks());
         }

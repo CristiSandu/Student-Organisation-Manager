@@ -79,7 +79,7 @@
                         <StackLayout Orientation="Horizontal" >
                             <Label Text="Links" Style="{StaticResource MainTitleStyle}"
                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                            <Button x:Name="buttonLink" ImageSource="plus.png" IsVisible="false" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinsBtn_Clicked"/>
+                            <Button x:Name="buttonLink" ImageSource="plus.png" IsVisible="false" BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddLinksBtn_Clicked"/>
                         </StackLayout>
                     </CollectionView.Header>
                     <CollectionView.ItemsLayout>

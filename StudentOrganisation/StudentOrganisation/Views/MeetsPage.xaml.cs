@@ -49,8 +49,21 @@ namespace StudentOrganisation.Views
             {
                 buttonMeets.IsVisible = true;
             }
-            _meetsList = new ObservableCollection<MeetsModel>(await Services.MeetsProvider.GetAll(Int32.Parse(role));
+            _meetsList = new ObservableCollection<MeetsModel>(await Services.MeetsProvider.GetAll(Int32.Parse(role)));
             meetsList.ItemsSource = _meetsList;
+        }
+
+        private async void meetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MeetsModel meets = e.CurrentSelection.FirstOrDefault() as MeetsModel;
+
+            if (e.CurrentSelection != null)
+            {
+                await PopupNavigation.Instance.PushAsync(new ViewNews //TODO: to be changed to ViewMeet
+                {
+                    BindingContext = meets
+                });
+            }
         }
     }
 }
