@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.MeetsPage"
+             Title="Meets"
+             >
+    
+    
+    <ContentPage.Content>
+        <RefreshView x:Name="refreshView" RefreshColor="Teal" Refreshing="RefreshView_Refreshing">
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="10,16,10,0" Spacing="16">
+
+                <CollectionView x:Name="meetsList"  
+                        SelectionMode="Single" 
+                        SelectionChanged="meetsList_SelectionChanged">
+
+                    <CollectionView.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Meets"  Style="{StaticResource MainTitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                            <Button x:Name="buttonMeets" ImageSource="plus.png" IsVisible="False"  BackgroundColor="Transparent" HeightRequest="32" WidthRequest="50" Clicked="AddMeetsBtn_Clicked"/>
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#D23641" CornerRadius="10" Padding="10">
+                                <Grid VerticalOptions="FillAndExpand" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Title}"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Style="{StaticResource TitleStyle}"
+                                   HorizontalOptions="Start"
+                                   />
+                                    <Label Text="{Binding Path=Description, Converter={StaticResource ShowDescription}}"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                   Grid.Column="1"
+                                   Grid.RowSpan="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
