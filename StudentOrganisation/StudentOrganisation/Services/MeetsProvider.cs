@@ -49,7 +49,10 @@ namespace StudentOrganisation.Services
             Dictionary<int, int> dict = new Dictionary<int, int>();
             foreach (int month in list)
             {
-                List<MeetsModel> lst = await GetForAperiod(new DateTime(year,month,0),new DateTime(year,month,0).AddMonths(1));
+                DateTime lastPer = new DateTime(year, month, 1);
+                lastPer.AddMonths(1);
+                DateTime firsPer = new DateTime(year, month, 1);
+                List<MeetsModel> lst = await GetForAperiod(firsPer, lastPer);
                 dict[month] = lst.Count;
             }
             return dict;

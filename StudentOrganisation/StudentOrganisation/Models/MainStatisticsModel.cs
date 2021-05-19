@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microcharts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,9 @@ namespace StudentOrganisation.Models
 
         public int Statistics4 { get; set; }
         public string Description4 { get; set; }
+
+        public Chart Chr { get; set; }
+        public string Name { get; set; }
 
 
         public async Task MainStatGen()

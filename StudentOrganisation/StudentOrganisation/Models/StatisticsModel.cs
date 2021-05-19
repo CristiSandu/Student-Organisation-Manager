@@ -2,6 +2,7 @@
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -62,13 +63,36 @@ namespace StudentOrganisation.Models
 
                 return statisticsModel;
             }
+            else if (name.ToLower() == "year")
+            {
+                Dictionary<int, int> dictEvMoths = await Services.MeetsProvider.CountPerYear(2021);
+                Random rand = new Random();
+                Color chartColor;
+                foreach (var kvp in dictEvMoths)
+                {
+                    chartColor = Color.FromRgb(rand.Next(150), rand.Next(150), rand.Next(150));
+                    string i = new DateTime(2015, kvp.Key, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("en")).Substring(0, 2);
+                    int j = 0;
+                    entry = new Entry(kvp.Value)
+                    {
+                        Color = SKColor.Parse(chartColor.ToHex().ToString()),
+                        ValueLabelColor = SKColor.Parse(chartColor.ToHex().ToString()),
+                        Label = $"{i}.",
+                        ValueLabel = $"{kvp.Value}"
+                    };
+
+                    entry_list.Add(entry);
+                }
+                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+                return statisticsModel;
+            }
             else
             {
                 dict = new Dictionary<string, int>();
                 return statisticsModel;
             }
 
-           
+
             foreach (var kvp in dict)
             {
                 string color = await Services.ColorsProvider.GetColorFor(kvp.Key);

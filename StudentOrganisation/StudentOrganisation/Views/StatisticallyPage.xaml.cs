@@ -25,8 +25,12 @@ namespace StudentOrganisation.Views
             {"PATH", new StatisticsModel() },
             {"ROLE", new StatisticsModel() },
             {"HIGHL", new StatisticsModel() },
-            {"STARS", new StatisticsModel() }
+            {"STARS", new StatisticsModel() },
+            {"YEAR", new StatisticsModel() },
+
         };
+
+        Dictionary<int, int> yearStat = new Dictionary<int, int>();
         StatisticsModel _stat;
         Button _latsButton = null;
         public StatisticallyPage()
@@ -80,6 +84,9 @@ namespace StudentOrganisation.Views
             stats["ROLE"] = await Models.StatisticsModel.GetStatisticByName("ROLE");
             stats["HIGHL"] = await Models.StatisticsModel.GetStatisticByName("HIGHL");
             stats["STARS"] = await Models.StatisticsModel.GetStatisticByName("STARS");
+            stats["YEAR"] = await Models.StatisticsModel.GetStatisticByName("YEAR");
+
+
         }
 
         protected async override void OnAppearing()
@@ -88,7 +95,10 @@ namespace StudentOrganisation.Views
             refreshViewStat.IsRefreshing = true;
             await mainStatistics.MainStatGen();
             await CreateDefaultStat();
+            mainStatistics.Chr = stats["YEAR"].Chr;
+            mainStatistics.Name = "Meets per 2021";
             BindingContext = mainStatistics;
+
             refreshViewStat.IsRefreshing = false;
 
             // chartView.Chart = new DonutChart { Entries = _entrys, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
