@@ -2,8 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.Views.MeetsPage"
+             xmlns:converter ="clr-namespace:StudentOrganisation.Convertors"
              Title="Meets"
              >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DescriptionConvertor x:Key="ShowDescription"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     
     <ContentPage.Content>

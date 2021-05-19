@@ -32,13 +32,11 @@ namespace StudentOrganisation.Views
             Date = DateTime.Now
         }};
 
-        IFirebaseAuthentication auth;
         ObservableCollection<MeetsModel> _meetsList;
 
         public MeetsPage()
         {
             InitializeComponent();
-            auth = DependencyService.Get<IFirebaseAuthentication>();
         }
 
         protected async override void OnAppearing()
@@ -64,6 +62,17 @@ namespace StudentOrganisation.Views
                     BindingContext = meets
                 });
             }
+        }
+
+        private async void AddMeetsBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddMeet());
+        }
+
+        private async void RefreshView_Refreshing(object sender, EventArgs e)
+        {
+            OnAppearing();
+            refreshView.IsRefreshing = false;
         }
     }
 }
