@@ -18,6 +18,7 @@ namespace StudentOrganisation.Views
         {
             InitializeComponent();
             _meets.Date = DateTime.Now;
+            _meets.AttendanceList = new List<string>();
             BindingContext = _meets;
         }
 
