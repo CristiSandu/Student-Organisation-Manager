@@ -17,8 +17,23 @@
                         <Label x:Name="MeetDate" TextColor="Gray" Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" >
-                        <Label x:Name="MeetLocation" Text="{Binding Location, StringFormat='Locatie: {0}'}"  Style="{StaticResource TitleStyle}"/>
-                        <Label x:Name="MeetLink" Text="{Binding link, StringFormat='Link: {0}'}"  Style="{StaticResource TitleStyle}"/>
+                        <Label x:Name="MeetLocation"
+                               Text="{Binding Location, StringFormat='Locatie: {0}'}"
+                               Style="{StaticResource TitleStyle}"
+                               />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Acceseaza linkul"
+                                   Style="{StaticResource TitleStyle}"/>
+                            <Label x:Name="MeetLink"
+                                   Text="aici"
+                                   TextColor="Blue"
+                                   TextDecorations="Underline"
+                                   Style="{StaticResource TitleStyle}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapCommand" CommandParameter="{Binding link}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
                     </StackLayout>
 
                     <ScrollView>
