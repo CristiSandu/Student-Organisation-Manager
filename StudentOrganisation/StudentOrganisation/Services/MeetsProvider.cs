@@ -2,6 +2,7 @@
 using StudentOrganisation.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,13 +23,12 @@ namespace StudentOrganisation.Services
         {
             IQuerySnapshot query = await _cloud
                                     .Collection(MeetsModel.CollectionPath)
-                                    //.WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
-                                    .WhereLessThanOrEqualsTo("role", role)
-                                    .OrderBy("role")
+                                    .WhereGreaterThanOrEqualsTo("date", DateTime.UtcNow)
+                                    .OrderBy("date")
                                     .GetAsync();
 
             IEnumerable<MeetsModel> meet = query.ToObjects<MeetsModel>();
-            return new List<MeetsModel>(meet);
+            return new List<MeetsModel>(meet.Where(obj => obj.Role <= role).ToList());
         }
 
         public static async Task<List<MeetsModel>> GetForAperiod(DateTime start, DateTime end)
@@ -50,7 +50,7 @@ namespace StudentOrganisation.Services
             foreach (int month in list)
             {
                 DateTime lastPer = new DateTime(year, month, 1);
-                lastPer.AddMonths(1);
+                lastPer = lastPer.AddMonths(1);
                 DateTime firsPer = new DateTime(year, month, 1);
                 List<MeetsModel> lst = await GetForAperiod(firsPer, lastPer);
                 dict[month] = lst.Count;
