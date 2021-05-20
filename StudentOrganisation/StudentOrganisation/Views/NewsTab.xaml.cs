@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Rg.Plugins.Popup.Services;
+using StudentOrganisation.Services;
+using System.Collections.ObjectModel;
 
 namespace StudentOrganisation.Views
 {
@@ -35,20 +38,28 @@ namespace StudentOrganisation.Views
            new Models.LinksModel{ Title = "Sheet prezenta sedinta" },
            new Models.LinksModel{ Title = "Test Prezenta" }
         };
+        IFirebaseAuthentication auth;
+        ObservableCollection<NewsModel> _newsList; 
 
         public NewsTab()
         {
             InitializeComponent();
+            auth = DependencyService.Get<IFirebaseAuthentication>();
         }
-
+        
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            var list = await Services.NewsProvider.GetAll();
-            newsList.ItemsSource = list;
+            string role = await SecureStorage.GetAsync("Role");
+            if(role == "2" || role == "3")
+            {
+                buttonLink.IsVisible = true;
+                buttonNews.IsVisible = true;
+            }
+            _newsList = new ObservableCollection<NewsModel>(await Services.NewsProvider.GetAll());
+            newsList.ItemsSource = _newsList;
             links.ItemsSource = await Services.LinksProvider.GetAll();
         }
-
        
 
         private async void newsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,11 +68,12 @@ namespace StudentOrganisation.Views
 
             if (e.CurrentSelection != null)
             {
-                await Navigation.PushAsync(new ViewNews
+                
+                await PopupNavigation.Instance.PushAsync(new ViewNews
                 {
                     BindingContext = news
                 });
-
+                
             }
         }
 
@@ -79,7 +91,7 @@ namespace StudentOrganisation.Views
             }
         }
 
-        private async void AddLinsBtn_Clicked(object sender, EventArgs e)
+        private async void AddLinksBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddLinks());
         }
@@ -87,6 +99,36 @@ namespace StudentOrganisation.Views
         private async void AddNewsBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddNews ());
+        }
+
+        private void logOut_Clicked(object sender, EventArgs e)
+        {
+            var signedOut = auth.SignOut();
+            if (signedOut)
+            {
+                SecureStorage.Remove("isLogged");
+                SecureStorage.Remove("Role");
+
+                ((App)Application.Current).MainPage = new NavigationPage(new TestLogin());
+            }
+        }
+
+        private async void RefreshView_Refreshing(object sender, EventArgs e)
+        {
+            OnAppearing();
+            refreshView.IsRefreshing = false;
+        }
+
+
+        private async void meetsPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MeetsPage());
+        }
+
+
+        private async void addMeet_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddMeet());
         }
     }
 }

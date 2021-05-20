@@ -19,6 +19,8 @@ namespace StudentOrganisation.Models
         public string SecondName { get; set; }
         [MapTo("email")]
         public string Email { get; set; }
+        [MapTo("mentor")]
+        public string Mentor { get; set; }
         [MapTo("path")]
         public List<string> Path { get; set; }
         [MapTo("stars")]

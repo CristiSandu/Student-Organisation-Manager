@@ -17,22 +17,41 @@ namespace StudentOrganisation.Views
     public partial class RegisterPage : ContentPage
     {
         IFirebaseAuthentication auth;
-        User user = new User();
+        User user = new User { Path = new List<string>(), Highlits = new List<string>(),Stars=0,Role=0,IsPresent=false};
         string _pass;
         string _confPass;
+        List<string> paths = new List<string>
+        {
+            "Mobile",
+            "Limbaje",
+            "AI",
+            "IoT",
+            "Azure",
+            "Gaming"
+        };
+
+        List<string> hl = new List<string>
+        {
+            "MVP",
+            "Alpha",
+            "Beta",
+            "Gold"
+        };
+
         public RegisterPage()
         {
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
             BindingContext = user;
         }
-
-        private async void BirthDayDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        protected override void OnAppearing()
         {
-            
+            base.OnAppearing();
+            PathPicker.ItemsSource = paths;
+            HighlightsPicker.ItemsSource = hl;
         }
 
-        private async void AddUser_Clicked(object sender, EventArgs e)
+        private async void SaveBtn_Clicked(object sender, EventArgs e)
         {
             _pass = PasswordEntry.Text;
             _confPass = ConfirmPasswordEntry.Text;
@@ -46,12 +65,31 @@ namespace StudentOrganisation.Views
             string token = await auth.SingInWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
             if (token != string.Empty)
             {
+                user.Id = token;
                 await UserProvider.CreateUserFirestore(user);
-                await DisplayAlert("ok", "User created", "ok");
+                await DisplayAlert("Ok", "User created", "OK");
 
-                await Shell.Current.GoToAsync("..");
+                await Navigation.PopAsync();
             }
+        }
 
+        private async void CancelBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
+        private void HighlightsPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Picker pick = sender as Picker;
+            string selectedItem = (string)pick.SelectedItem ;
+            user.Highlits.Add(selectedItem);
+        }
+
+        private void PathPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Picker pick = sender as Picker;
+            string selectedItem = (string)pick.SelectedItem;
+            user.Path.Add(selectedItem);
         }
     }
 }

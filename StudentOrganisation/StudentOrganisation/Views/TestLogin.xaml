@@ -5,25 +5,44 @@
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="10">
-            
-            <Entry Text="{Binding Username}"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="Center"
-                   Placeholder="Username" />
-            <Entry Text="{Binding Password}"
-                   Placeholder="Password"
-                   IsPassword="True" 
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="Center"/>
-            <Button Text="Log in" 
-                    Clicked="LoginButton_Clicked" Style="{StaticResource ButtonCheckedStyle}"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="Center"/>
+        <StackLayout Spacing="32" VerticalOptions="Center">
+            <Image Source="MSLearn.png" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center"/>
+            <Label Text="LOGIN " Style="{StaticResource MainTitleStyle}"  FontSize="32" HorizontalOptions="Center" FontFamily="Itim"/>
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="16,0,16,0">
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8">
+                        <Label Text="Username"/>
+                        <Entry Text="{Binding Username}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"
+                            />
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameAddNews}">
+                    <StackLayout Spacing="-8">
+                        <Label Text="Password"/>
+                        <Entry Text="{Binding Password}"
+                                IsPassword="True" 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center"/>   
+                    </StackLayout>
+                </Frame>
+                <StackLayout  Padding="40,0,40,0">
+                    <Button Text="Log in" 
+                        Clicked="LoginButton_Clicked" Style="{StaticResource ButtonCheckedStyle}"
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="Center"/>
 
-            <Button x:Name="registerButton" Text="Register" 
-                    Clicked="registerButton_Clicked" Style="{StaticResource ButtonUnCheckStyle}"
-                    VerticalOptions="Center"/>
+                    <Button x:Name="registerButton" Text="Register" 
+                        Clicked="registerButton_Clicked" Style="{StaticResource ButtonUnCheckStyle}"
+                        VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Spacing="-2">
+                <Label Text="Aplicatie dezvoltata de League of Students" HorizontalOptions="Center" FontFamily="Itim"/>
+                <Label Text="pentru MLSA UPB" HorizontalOptions="Center" FontFamily="Itim"/>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage> 

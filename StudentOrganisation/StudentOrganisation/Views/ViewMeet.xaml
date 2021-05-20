@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganisation.Views.ViewMeet"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             Title="Event"
+             >
+    <StackLayout VerticalOptions="CenterAndExpand" Padding="10,0,10,0">
+        <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" VerticalOptions="CenterAndExpand"  BackgroundColor="White">
+            <StackLayout Spacing="24" VerticalOptions="CenterAndExpand" Padding="0,0,0,16" >
+                <StackLayout Padding="16,16,16,0" Spacing="16">
+                    <StackLayout Orientation="Horizontal" >
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label x:Name="MeetTitle" Text="{Binding Title}"  Style="{StaticResource MainTitleStyle}"/>
+                        </StackLayout>
+                        <Label x:Name="MeetDate" TextColor="Gray" Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" >
+                        <Label x:Name="MeetLocation"
+                               Text="{Binding Location, StringFormat='Locatie: {0}'}"
+                               Style="{StaticResource TitleStyle}"
+                               />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Acceseaza linkul"
+                                   Style="{StaticResource TitleStyle}"/>
+                            <Label x:Name="MeetLink"
+                                   Text="aici"
+                                   TextColor="Blue"
+                                   TextDecorations="Underline"
+                                   Style="{StaticResource TitleStyle}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapCommand" CommandParameter="{Binding link}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <ScrollView>
+                        <Label x:Name="MeetDescription" HeightRequest="150" FontSize="Medium" Text="{Binding Description}"/>
+                    </ScrollView>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                    <Button x:Name="DeleteBtn" Text="Delete" Style="{StaticResource ButtonUnCheckStyle}" Clicked="DeleteBtn_Clicked" />
+                    <Button x:Name="CancelBtn" Text="Back" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+    
+</pages:PopupPage>

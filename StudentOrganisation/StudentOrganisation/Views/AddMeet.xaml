@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.Views.AddNews"
-             Title="Add News"
+             x:Class="StudentOrganisation.Views.AddMeet"
+             Title="Add Meet"
              >
     <ContentPage.Content>
         <StackLayout Spacing="24">
@@ -10,20 +10,32 @@
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
                         <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
-                        <Entry x:Name="NewsTitle" Text="{Binding Title}"/>
+                        <Entry x:Name="MeetTitle" Text="{Binding Title}"/>
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
-                        <Label x:Name="DescriptionCont" Text="News Content" Style="{StaticResource TitleStyle}" />
-                        <Editor x:Name="NewsContent" HeightRequest="100" Text="{Binding Content}"/>
+                        <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
+                        <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
                     </StackLayout>
                 </Frame>
-
+                <Frame Style="{StaticResource FrameAddNews}" >
+                    <StackLayout>
+                        <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource FrameAddNews}" >
+                    <StackLayout>
+                        <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
+                        <Entry x:Name="MeetLink" Text="{Binding link}"/>
+                    </StackLayout>
+                </Frame>
+                
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
                         <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
-                        <DatePicker x:Name="NewsDate" TextColor="Gray" Date="{Binding Date}"/>
+                        <DatePicker x:Name="MeetDate" TextColor="Gray" Date="{Binding Date}"/>
                     </StackLayout>
                 </Frame>
 
