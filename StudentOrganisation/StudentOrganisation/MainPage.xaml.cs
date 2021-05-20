@@ -50,23 +50,23 @@ namespace StudentOrganisation
         }
         private async void getUser()
         {
-           
-            //idUser.Text = usr.Name;
+
             try
             {
                 var oauthToken = await SecureStorage.GetAsync("isLogged");
 
                 Models.User usr = await UserProvider.GetFirestoreUser(oauthToken);
 
-
                 usr.Id = oauthToken;
                 BindingContext = usr;
                 NameLabel.Text = usr.Name + " " + usr.SecondName;
+                PathCollectionView.ItemsSource = usr.Path;
+                HighlightsCollectionView.ItemsSource = usr.Highlits;
 
             }
             catch (Exception ex)
             {
-                // Possible that device doesn't support secure storage on device.
+                
             }
             
         }
@@ -79,11 +79,8 @@ namespace StudentOrganisation
                 {
                     Title = "Pick a photo!"
                 });
-                var stream = await result_photo.OpenReadAsync();
-
-                // testProfile.Source = ImageSource.FromStream(() => stream);
-              //testProfile.Source = 
-                    string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
+                var stream = await result_photo.OpenReadAsync(); 
+                string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
             }
             catch (NullReferenceException ex)
             {

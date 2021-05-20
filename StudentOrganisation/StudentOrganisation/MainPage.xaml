@@ -25,18 +25,21 @@
     </ContentPage.Resources>
 
     <StackLayout Spacing="16" Padding="32">
-
-        <Grid Margin="0,0,0,64">
+        <yummy:PancakeView CornerRadius="8" Margin="0,0,0,16">
             <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
-            <Grid.Effects>
-                <tt:TouchEffect Capture="True"
-                            TouchAction="Photo_Clicked"/>
-            </Grid.Effects>
-        </Grid>
-
+        </yummy:PancakeView>
+        
         <StackLayout Orientation="Horizontal">
-            <Image Source="user.png" Aspect="AspectFill" HeightRequest="36" WidthRequest="36"/>
-            <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+            
+            <StackLayout Orientation="Horizontal">
+                <Image Source="user.png" Aspect="AspectFill" HeightRequest="36" WidthRequest="36"/>
+                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Image Source="star.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
+            </StackLayout>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
@@ -44,17 +47,19 @@
             <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
-            <yummy:PancakeView Padding="8" Border="{yummy:BorderMarkup Color=#ffc107, Thickness='4'}" CornerRadius="8" BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="star.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
-                    <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
-                </StackLayout>
-            </yummy:PancakeView>
 
+        <StackLayout>
+            <Label Text="Paths" FontSize="Medium" TextColor="Black"/>
+            <CollectionView x:Name="PathCollectionView" EmptyView="Not Registered in Any Path">
+            </CollectionView>
         </StackLayout>
-        
 
+        <Label Text="Highlights" FontSize="Medium" TextColor="Black"/>
+        <CollectionView HeightRequest="256" x:Name="HighlightsCollectionView" EmptyView="Not Registered in Any Path"/>
+    
+    
+    
     </StackLayout>
+        
 
 </ContentPage>
