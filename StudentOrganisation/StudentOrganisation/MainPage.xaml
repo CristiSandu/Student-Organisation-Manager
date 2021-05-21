@@ -24,42 +24,61 @@
 
     </ContentPage.Resources>
 
-    <StackLayout Spacing="16" Padding="32">
-        <yummy:PancakeView CornerRadius="8" Margin="0,0,0,16">
+    <Grid Padding="32">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <yummy:PancakeView Grid.ColumnSpan="2" CornerRadius="8" Margin="0,0,0,16">
             <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
         </yummy:PancakeView>
         
-        <StackLayout Orientation="Horizontal">
-            
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
             <StackLayout Orientation="Horizontal">
-                <Image Source="user.png" Aspect="AspectFill" HeightRequest="36" WidthRequest="36"/>
+                <Image Source="user.png" Aspect="AspectFit" HeightRequest="36" WidthRequest="36"/>
                 <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Image Source="star.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                <Image Source="star.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
                 <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
             </StackLayout>
-        </StackLayout>
+        </Grid>
 
-        <StackLayout Orientation="Horizontal">
-            <Image Source="mail.png" Aspect="AspectFill" HeightRequest="32" WidthRequest="32"/>
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Image Source="mail.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
             <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
 
-        <StackLayout>
+        <StackLayout Grid.Row="3">
             <Label Text="Paths" FontSize="Medium" TextColor="Black"/>
             <CollectionView x:Name="PathCollectionView" EmptyView="Not Registered in Any Path">
             </CollectionView>
         </StackLayout>
 
-        <Label Text="Highlights" FontSize="Medium" TextColor="Black"/>
-        <CollectionView HeightRequest="256" x:Name="HighlightsCollectionView" EmptyView="Not Registered in Any Path"/>
-    
-    
-    
-    </StackLayout>
+        <StackLayout Grid.Row="3" Grid.Column="1">
+            <Label  Text="Highlights" FontSize="Medium" TextColor="Black"/>
+            <CollectionView HeightRequest="256" x:Name="HighlightsCollectionView" EmptyView="Not Registered in Any Path"/>
+        </StackLayout>
+
+
+    </Grid>
         
 
 </ContentPage>
