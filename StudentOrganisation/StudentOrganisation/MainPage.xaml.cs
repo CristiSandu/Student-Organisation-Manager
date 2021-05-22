@@ -33,9 +33,9 @@ namespace StudentOrganisation
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            getUser();
             usr = await UserProvider.GetFirestoreUser(await SecureStorage.GetAsync("isLogged"));
             _url = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
-            idUser.Text = _IdUser;
             testProfile.Source = _url;
 
         }
@@ -46,33 +46,33 @@ namespace StudentOrganisation
             if (signedOut)
             {
                 SecureStorage.Remove("isLogged");
-                ((App)Application.Current).MainPage = new NavigationPage(new TestLogin());
+                ((App)Application.Current).MainPage = new NavigationPage(new Views.TestLogin());
             }
         }
-        private async void getUSER_Clicked(object sender, EventArgs e)
+        private async void getUser()
         {
-           
-            //idUser.Text = usr.Name;
+
             try
             {
                 var oauthToken = await SecureStorage.GetAsync("isLogged");
 
                 Models.User usr = await UserProvider.GetFirestoreUser(oauthToken);
 
-
                 usr.Id = oauthToken;
                 BindingContext = usr;
-                idUser.Text = oauthToken;
+                NameLabel.Text = usr.Name + " " + usr.SecondName;
+                PathCollectionView.ItemsSource = usr.Path;
+                HighlightsCollectionView.ItemsSource = usr.Highlits;
 
             }
             catch (Exception ex)
             {
-                // Possible that device doesn't support secure storage on device.
+                
             }
             
         }
 
-        private async void addPhoto_Clicked(object sender, EventArgs e)
+        private async void Photo_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -80,11 +80,8 @@ namespace StudentOrganisation
                 {
                     Title = "Pick a photo!"
                 });
-                var stream = await result_photo.OpenReadAsync();
-
-                // testProfile.Source = ImageSource.FromStream(() => stream);
-              //testProfile.Source = 
-                    string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
+                var stream = await result_photo.OpenReadAsync(); 
+                string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
             }
             catch (NullReferenceException ex)
             {
