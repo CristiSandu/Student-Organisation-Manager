@@ -6,7 +6,9 @@
              Title="Statistically" >
     <ContentPage.Content>
         <RefreshView x:Name="refreshViewStat" RefreshColor="Teal" Refreshing="refreshView_Refreshing">
-            <Grid Padding="2" ColumnSpacing="2" RowSpacing="2">
+            <ScrollView>
+            <AbsoluteLayout>
+                <Grid Padding="2" ColumnSpacing="2" RowSpacing="2" AbsoluteLayout.LayoutBounds="0.5,1,350,575" AbsoluteLayout.LayoutFlags="PositionProportional" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".00*" />
                     <RowDefinition Height="*" />
@@ -158,6 +160,8 @@
             
             -->
             </Grid>
+            </AbsoluteLayout>
+            </ScrollView>
         </RefreshView>
     </ContentPage.Content>
 </ContentPage>

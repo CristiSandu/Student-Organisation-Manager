@@ -5,31 +5,10 @@
              xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
              xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             NavigationPage.HasNavigationBar="False"
+             
              Title="Users List"
              >
-
     <ContentPage.Resources>
-
-        <Style TargetType="yummy:PancakeView">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="Opacity"
-                                        Value="0.55" />
-
-                                <Setter Property="BackgroundColor"
-                                        Value="Transparent" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-
         <ResourceDictionary>
             <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
         </ResourceDictionary>
@@ -40,128 +19,95 @@
         <Grid Padding="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
 
             <SearchBar x:Name="searchBar"
                    Grid.Row="0"
                    SearchButtonPressed="searchBar_SearchButtonPressed"
                    TextChanged="searchBar_SearchButtonPressed"
                    Placeholder="Filter"
-                   Margin="0,8,0,8">
-            </SearchBar>
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="{StaticResource MicrosoftBlue}"
+                    />
 
-            <Grid
-                Grid.Column="1"
-                BackgroundColor="White">
 
-                <Path
-                    Margin="24,0,0,0"
-                    Data="M370.216,459.3c10.2,11.1,15.8,25.6,15.8,40.6v442c0,26.601,32.1,40.101,51.1,21.4l123.3-141.3c16.5-19.8,25.6-29.601,25.6-49.2V500c0-15,5.7-29.5,15.8-40.601L955.615,75.5c26.5-28.8,6.101-75.5-33.1-75.5h-873c-39.2,0-59.7,46.6-33.1,75.5L370.216,459.3z"
-                    HeightRequest="24"
-                    WidthRequest="24"
-                    Fill="Gray"
-                    Aspect="Uniform"
-                    HorizontalOptions="Start"
-                />
-
-                <Grid.Effects>
-                    <tt:TouchEffect Capture="True"
-                            TouchAction="TouchEffect_TouchAction"/>
-                </Grid.Effects>
-            </Grid>
-
-            <Frame Grid.Row="2" Grid.ColumnSpan="2"
-                            >
-                <CollectionView x:Name="collectionView"
+            <CollectionView Grid.Row="1" x:Name="collectionView"
                             SelectionMode="Single"
                             ItemsSource="{Binding Users}"
                             >
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="8" VerticalItemSpacing="16"/>
-                    </CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="8" VerticalItemSpacing="16"/>
+                </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <yummy:PancakeView CornerRadius="8"
-                               Border="{yummy:BorderMarkup Color=#ccc, Thickness='4'}"
-                               BackgroundColor="White"
-                               >
-                                <Grid Margin="8" Padding="16">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="8" Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Frame
-                                        Grid.RowSpan="2"
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Frame
                                         HorizontalOptions="Start"
                                         VerticalOptions="CenterAndExpand"
-                                        WidthRequest="45"
+                                        WidthRequest="70"
                                         HeightRequest="70"                                       
-                                        CornerRadius="35"
+                                        CornerRadius="16"
                                         Padding="0"
                                         Margin="0"
+                                        Grid.RowSpan="2"
                                         >
-                                        <Image Aspect="AspectFill" Source="{Binding ImageURL}" HeightRequest="35"/>
-                                    </Frame>
-
-                                    <Label
+                                <Image Aspect="AspectFill" Source="{Binding ImageURL}" HeightRequest="35"/>
+                            </Frame>
+                            
+                            <Label
                                        Grid.Column="1"
-                                       Text="{Binding Path=Name}"
+                                       Text="{Binding Name}"
                                        TextColor="Black"
-                                       FontAttributes="Bold"
                                        VerticalOptions="Center"
                                        HorizontalOptions="Start"
+                                       FontSize="Small"
                                     />
-                                    <StackLayout
+                            
+                            <StackLayout
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             Orientation="Horizontal"
-                                            HorizontalOptions="End"
-                                        >
-                                        
-                                        <yummy:PancakeView
-                                            HorizontalOptions="End"
+                                            HorizontalOptions="Start"
+                               >
+
+                                <yummy:PancakeView
                                             BackgroundColor="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
                                             CornerRadius="4" >
-                                            <Label Text="{Binding Path=Role}"
+                                    <Label Text="{Binding Path=Role}"
                                                TextColor="White"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center"
                                                Padding="8,0,8,0"
                                             />
-                                        </yummy:PancakeView>
+                                </yummy:PancakeView>
 
-                                        <yummy:PancakeView
+                                <yummy:PancakeView
                                             HorizontalOptions="End">
-                                            <Label Text="{Binding Path=StudyingPath}"
+                                    <Label Text="{Binding Path=StudyingPath}"
                                                TextColor="Black"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center" />
-                                        </yummy:PancakeView>
-                                    </StackLayout>
-                                </Grid>
-                            </yummy:PancakeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Frame>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
 
     </ContentPage.Content>

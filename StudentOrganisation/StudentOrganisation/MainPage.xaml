@@ -2,35 +2,83 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.MainPage"
+             xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
              Title="Profile">
 
-    <StackLayout Spacing="10" Padding="10">
-        
-        <StackLayout>
-            <Label Text="Nume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
-        </StackLayout>
-        <StackLayout>
-            <Label Text="Prenume" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label Text="{Binding SecondName}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
-        </StackLayout>
-        <StackLayout>
-            <Label Text="Email" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
-        </StackLayout>
-        <StackLayout>
-            <Label Text="ID" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" TextColor="Black"/>
-            <Label x:Name="idUser" Text="{Binding Id}" TextColor="Black" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Center"/>
-        </StackLayout>
-        <Button x:Name="singOut" Text="Sign out" Style="{StaticResource ButtonCheckedStyle}" Clicked="singOut_Clicked"/>
-        <Button x:Name="getUSER" Text="GEt" Style="{StaticResource ButtonCheckedStyle}" Clicked="getUSER_Clicked"/>
-        <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
-        <Button x:Name="addPhoto" 
-                Text="" 
-                Clicked="addPhoto_Clicked" 
-                BackgroundColor="Blue"
-                CornerRadius="100"/>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name ="AddNewsBtn" Text="News" 
+                 IconImageSource="log_out.png"
+                 Order="Primary"
+                 Priority="0"
+                  Clicked="singOut_Clicked"/>
 
-    </StackLayout>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <Grid Padding="32">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <yummy:PancakeView Grid.ColumnSpan="2" CornerRadius="8" Margin="0,0,0,16">
+            <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
+        </yummy:PancakeView>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Orientation="Horizontal">
+                <Image Source="user.png" Aspect="AspectFit" HeightRequest="36" WidthRequest="36"/>
+                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                <Image Source="star.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
+            </StackLayout>
+        </Grid>
+
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Image Source="mail.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
+            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+        </StackLayout>
+
+
+        <StackLayout Grid.Row="3">
+            <Label Text="Paths" FontSize="Medium" TextColor="Black"/>
+            <CollectionView x:Name="PathCollectionView" EmptyView="Not Registered in Any Path">
+            </CollectionView>
+        </StackLayout>
+
+        <StackLayout Grid.Row="3" Grid.Column="1">
+            <Label  Text="Highlights" FontSize="Medium" TextColor="Black"/>
+            <CollectionView HeightRequest="256" x:Name="HighlightsCollectionView" EmptyView="Not Registered in Any Path"/>
+        </StackLayout>
+
+
+    </Grid>
+        
 
 </ContentPage>

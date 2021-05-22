@@ -1,4 +1,4 @@
-﻿using StudentOrganisation.Services;
+﻿  using StudentOrganisation.Services;
 using StudentOrganisation.Views;
 using System;
 using Xamarin.Forms;
@@ -17,7 +17,7 @@ namespace StudentOrganisation
             auth = DependencyService.Get<IFirebaseAuthentication>();
             if (auth.IsSignIn())
             {
-                MainPage = new TabsPages();
+                MainPage = new MainPage();
             }
             else
             {
