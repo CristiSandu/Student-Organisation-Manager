@@ -19,19 +19,18 @@
         <Grid Padding="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
 
-            <SearchBar x:Name="searchBar"
-                   Grid.Row="0"
-                   SearchButtonPressed="searchBar_SearchButtonPressed"
-                   TextChanged="searchBar_SearchButtonPressed"
-                   Placeholder="Filter"
-                   HorizontalOptions="FillAndExpand"
-                   BackgroundColor="{StaticResource MicrosoftBlue}"
-                    />
-
+            <Frame Padding="10" BackgroundColor="Transparent">
+            <SearchBar  x:Name="searchBar"
+                       Grid.Row="0"
+                       HeightRequest="50"  
+                       TextChanged="searchBar_SearchButtonPressed"
+                       Placeholder="Filter"
+                       HorizontalOptions="FillAndExpand"/>
+            </Frame>
 
             <CollectionView Grid.Row="1" x:Name="collectionView"
                             SelectionMode="Single"

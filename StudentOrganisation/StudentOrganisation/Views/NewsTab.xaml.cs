@@ -130,5 +130,10 @@ namespace StudentOrganisation.Views
         {
             await Navigation.PushAsync(new AddMeet());
         }
+
+        private async void userPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace StudentOrganisation
             auth = DependencyService.Get<IFirebaseAuthentication>();
             if (auth.IsSignIn())
             {
-                MainPage = new MainPage();
+                MainPage = new TabsPages();
             }
             else
             {
