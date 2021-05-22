@@ -34,10 +34,6 @@ namespace StudentOrganisation
         {
             base.OnAppearing();
             getUser();
-            usr = await UserProvider.GetFirestoreUser(await SecureStorage.GetAsync("isLogged"));
-            _url = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
-            testProfile.Source = _url;
-
         }
 
         private async void singOut_Clicked(object sender, EventArgs e)
@@ -51,16 +47,16 @@ namespace StudentOrganisation
         }
         private async void getUser()
         {
-
+            string oauthToken;
             try
             {
-                var oauthToken = await SecureStorage.GetAsync("isLogged");
-
-                Models.User usr = await UserProvider.GetFirestoreUser(oauthToken);
+                oauthToken = _IdUser == null ? await SecureStorage.GetAsync("isLogged") : oauthToken = _IdUser;
+                usr = await UserProvider.GetFirestoreUser(oauthToken);
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
                 NameLabel.Text = usr.Name + " " + usr.SecondName;
+                testProfile.Source = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
                 PathCollectionView.ItemsSource = usr.Path;
                 HighlightsCollectionView.ItemsSource = usr.Highlits;
 

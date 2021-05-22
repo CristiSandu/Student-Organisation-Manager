@@ -28,6 +28,7 @@ namespace StudentOrganisation.ViewModels
             return "no";
         }
     }
+
     public class UserListViewModel
     {
         public static Dictionary<string, string> colors;

@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganisation.MainPage"
-             xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
              Title="Profile">
@@ -17,68 +16,78 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
-
         <ResourceDictionary>
             <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
         </ResourceDictionary>
-
     </ContentPage.Resources>
 
-    <Grid Padding="32">
+    <Grid Padding="24" RowSpacing="1">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <yummy:PancakeView Grid.ColumnSpan="2" CornerRadius="8" Margin="0,0,0,16">
-            <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill"/>
+            <Image x:Name="testProfile" WidthRequest="150" HeightRequest="150" Aspect="AspectFill" />
         </yummy:PancakeView>
-        
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+        <Button x:Name="addFoto" Grid.ColumnSpan="2" CornerRadius="8" BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
 
-            <StackLayout Orientation="Horizontal">
-                <Image Source="user.png" Aspect="AspectFit" HeightRequest="36" WidthRequest="36"/>
-                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" Padding="0,0,0,-10" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="10">
+                <Image Source="user.png" Aspect="AspectFit" HeightRequest="36" WidthRequest="36" HorizontalOptions="Start" />
+                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" />
             </StackLayout>
-
-            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="10">
                 <Image Source="star.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
                 <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
             </StackLayout>
-        </Grid>
+        </StackLayout>
 
-        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10">
             <Image Source="mail.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
-            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"/>
+            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" />
         </StackLayout>
 
 
-        <StackLayout Grid.Row="3">
-            <Label Text="Paths" FontSize="Medium" TextColor="Black"/>
-            <CollectionView x:Name="PathCollectionView" EmptyView="Not Registered in Any Path">
+        <StackLayout Grid.Row="3"  Grid.ColumnSpan="2"  Orientation="Horizontal">
+            <CollectionView x:Name="PathCollectionView"  EmptyView="Not Registered in Any Path" HorizontalOptions="End" VerticalOptions="Center">
+                <CollectionView.Header>
+                    <Label Text="Paths:" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+               
             </CollectionView>
         </StackLayout>
 
-        <StackLayout Grid.Row="3" Grid.Column="1">
-            <Label  Text="Highlights" FontSize="Medium" TextColor="Black"/>
-            <CollectionView HeightRequest="256" x:Name="HighlightsCollectionView" EmptyView="Not Registered in Any Path"/>
+        <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
+
+            <CollectionView x:Name="HighlightsCollectionView"  EmptyView="Not Registered in Any Path">
+                <CollectionView.Header>
+                    <Label  Text="Highlights: " FontSize="Medium" />
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+               
+            </CollectionView>
         </StackLayout>
 
 
     </Grid>
-        
+
 
 </ContentPage>

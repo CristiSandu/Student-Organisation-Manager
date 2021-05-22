@@ -34,6 +34,7 @@
 
             <CollectionView Grid.Row="1" x:Name="collectionView"
                             SelectionMode="Single"
+                            SelectionChanged="collectionView_SelectionChanged"
                             ItemsSource="{Binding Users}"
                             >
                 <CollectionView.ItemsLayout>
@@ -69,7 +70,6 @@
                             <Label
                                        Grid.Column="1"
                                        Text="{Binding Name}"
-                                       TextColor="Black"
                                        VerticalOptions="Center"
                                        HorizontalOptions="Start"
                                        FontSize="Small"
@@ -86,7 +86,7 @@
                                             BackgroundColor="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
                                             CornerRadius="4" >
                                     <Label Text="{Binding Path=Role}"
-                                               TextColor="White"
+                                               TextColor="#FBFAFB"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center"
@@ -97,7 +97,6 @@
                                 <yummy:PancakeView
                                             HorizontalOptions="End">
                                     <Label Text="{Binding Path=StudyingPath}"
-                                               TextColor="Black"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center" />

@@ -20,6 +20,7 @@ namespace StudentOrganisation.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserListPage : ContentPage
     {
+        UserListViewModel model;
         public UserListPage()
         {
             InitializeComponent();
@@ -33,14 +34,17 @@ namespace StudentOrganisation.Views
         protected async override void OnAppearing()
         {
             List<User> userList = (await UserProvider.GetFirestoreAllUser());
-
-            UserListViewModel model = ((UserListViewModel)BindingContext);
-            await model.InitColors();
-            model.source = userList.Select(user => UserListItem.FromUser(user)).ToList();
-            model.Users = new ObservableCollection<UserListItem>(model.source);
-            foreach(var user in model.Users)
+            if (model == null)
             {
-                user.PageModel = model;
+                model = ((UserListViewModel)BindingContext);
+
+                await model.InitColors();
+                model.source = userList.Select(user => UserListItem.FromUser(user)).ToList();
+                model.Users = new ObservableCollection<UserListItem>(model.source);
+                foreach (var user in model.Users)
+                {
+                    user.PageModel = model;
+                }
             }
             collectionView.ItemsSource = model.Users;
             base.OnAppearing();
@@ -50,5 +54,13 @@ namespace StudentOrganisation.Views
             
         }
 
+        private async void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserListItem user = e.CurrentSelection.FirstOrDefault() as UserListItem;
+            if (e.CurrentSelection != null)
+            {
+                await Navigation.PushAsync(new MainPage(user.Id));
+            }
+        }
     }
 }

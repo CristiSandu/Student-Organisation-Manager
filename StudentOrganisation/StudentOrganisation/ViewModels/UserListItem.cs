@@ -12,6 +12,7 @@ namespace StudentOrganisation.ViewModels
         public UserListViewModel PageModel { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
+        public string Id { get; set; }
         public string StudyingPath { get; set; }
         public string ImageURL { get; set; }
         public string Color { get; set; }
@@ -38,7 +39,8 @@ namespace StudentOrganisation.ViewModels
         public static UserListItem FromUser(User user)
         {
             UserListItem userListItem = new UserListItem();
-            userListItem.Name = ((user.Name)?? "Name") + " " + ((user.SecondName) ?? "SecondName");
+            userListItem.Name = ((user.Name) ?? "Name") + " " + ((user.SecondName) ?? "SecondName");
+            userListItem.Id = user.Id;
             switch (user.Role)
             {
                 case 3:
@@ -62,8 +64,8 @@ namespace StudentOrganisation.ViewModels
                         break;
                     }
             }
-            
-            userListItem.StudyingPath = ( user.Path??(new List<string> { "No path"} ) ).First();
+
+            userListItem.StudyingPath = (user.Path ?? (new List<string> { "No path" })).First();
             userListItem.setImageUrl(user);
 
             return userListItem;
