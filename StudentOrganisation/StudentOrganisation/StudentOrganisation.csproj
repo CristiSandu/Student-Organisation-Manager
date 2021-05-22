@@ -12,8 +12,10 @@
 
   <ItemGroup>
     <None Remove="IMG\arrow.svg" />
+    <None Remove="IMG\blank-profile.svg" />
     <None Remove="IMG\chart.svg" />
     <None Remove="IMG\delete.svg" />
+    <None Remove="IMG\filter.svg" />
     <None Remove="IMG\home.svg" />
     <None Remove="IMG\list.svg" />
     <None Remove="IMG\MSLearn.png" />
@@ -40,8 +42,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SharedImage Include="IMG\blank-profile.svg" />
     <SharedImage Include="IMG\chart.svg" />
     <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
+    <SharedImage Include="IMG\filter.svg" />
     <SharedImage Include="IMG\home.svg" />
     <SharedImage Include="IMG\list.svg" />
     <SharedImage Include="IMG\mslearn.png" BaseSize="500,500" />

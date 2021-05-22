@@ -32,13 +32,13 @@ namespace StudentOrganisation.ViewModels
 
         public async void setImageUrl(User user)
         {
-            ImageURL = await Services.FirebaseStorageProvider.GetProfilePictureUrl(user);
+            ImageURL = (await Services.FirebaseStorageProvider.GetProfilePictureUrl(user)) ?? "blank-profile.png";
         }
 
         public static UserListItem FromUser(User user)
         {
             UserListItem userListItem = new UserListItem();
-            userListItem.Name = (user.Name)??"" +" "+ (user.SecondName) ?? "";
+            userListItem.Name = ((user.Name)?? "Name") + " " + ((user.SecondName) ?? "SecondName");
             switch (user.Role)
             {
                 case 3:
