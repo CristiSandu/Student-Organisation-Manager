@@ -22,77 +22,85 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid Padding="24" RowSpacing="1">
+    <Grid Padding="24" RowSpacing="10" >
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height=".4*"/>
-            <RowDefinition Height=".4*"/>
-            <RowDefinition Height=".4*"/>
-            <RowDefinition Height=".4*"/>
+            <RowDefinition Height="2.4*"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+
         </Grid.ColumnDefinitions>
 
-        <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="2" WidthRequest="700" HeightRequest="700" Aspect="AspectFill"  />
+        <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="3" WidthRequest="700" HeightRequest="700" Aspect="AspectFill" BorderColor="{StaticResource MicrosoftBlue}" BorderThickness="2" />
 
-        <Button x:Name="addFoto" Grid.ColumnSpan="2" CornerRadius="8" BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
+        <Button x:Name="addFoto" Grid.ColumnSpan="3"  BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
 
-        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" Padding="0,0,0,-10" >
-            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="10">
-                <Image Source="user.png" Aspect="AspectFit" HeightRequest="36" WidthRequest="36" HorizontalOptions="Start" />
-                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" />
+        <Frame BackgroundColor="{StaticResource MicrosoftBlue}" Grid.ColumnSpan="3" Grid.Row="1" BorderColor="Transparent" CornerRadius="10" Padding="12">
+            <StackLayout Orientation="Horizontal" Spacing="8">
+                <Image Source="user.png" Grid.Row="1"  Aspect="AspectFit" BackgroundColor="Transparent"  HeightRequest="36" WidthRequest="36" HorizontalOptions="Center" />
+                <Label x:Name="NameLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource TitleStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="10">
-                <Image Source="star.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
-                <Label Text="{Binding Stars}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#ffc107"/>
+        </Frame>
+
+        <StackLayout Orientation="{StaticResource MicrosoftBlue}" Grid.Row="1" Grid.Column="2"  HorizontalOptions="Center"  Spacing="10">
+            <Image Source="star.png" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
+            <Label Text="{Binding Stars}" FontSize="Medium"  HorizontalOptions="Center" VerticalOptions="Center" TextColor="#ffc107"/>
+        </StackLayout>
+
+        <Frame BackgroundColor="{StaticResource MicrosoftBlue}" Grid.ColumnSpan="3" Grid.Row="2" BorderColor="Transparent" CornerRadius="10" Padding="12">
+            <StackLayout Orientation="Horizontal" Spacing="12">
+                <Image Source="mail.png"  Grid.Row="2" HorizontalOptions="Center"  Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="{Binding Email}" Style="{StaticResource TitleStyle}"  Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" />
             </StackLayout>
-        </StackLayout>
+        </Frame>
 
-        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10">
-            <Image Source="mail.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
-            <Label Text="{Binding Email}" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" />
-        </StackLayout>
+        <Frame BackgroundColor="{StaticResource MicrosoftBlue}" Grid.ColumnSpan="3" Grid.Row="3" BorderColor="Transparent" CornerRadius="10" Padding="12">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
 
+                <yummy:PancakeView x:Name="IsPresentLabelBackground" Grid.ColumnSpan="2" Grid.Row="3" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
+                <Label x:Name="IsPresentLabel" TextColor="White" VerticalOptions="Center"/>
+            </yummy:PancakeView>
+                <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" Grid.Column="2"  Grid.Row="3"  HorizontalOptions="End" IsVisible="false" Toggled="Switch_Toggled"/>
+            </StackLayout>
+        </Frame>
 
-        <StackLayout Grid.Row="3"  Grid.ColumnSpan="2"  Orientation="Horizontal">
-            <CollectionView x:Name="PathCollectionView"  EmptyView="Not Registered in Any Path" HorizontalOptions="End" VerticalOptions="Center">
-                <CollectionView.Header>
-                    <Label Text="Paths:" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-                </CollectionView.Header>
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-                </CollectionView.ItemsLayout>
+        <Frame BackgroundColor="{StaticResource MicrosoftBlue}" Grid.ColumnSpan="3" Grid.Row="4" BorderColor="Transparent" CornerRadius="10" Padding="12">
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="4" Orientation="Horizontal" >
+        <CollectionView x:Name="PathCollectionView" Grid.ColumnSpan="3" Grid.Row="4"  EmptyView="Not Registered in Any Path" HorizontalOptions="End" VerticalOptions="Center">
+            <CollectionView.Header>
+                <Label Text="Paths:" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
 
-            </CollectionView>
-        </StackLayout>
+        </CollectionView>
+            </StackLayout>
+        </Frame>
 
-        <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
-
-            <CollectionView x:Name="HighlightsCollectionView"  EmptyView="No Highlights">
+        <Frame BackgroundColor="{StaticResource MicrosoftBlue}" Grid.ColumnSpan="3" Grid.Row="5" BorderColor="Transparent" CornerRadius="10" Padding="12">
+            <CollectionView x:Name="HighlightsCollectionView" Grid.ColumnSpan="3" Grid.Row="5"  EmptyView="No Highlights">
                 <CollectionView.Header>
                     <Label  Text="Highlights: " FontSize="Medium" />
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
                 </CollectionView.ItemsLayout>
-
             </CollectionView>
-        </StackLayout>
+        </Frame>
 
-        <StackLayout Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="2">
-            <yummy:PancakeView x:Name="IsPresentLabelBackground" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
-                <Label x:Name="IsPresentLabel" TextColor="White"/>
-            </yummy:PancakeView>
-            <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" HorizontalOptions="End" IsVisible="false" Toggled="Switch_Toggled"/>
-        </StackLayout>
-        
+
     </Grid>
-
 
 </ContentPage>
