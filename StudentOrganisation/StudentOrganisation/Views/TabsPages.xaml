@@ -20,9 +20,22 @@
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Profile"  IconImageSource="chart.png" BarTextColor="White ">
+    <NavigationPage Title="Meets"  IconImageSource="calendar.png" BarTextColor="White ">
+        <x:Arguments>
+            <view:MeetsPage/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Charts"  IconImageSource="chart.png" BarTextColor="White ">
         <x:Arguments>
             <view:StatisticallyPage/>
         </x:Arguments>
     </NavigationPage>
+
+    <NavigationPage Title="Profile"  IconImageSource="user.png" BarTextColor="White ">
+        <x:Arguments>
+            <local2:MainPage/>
+        </x:Arguments>
+    </NavigationPage>
+    
 </TabbedPage>

@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Remove="IMG\arrow.svg" />
     <None Remove="IMG\blank-profile.svg" />
+    <None Remove="IMG\calendar.svg" />
     <None Remove="IMG\chart.svg" />
     <None Remove="IMG\delete.svg" />
     <None Remove="IMG\filter.svg" />
@@ -47,6 +48,7 @@
 
   <ItemGroup>
     <SharedImage Include="IMG\blank-profile.svg" />
+    <SharedImage Include="IMG\calendar.svg" />
     <SharedImage Include="IMG\chart.svg" />
     <SharedImage Include="IMG\delete.svg" BaseSize="50,50" />
     <SharedImage Include="IMG\filter.svg" />
