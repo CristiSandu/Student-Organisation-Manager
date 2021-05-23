@@ -65,9 +65,9 @@ namespace StudentOrganisation.Services
             return new List<Models.User>(users);
         }
 
-        public static async Task<bool> AddStarForUser(Models.User user)
+        public static async Task<bool> AddStarForUser(Models.User user,int count )
         {
-            user.Stars++;
+            user.Stars += count;
             await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection(Models.User.CollectionPath)
@@ -214,6 +214,18 @@ namespace StudentOrganisation.Services
                 return null;
             }
             return user;
+        }
+
+        public static async Task<List<Models.User>> GetAllPresent()
+        {
+            IQuerySnapshot query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection(Models.User.CollectionPath)
+                                     .WhereEqualsTo("is_present",true)
+                                     .GetAsync();
+
+            IEnumerable<Models.User> users = query.ToObjects<Models.User>();
+            return new List<Models.User>(users);
         }
 
         public static async Task<List<Models.User>> GetFirestoreAllUser()

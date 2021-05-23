@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganisation.App">
+             x:Class="StudentOrganisation.App"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:Application.WindowSoftInputModeAdjust="Resize"
+             >
     <Application.Resources>
         <ResourceDictionary>
 
@@ -9,6 +12,7 @@
             <Color x:Key="AccentColorDark">#203a61</Color>
             <Color x:Key="DefaultTextColor">#737373</Color>
             <Color x:Key="DeleteRed">#FF3300</Color>
+            <Color x:Key="TextDarkMode">#FBFAFB</Color>
 
             <Color x:Key="MicrosoftRed">#F25022</Color>
             <Color x:Key="MicrosoftGreen">#7FBA00</Color>

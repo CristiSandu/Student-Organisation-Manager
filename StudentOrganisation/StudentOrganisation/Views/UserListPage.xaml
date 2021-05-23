@@ -5,108 +5,112 @@
              xmlns:viewModels="clr-namespace:StudentOrganisation.ViewModels"
              xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             
-             Title="Users List"
-             >
+             Title="Users List" >
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
         </ResourceDictionary>
-
     </ContentPage.Resources>
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  x:Name="presentPerson" Order="Secondary" Text="Presents" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsPaths" Order="Secondary" Text="Paths" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsRoles" Order="Secondary" Text="Roles" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsHl" Order="Secondary" Text="HighLites" Clicked="presentPerson_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <Grid Padding="0,0,0,0">
+        <RefreshView x:Name="refreshView" RefreshColor="Teal" Refreshing="refreshView_Refreshing">
+            <Grid Padding="0,0,0,0">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="12*"/>
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="12*"/>
+                </Grid.RowDefinitions>
 
-            <Frame Padding="10" BackgroundColor="Transparent">
-            <SearchBar  x:Name="searchBar"
+                <Frame Padding="10" BackgroundColor="Transparent">
+                    <SearchBar  x:Name="searchBar"
                        Grid.Row="0"
                        HeightRequest="50"  
                        TextChanged="searchBar_SearchButtonPressed"
                        Placeholder="Filter"
                        HorizontalOptions="FillAndExpand"/>
-            </Frame>
+                </Frame>
 
-            <CollectionView Grid.Row="1" x:Name="collectionView"
+                <CollectionView Grid.Row="1" x:Name="collectionView"
                             SelectionMode="Single"
                             SelectionChanged="collectionView_SelectionChanged"
-                            ItemsSource="{Binding Users}"
-                            >
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="8" VerticalItemSpacing="16"/>
-                </CollectionView.ItemsLayout>
+                            ItemsSource="{Binding Users}" >
+                    
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="8" VerticalItemSpacing="16"/>
+                    </CollectionView.ItemsLayout>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="8" Padding="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="8" Padding="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            
-                            <Frame
-                                        HorizontalOptions="Start"
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <Frame  HorizontalOptions="Start"
                                         VerticalOptions="CenterAndExpand"
                                         WidthRequest="70"
                                         HeightRequest="70"                                       
                                         CornerRadius="16"
                                         Padding="0"
                                         Margin="0"
-                                        Grid.RowSpan="2"
-                                        >
-                                <Image Aspect="AspectFill" Source="{Binding ImageURL}" HeightRequest="35"/>
-                            </Frame>
-                            
-                            <Label
+                                        Grid.RowSpan="2" >
+                                    <Image Aspect="AspectFill" Source="{Binding ImageURL}" HeightRequest="35"/>
+                                </Frame>
+
+                                <Label
                                        Grid.Column="1"
                                        Text="{Binding Name}"
                                        VerticalOptions="Center"
                                        HorizontalOptions="Start"
                                        FontSize="Small"
                                     />
-                            
-                            <StackLayout
+
+                                <StackLayout
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             Orientation="Horizontal"
                                             HorizontalOptions="Start"
                                >
 
-                                <yummy:PancakeView
+                                    <yummy:PancakeView
                                             BackgroundColor="{Binding Role ,Converter={StaticResource RoleToColorConverter}}"
                                             CornerRadius="4" >
-                                    <Label Text="{Binding Path=Role}"
+                                        <Label Text="{Binding Path=Role}"
                                                TextColor="#FBFAFB"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center"
                                                Padding="8,0,8,0"
                                             />
-                                </yummy:PancakeView>
+                                    </yummy:PancakeView>
 
-                                <yummy:PancakeView
+                                    <yummy:PancakeView
                                             HorizontalOptions="End">
-                                    <Label Text="{Binding Path=StudyingPath}"
+                                        <Label Text="{Binding Path=StudyingPath}"
                                                FontAttributes="Italic"
                                                HorizontalOptions="End"
                                                VerticalOptions="Center" />
-                                </yummy:PancakeView>
-                            </StackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-
+                                    </yummy:PancakeView>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

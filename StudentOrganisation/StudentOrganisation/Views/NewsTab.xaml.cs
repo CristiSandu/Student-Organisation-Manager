@@ -64,6 +64,8 @@ namespace StudentOrganisation.Views
 
         private async void newsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.CurrentSelection.Count == 0)
+                return;
             NewsModel news = e.CurrentSelection.FirstOrDefault() as NewsModel;
 
             if (e.CurrentSelection != null)
@@ -75,10 +77,13 @@ namespace StudentOrganisation.Views
                 });
                 
             }
+             ((CollectionView)sender).SelectedItem = null;
         }
 
         private async void links_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.CurrentSelection.Count == 0)
+                return;
             LinksModel link = e.CurrentSelection.FirstOrDefault() as LinksModel;
             
             try
@@ -89,6 +94,7 @@ namespace StudentOrganisation.Views
             {
                 // An unexpected error occured. No browser may be installed on the device.
             }
+             ((CollectionView)sender).SelectedItem = null;
         }
 
         private async void AddLinksBtn_Clicked(object sender, EventArgs e)

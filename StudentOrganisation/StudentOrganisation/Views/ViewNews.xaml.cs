@@ -21,7 +21,6 @@ namespace StudentOrganisation.Views
         public ViewNews()
         {
             InitializeComponent();
-            
         }
 
         protected async override void OnAppearing()
@@ -43,9 +42,12 @@ namespace StudentOrganisation.Views
         private async void DeleteBtn_Clicked(object sender, EventArgs e)
         {
             NewsModel news = (NewsModel)BindingContext;
-            int i = 0;
-            await Services.NewsProvider.Delete(news);
-            await PopupNavigation.Instance.PopAsync();
+            bool isOk = await DisplayAlert("Warning!", "Do you want to delete this item?", "Yes", " NO");
+            if (isOk == true)
+            {
+                await Services.NewsProvider.Delete(news);
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
 
         private async void UpdateBtn_Clicked(object sender, EventArgs e)
