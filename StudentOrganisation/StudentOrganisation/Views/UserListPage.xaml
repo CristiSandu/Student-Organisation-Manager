@@ -18,6 +18,7 @@
         <ToolbarItem  x:Name="presentsPaths" Order="Secondary" Text="Paths" Clicked="presentPerson_Clicked"/>
         <ToolbarItem  x:Name="presentsRoles" Order="Secondary" Text="Roles" Clicked="presentPerson_Clicked"/>
         <ToolbarItem  x:Name="presentsHl" Order="Secondary" Text="HighLites" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="defaultList" Order="Secondary" Text="Default" Clicked="presentPerson_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

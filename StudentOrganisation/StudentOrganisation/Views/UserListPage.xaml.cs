@@ -120,6 +120,9 @@ namespace StudentOrganisation.Views
                 {
 
                 }
+            } else
+            {
+                userList = (await UserProvider.GetFirestoreAllUser());
             }
 
             model = ((UserListViewModel)BindingContext);
