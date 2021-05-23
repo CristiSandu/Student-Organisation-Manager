@@ -65,7 +65,7 @@ namespace StudentOrganisation.Views
         {
             ToolbarItem tbi = sender as ToolbarItem;
             if (tbi.Text == "Presents") {
-                userList = (await UserProvider.GetFirestoreAllUser());
+                userList = (await UserProvider.GetAllPresent());
             }
             else if (tbi.Text == "Paths")
             {
