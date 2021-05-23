@@ -216,6 +216,18 @@ namespace StudentOrganisation.Services
             return user;
         }
 
+        public static async Task<List<Models.User>> GetAllPresent()
+        {
+            IQuerySnapshot query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection(Models.User.CollectionPath)
+                                     .WhereEqualsTo("is_present",true)
+                                     .GetAsync();
+
+            IEnumerable<Models.User> users = query.ToObjects<Models.User>();
+            return new List<Models.User>(users);
+        }
+
         public static async Task<List<Models.User>> GetFirestoreAllUser()
         {
             IQuerySnapshot query = await CrossCloudFirestore.Current
