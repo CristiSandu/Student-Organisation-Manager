@@ -74,7 +74,7 @@
 
         <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
 
-            <CollectionView x:Name="HighlightsCollectionView"  EmptyView="Not Registered in Any Path">
+            <CollectionView x:Name="HighlightsCollectionView"  EmptyView="No Highlights">
                 <CollectionView.Header>
                     <Label  Text="Highlights: " FontSize="Medium" />
                 </CollectionView.Header>
@@ -85,7 +85,13 @@
             </CollectionView>
         </StackLayout>
 
-
+        <StackLayout Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <yummy:PancakeView x:Name="IsPresentLabelBackground" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
+                <Label x:Name="IsPresentLabel" TextColor="White"/>
+            </yummy:PancakeView>
+            <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" HorizontalOptions="End" Toggled="Switch_Toggled"/>
+        </StackLayout>
+        
     </Grid>
 
 
