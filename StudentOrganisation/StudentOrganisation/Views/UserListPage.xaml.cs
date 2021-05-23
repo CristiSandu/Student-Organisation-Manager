@@ -54,11 +54,14 @@ namespace StudentOrganisation.Views
 
         private async void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.CurrentSelection.Count == 0)
+                return;
             UserListItem user = e.CurrentSelection.FirstOrDefault() as UserListItem;
             if (e.CurrentSelection != null)
             {
                 await Navigation.PushAsync(new MainPage(user.Id));
             }
+             ((CollectionView)sender).SelectedItem = null;
         }
 
         private async void presentPerson_Clicked(object sender, EventArgs e)
@@ -127,9 +130,17 @@ namespace StudentOrganisation.Views
             {
                 user.PageModel = model;
             }
+
             OnAppearing();
 
 
+        }
+
+        private void refreshView_Refreshing(object sender, EventArgs e)
+        {
+            refreshView.IsRefreshing = true;
+            OnAppearing();
+            refreshView.IsRefreshing = false;
         }
     }
 }

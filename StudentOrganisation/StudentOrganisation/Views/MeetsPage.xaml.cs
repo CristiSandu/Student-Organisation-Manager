@@ -38,6 +38,8 @@ namespace StudentOrganisation.Views
 
         private async void meetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.CurrentSelection.Count == 0)
+                return;
             MeetsModel meets = e.CurrentSelection.FirstOrDefault() as MeetsModel;
 
             if (e.CurrentSelection != null)
@@ -47,6 +49,7 @@ namespace StudentOrganisation.Views
                     BindingContext = meets
                 });
             }
+            ((CollectionView)sender).SelectedItem = null;
         }
 
         private async void AddMeetsBtn_Clicked(object sender, EventArgs e)

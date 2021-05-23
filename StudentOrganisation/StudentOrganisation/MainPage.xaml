@@ -21,98 +21,98 @@
             <viewModels:RoleToColorConverter x:Key="RoleToColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <RefreshView x:Name="refreshView" RefreshColor="Teal" Refreshing="refreshView_Refreshing">
+        <Grid Padding="16" RowSpacing="10" >
 
-    <Grid Padding="16" RowSpacing="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.4*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height="*"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2.4*"/>
-            <RowDefinition Height=".8*"/>
-            <RowDefinition Height=".8*"/>
-            <RowDefinition Height=".8*"/>
-            <RowDefinition Height=".8*"/>
-            <RowDefinition Height=".8*"/>
-            <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
 
-        </Grid.ColumnDefinitions>
+            <Frame Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" BackgroundColor="{StaticResource AccentColorDark}" Padding="10" CornerRadius="10"/>
 
-        <Frame Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" BackgroundColor="{StaticResource AccentColorDark}" Padding="10" CornerRadius="10"/>
+            <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="3" WidthRequest="700" HeightRequest="700" Aspect="AspectFill" BorderColor="{StaticResource AccentColorDark}" BorderThickness="2" />
 
-        <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="3" WidthRequest="700" HeightRequest="700" Aspect="AspectFill" BorderColor="{StaticResource AccentColorDark}" BorderThickness="2" />
+            <Button x:Name="addFoto" Grid.ColumnSpan="3"  BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
 
-        <Button x:Name="addFoto" Grid.ColumnSpan="3"  BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
+            <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="1" CornerRadius="10" Padding="12">
+                <StackLayout Orientation="Horizontal" Spacing="8">
+                    <Image Source="user.png" Grid.Row="1"  Aspect="AspectFit" BackgroundColor="Transparent"  HeightRequest="36" WidthRequest="36" HorizontalOptions="Center" />
+                    <Label x:Name="NameLabel" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"  TextColor="{StaticResource TextDarkMode}" Text="{Binding Name}" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
 
-        <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="1" CornerRadius="10" Padding="12">
-            <StackLayout Orientation="Horizontal" Spacing="8">
-                <Image Source="user.png" Grid.Row="1"  Aspect="AspectFit" BackgroundColor="Transparent"  HeightRequest="36" WidthRequest="36" HorizontalOptions="Center" />
-                <Label x:Name="NameLabel" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"  TextColor="{StaticResource TextDarkMode}" Text="{Binding Name}" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Center" />
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2"  HorizontalOptions="Center"  Spacing="10">
+                <Button x:Name="chaneStars" IsEnabled="False" ImageSource="star.png"  HeightRequest="32" WidthRequest="32" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="2" Clicked="chaneStars_Clicked"/>
+                <Label x:Name="starsNumber" Text="{Binding Stars}"  FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#ffc107"/>
             </StackLayout>
-        </Frame>
 
-        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2"  HorizontalOptions="Center"  Spacing="10">
-            <Button x:Name="chaneStars" IsEnabled="False" ImageSource="star.png"  HeightRequest="32" WidthRequest="32" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="2" Clicked="chaneStars_Clicked"/>
-            <Label x:Name="starsNumber" Text="{Binding Stars}"  FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#ffc107"/>
-        </StackLayout>
+            <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="2"  CornerRadius="10" Padding="12">
+                <StackLayout Orientation="Horizontal" Spacing="12">
+                    <Image Source="mail.png"  Grid.Row="2" HorizontalOptions="Center"  Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
+                    <Label Text="{Binding Email}" TextColor="{StaticResource TextDarkMode}" FontSize="Medium" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
 
-        <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="2"  CornerRadius="10" Padding="12">
-            <StackLayout Orientation="Horizontal" Spacing="12">
-                <Image Source="mail.png"  Grid.Row="2" HorizontalOptions="Center"  Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
-                <Label Text="{Binding Email}" TextColor="{StaticResource TextDarkMode}" FontSize="Medium" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" />
-            </StackLayout>
-        </Frame>
+            <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="3" CornerRadius="10" Padding="12">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
 
-        <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="3" CornerRadius="10" Padding="12">
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <yummy:PancakeView x:Name="IsPresentLabelBackground" Grid.ColumnSpan="2" Grid.Row="3" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
+                        <Label x:Name="IsPresentLabel" TextColor="White" VerticalOptions="Center"/>
+                    </yummy:PancakeView>
+                    <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" Grid.Column="2"  Grid.Row="3"  HorizontalOptions="End" IsVisible="false" Toggled="Switch_Toggled"/>
+                </StackLayout>
+            </Frame>
 
-                <yummy:PancakeView x:Name="IsPresentLabelBackground" Grid.ColumnSpan="2" Grid.Row="3" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
-                    <Label x:Name="IsPresentLabel" TextColor="White" VerticalOptions="Center"/>
-                </yummy:PancakeView>
-                <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" Grid.Column="2"  Grid.Row="3"  HorizontalOptions="End" IsVisible="false" Toggled="Switch_Toggled"/>
-            </StackLayout>
-        </Frame>
+            <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="4"  CornerRadius="10" Padding="12">
+                <StackLayout Grid.ColumnSpan="3" Grid.Row="4" >
+                    <CollectionView x:Name="PathCollectionView" Grid.ColumnSpan="3" Grid.Row="4" EmptyView="Not Registered in Any Path" HorizontalOptions="End" VerticalOptions="Center">
+                        <CollectionView.Header>
+                            <Label Text="Paths:" FontSize="Medium" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        </CollectionView.Header>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding .}" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}" FontAttributes="None" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
 
-        <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="4"  CornerRadius="10" Padding="12">
-            <StackLayout Grid.ColumnSpan="3" Grid.Row="4" >
-                <CollectionView x:Name="PathCollectionView" Grid.ColumnSpan="3" Grid.Row="4" EmptyView="Not Registered in Any Path" HorizontalOptions="End" VerticalOptions="Center">
+            <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="5" CornerRadius="10" Padding="12">
+                <CollectionView x:Name="HighlightsCollectionView" Grid.ColumnSpan="3" Grid.Row="5"  EmptyView="No Highlights">
                     <CollectionView.Header>
-                        <Label Text="Paths:" FontSize="Medium" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        <Label  Text="Highlights:" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}" FontSize="Medium" />
                     </CollectionView.Header>
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
                     </CollectionView.ItemsLayout>
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Label Text="{Binding .}" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}" FontAttributes="None" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-        </Frame>
-
-        <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="5" CornerRadius="10" Padding="12">
-            <CollectionView x:Name="HighlightsCollectionView" Grid.ColumnSpan="3" Grid.Row="5"  EmptyView="No Highlights">
-                <CollectionView.Header>
-                    <Label  Text="Highlights:" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}" FontSize="Medium" />
-                </CollectionView.Header>
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding .}" TextColor="{StaticResource TextDarkMode}" Style="{StaticResource TitleStyle}" FontAttributes="None" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Frame>
+            </Frame>
 
 
-    </Grid>
-
+        </Grid>
+    </RefreshView>
 </ContentPage>

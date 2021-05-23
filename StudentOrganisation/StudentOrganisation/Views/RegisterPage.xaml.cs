@@ -35,7 +35,8 @@ namespace StudentOrganisation.Views
             "MVP",
             "Alpha",
             "Beta",
-            "Gold"
+            "Gold",
+            "None"
         };
 
         public RegisterPage()
@@ -82,7 +83,8 @@ namespace StudentOrganisation.Views
         {
             Picker pick = sender as Picker;
             string selectedItem = (string)pick.SelectedItem ;
-            user.Highlits.Add(selectedItem);
+            if (selectedItem != "None")
+                user.Highlits.Add(selectedItem);
         }
 
         private void PathPicker_SelectedIndexChanged(object sender, EventArgs e)

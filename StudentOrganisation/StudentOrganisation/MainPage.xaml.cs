@@ -17,6 +17,7 @@ namespace StudentOrganisation
         Models.User usr;
         string _IdUser;
         bool IsCurrentUser = false;
+
         public MainPage()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace StudentOrganisation
         {
             string oauthToken;
             string currentUserToken;
-
+            refreshView.IsRefreshing = true;
             try
             {
                 currentUserToken = await SecureStorage.GetAsync("isLogged");
@@ -70,13 +71,12 @@ namespace StudentOrganisation
                 IsPresentSwitch.IsToggled = usr.IsPresent;
                 IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
                 IsPresentLabelBackground.BackgroundColor = usr.IsPresent ? Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
-
-
             }
             catch (Exception ex)
             {
 
             }
+            refreshView.IsRefreshing = false;
 
         }
 
@@ -126,6 +126,11 @@ namespace StudentOrganisation
             {
 
             }
+        }
+
+        private void refreshView_Refreshing(object sender, EventArgs e)
+        {
+            OnAppearing();
         }
     }
 }
