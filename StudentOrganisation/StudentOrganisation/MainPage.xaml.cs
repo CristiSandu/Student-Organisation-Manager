@@ -15,8 +15,8 @@ namespace StudentOrganisation
     {
         IFirebaseAuthentication auth;
         Models.User usr;
-        string _url;
         string _IdUser;
+        bool IsCurrentUser=false;
         public MainPage()
         {
             InitializeComponent();
@@ -48,10 +48,15 @@ namespace StudentOrganisation
         private async void getUser()
         {
             string oauthToken;
+            string currentUserToken;
+
             try
             {
-                oauthToken = _IdUser == null ? await SecureStorage.GetAsync("isLogged") : oauthToken = _IdUser;
+                currentUserToken = await SecureStorage.GetAsync("isLogged");
+                oauthToken = _IdUser == null ? currentUserToken : _IdUser;
                 usr = await UserProvider.GetFirestoreUser(oauthToken);
+
+                IsCurrentUser = oauthToken == currentUserToken;
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
@@ -59,6 +64,12 @@ namespace StudentOrganisation
                 testProfile.Source = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
                 PathCollectionView.ItemsSource = usr.Path;
                 HighlightsCollectionView.ItemsSource = usr.Highlits;
+                
+                IsPresentSwitch.IsToggled = usr.IsPresent;
+                IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
+                IsPresentLabelBackground.BackgroundColor = usr.IsPresent ?  Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
+
+                IsPresentSwitch.IsEnabled = IsCurrentUser;
 
             }
             catch (Exception ex)
@@ -70,6 +81,9 @@ namespace StudentOrganisation
 
         private async void Photo_Clicked(object sender, EventArgs e)
         {
+            if (!IsCurrentUser)
+                return;
+
             try
             {
                 var result_photo = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
@@ -83,6 +97,16 @@ namespace StudentOrganisation
             {
                 Console.WriteLine($"CapturePhotoAsync THREW: {ex.Message}");
             }
+        }
+
+        private async void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            usr.IsPresent = ((Switch)sender).IsToggled;
+
+            IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
+            IsPresentLabelBackground.BackgroundColor = usr.IsPresent ? Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
+
+            await UserProvider.UpdateFirestoreUser(usr);
         }
     }
 }
