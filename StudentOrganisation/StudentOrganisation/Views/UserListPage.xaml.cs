@@ -21,6 +21,7 @@ namespace StudentOrganisation.Views
     public partial class UserListPage : ContentPage
     {
         UserListViewModel model;
+        List<User> userList;
         public UserListPage()
         {
             InitializeComponent();
@@ -33,9 +34,10 @@ namespace StudentOrganisation.Views
         }
         protected async override void OnAppearing()
         {
-            List<User> userList = (await UserProvider.GetFirestoreAllUser());
+          
             if (model == null)
             {
+                userList = (await UserProvider.GetFirestoreAllUser());
                 model = ((UserListViewModel)BindingContext);
 
                 await model.InitColors();
@@ -49,10 +51,6 @@ namespace StudentOrganisation.Views
             collectionView.ItemsSource = model.Users;
             base.OnAppearing();
         }
-        private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
-        {
-            
-        }
 
         private async void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,6 +59,77 @@ namespace StudentOrganisation.Views
             {
                 await Navigation.PushAsync(new MainPage(user.Id));
             }
+        }
+
+        private async void presentPerson_Clicked(object sender, EventArgs e)
+        {
+            ToolbarItem tbi = sender as ToolbarItem;
+            if (tbi.Text == "Presents") {
+                userList = (await UserProvider.GetFirestoreAllUser());
+            }
+            else if (tbi.Text == "Paths")
+            {
+                try
+                {
+                    string path = await DisplayActionSheet("Select Path:", "Cancel", null, "Mobile", "AI", "IoT", "Limbaje", "Gaming", "Azure");
+                    userList = (await UserProvider.GetFirestoreUserFromPath(path));
+                }catch(Exception ex)
+                {
+
+                }
+            } else if (tbi.Text == "Roles")
+            {
+                try
+                {
+                    int path_int = 0;
+                    string role = await DisplayActionSheet("Select Role:", "Cancel", null, "Junior", "Member", "Mentor", "Admin");
+                    if (role == "Junior")
+                    {
+                        path_int = 0;
+                    } else  if (role == "Member")
+                    {
+                        path_int = 1;
+                    }
+                    else if (role == "Mentor")
+                    {
+                        path_int = 2;
+                    }
+                    else if (role == "Admin")
+                    {
+                        path_int = 3;
+                    }
+                    userList = (await UserProvider.GetFirestoreUserFromRole(path_int));
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else if (tbi.Text == "HighLites")
+            {
+                try
+                {
+                    string hl = await DisplayActionSheet("Select Highelites:", "Cancel", null, "MVP", "Alpha", "Beta", "Gold");
+                    
+                    userList = (await UserProvider.GetFirestoreUserFromHighlit(hl));
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+            model = ((UserListViewModel)BindingContext);
+            await model.InitColors();
+            model.source = userList.Select(user => UserListItem.FromUser(user)).ToList();
+            model.Users = new ObservableCollection<UserListItem>(model.source);
+            foreach (var user in model.Users)
+            {
+                user.PageModel = model;
+            }
+            OnAppearing();
+
+
         }
     }
 }

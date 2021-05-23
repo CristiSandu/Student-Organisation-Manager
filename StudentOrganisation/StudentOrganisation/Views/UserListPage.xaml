@@ -14,6 +14,13 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  x:Name="presentPerson" Order="Secondary" Text="Presents" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsPaths" Order="Secondary" Text="Paths" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsRoles" Order="Secondary" Text="Roles" Clicked="presentPerson_Clicked"/>
+        <ToolbarItem  x:Name="presentsHl" Order="Secondary" Text="HighLites" Clicked="presentPerson_Clicked"/>
+    </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <Grid Padding="0,0,0,0">
