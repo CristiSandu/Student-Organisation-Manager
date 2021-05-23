@@ -16,14 +16,14 @@ namespace StudentOrganisation
         IFirebaseAuthentication auth;
         Models.User usr;
         string _IdUser;
-        bool IsCurrentUser=false;
+        bool IsCurrentUser = false;
         public MainPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
         }
 
-        public MainPage( string id)
+        public MainPage(string id)
         {
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
@@ -66,18 +66,18 @@ namespace StudentOrganisation
                 testProfile.Source = await FirebaseStorageProvider.GetProfilePictureUrl(usr);
                 PathCollectionView.ItemsSource = usr.Path;
                 HighlightsCollectionView.ItemsSource = usr.Highlits;
-                
+
                 IsPresentSwitch.IsToggled = usr.IsPresent;
                 IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
-                IsPresentLabelBackground.BackgroundColor = usr.IsPresent ?  Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
+                IsPresentLabelBackground.BackgroundColor = usr.IsPresent ? Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
 
 
             }
             catch (Exception ex)
             {
-                
+
             }
-            
+
         }
 
         private async void Photo_Clicked(object sender, EventArgs e)
@@ -91,8 +91,8 @@ namespace StudentOrganisation
                 {
                     Title = "Pick a photo!"
                 });
-                var stream = await result_photo.OpenReadAsync( );
-                
+                var stream = await result_photo.OpenReadAsync();
+
                 string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
             }
             catch (NullReferenceException ex)
@@ -114,11 +114,18 @@ namespace StudentOrganisation
 
         private async void chaneStars_Clicked(object sender, EventArgs e)
         {
-            string stars = await DisplayPromptAsync("Change Stars", "How manny you want to put ?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
-            int nrStars = int.Parse(stars) + usr.Stars;
-            
-            await UserProvider.AddStarForUser(usr, int.Parse(stars));
-            starsNumber.Text = nrStars.ToString();
+            try
+            {
+                string stars = await DisplayPromptAsync("Change Stars", "How manny you want to put ?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+                int nrStars = int.Parse(stars) + usr.Stars;
+
+                await UserProvider.AddStarForUser(usr, int.Parse(stars));
+                starsNumber.Text = nrStars.ToString();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

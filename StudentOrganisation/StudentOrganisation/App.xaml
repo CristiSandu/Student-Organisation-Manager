@@ -9,6 +9,7 @@
             <Color x:Key="AccentColorDark">#203a61</Color>
             <Color x:Key="DefaultTextColor">#737373</Color>
             <Color x:Key="DeleteRed">#FF3300</Color>
+            <Color x:Key="TextDarkMode">#FBFAFB</Color>
 
             <Color x:Key="MicrosoftRed">#F25022</Color>
             <Color x:Key="MicrosoftGreen">#7FBA00</Color>
