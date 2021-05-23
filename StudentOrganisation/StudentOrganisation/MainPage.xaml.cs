@@ -19,7 +19,7 @@ namespace StudentOrganisation
         bool IsCurrentUser=false;
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             auth = DependencyService.Get<IFirebaseAuthentication>();
         }
 
@@ -58,6 +58,7 @@ namespace StudentOrganisation
 
                 IsCurrentUser = oauthToken == currentUserToken;
                 IsPresentSwitch.IsVisible = IsCurrentUser;
+                chaneStars.IsEnabled = !IsCurrentUser;
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
@@ -102,12 +103,22 @@ namespace StudentOrganisation
 
         private async void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            usr.IsPresent = ((Switch)sender).IsToggled;
+            Switch sw = sender as Switch;
+            usr.IsPresent = sw.IsToggled;
 
             IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
             IsPresentLabelBackground.BackgroundColor = usr.IsPresent ? Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
 
             await UserProvider.UpdateFirestoreUser(usr);
+        }
+
+        private async void chaneStars_Clicked(object sender, EventArgs e)
+        {
+            string stars = await DisplayPromptAsync("Change Stars", "How manny you want to put ?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+            int nrStars = int.Parse(stars) + usr.Stars;
+            
+            await UserProvider.AddStarForUser(usr, int.Parse(stars));
+            starsNumber.Text = nrStars.ToString();
         }
     }
 }
