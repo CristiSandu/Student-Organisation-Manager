@@ -22,7 +22,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" Grid.Row ="1" BackgroundColor="{StaticResource MicrosoftRed}"  CornerRadius="0">
-                    <StackLayout  Grid.Row ="1"  Spacing="0" >
+                    <StackLayout  Grid.Row ="1"  Spacing="0" HorizontalOptions="Center" VerticalOptions="Center" >
 
                         <StackLayout Padding="0,0,0,10" HorizontalOptions="Center">
                             <Label x:Name="NrUser" Text="{Binding Statistics1}"  Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -32,7 +32,7 @@
                     </StackLayout>
                 </Frame>
                 <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent"  Grid.Row ="1" Grid.Column="1" BackgroundColor="{StaticResource MicrosoftGreen}" CornerRadius="0">
-                    <StackLayout Grid.Row ="1" Grid.Column="1" >
+                    <StackLayout Grid.Row ="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" >
 
                         <StackLayout Padding="0,0,0,10">
                             <Label x:Name="NrUser2" Text="{Binding Statistics2}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -43,8 +43,8 @@
                 </Frame>
 
                 <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" BackgroundColor="{StaticResource MicrosoftBlue}" Grid.Row="2" CornerRadius="0">
-                    <StackLayout Grid.Row="2" >
-                        <StackLayout Padding="0,0,0,0" HorizontalOptions="Center">
+                    <StackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center">
+                        <StackLayout Padding="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label x:Name="NrUser3" Text="{Binding Statistics3}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="Max Distinction" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label x:Name="DescriptionNrUser3" Text="{Binding Description3}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -54,8 +54,8 @@
                 </Frame>
 
                 <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" BackgroundColor="{StaticResource MicrosoftYellow}" Grid.Row="2" Grid.Column="1" CornerRadius="0">
-                    <StackLayout Grid.Row="2" Grid.Column="1">
-                        <StackLayout Padding="0,0,0,10">
+                    <StackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                        <StackLayout Padding="0,0,0,10" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label x:Name="NrUser4" Text="{Binding Statistics4}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="Max Path" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label x:Name="DescriptionNrUser4" Text="{Binding Description4}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -66,7 +66,7 @@
                 <Label Text="Filters: " Padding="10,0,0,0" Style="{StaticResource TitleStyle}" Grid.Row="4" Grid.ColumnSpan="2"/>
                 <ScrollView Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"  Padding="2,4,0,8">
-                            <Button x:Name="Filter1" Text="PATH" Padding="2"  Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
+                        <Button x:Name="Filter1" Text="PATH" Padding="2"  Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
                         <Button Grid.Column="1" x:Name="Filter2"  Padding="2" Text="Role" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
                         <Button Grid.Column="2"  x:Name="Filter3"  Padding="2" Text="HighL" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
                         <Button Grid.Column="3"  x:Name="Filter4"  Padding="2" Text="Stars" Style="{StaticResource ButtonCheckedStyle}" Clicked="Filter1_Clicked"/>
