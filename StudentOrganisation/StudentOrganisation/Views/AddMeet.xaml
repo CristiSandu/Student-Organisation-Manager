@@ -19,19 +19,28 @@
                         <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
                     </StackLayout>
                 </Frame>
-                <Frame Style="{StaticResource FrameAddNews}" >
-                    <StackLayout>
-                        <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
-                        <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Style="{StaticResource FrameAddNews}" >
-                    <StackLayout>
-                        <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
-                        <Entry x:Name="MeetLink" Text="{Binding link}"/>
-                    </StackLayout>
-                </Frame>
-                
+                <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="* "/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource FrameAddNews}" >
+                        <StackLayout>
+                            <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
+                            <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
+                        <StackLayout>
+                            <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
+                            <Entry x:Name="MeetLink" Text="{Binding link}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
                 <Frame Style="{StaticResource FrameAddNews}" >
                     <StackLayout>
                         <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
