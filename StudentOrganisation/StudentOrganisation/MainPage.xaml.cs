@@ -76,7 +76,8 @@ namespace StudentOrganisation
                 {
                     Title = "Pick a photo!"
                 });
-                var stream = await result_photo.OpenReadAsync(); 
+                var stream = await result_photo.OpenReadAsync( );
+                
                 string url = await FirebaseStorageProvider.StoreProfilePictureUrl(stream, usr);
             }
             catch (NullReferenceException ex)
