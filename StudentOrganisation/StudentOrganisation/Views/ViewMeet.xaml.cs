@@ -24,6 +24,16 @@ namespace StudentOrganisation.Views
             TapCommand.Command = Command;
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            string role = await SecureStorage.GetAsync("Role");
+            if (role == "2" || role == "3")
+            {
+                DeleteBtn.IsVisible = true;
+            }
+        }
+
         private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
@@ -32,9 +42,12 @@ namespace StudentOrganisation.Views
         private async void DeleteBtn_Clicked(object sender, EventArgs e)
         {
             MeetsModel meet = (MeetsModel)BindingContext;
-            int i = 0;
-            await Services.MeetsProvider.Delete(meet);
-            await PopupNavigation.Instance.PopAsync();
+            bool isOk = await DisplayAlert("Warning!", "Do you want to delete this item?", "Yes", " NO");
+            if (isOk == true)
+            {
+                await Services.MeetsProvider.Delete(meet);
+                await PopupNavigation.Instance.PopAsync();
+            }
         }
     }
 }

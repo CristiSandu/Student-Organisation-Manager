@@ -63,7 +63,11 @@
             <Frame BackgroundColor="{StaticResource AccentColorDark}" Grid.ColumnSpan="3" Grid.Row="2"  CornerRadius="10" Padding="12">
                 <StackLayout Orientation="Horizontal" Spacing="12">
                     <Image Source="mail.png"  Grid.Row="2" HorizontalOptions="Center"  Aspect="AspectFit" HeightRequest="32" WidthRequest="32"/>
-                    <Label Text="{Binding Email}" TextColor="{StaticResource TextDarkMode}" FontSize="Medium" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label x:Name="linkUser" Text="{Binding Email}" TextColor="{StaticResource TextDarkMode}" FontSize="Medium" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapCommand" CommandParameter="{Binding Email}" />
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
             </Frame>
 

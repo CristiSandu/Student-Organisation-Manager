@@ -40,6 +40,8 @@ namespace StudentOrganisation.Views
         {
             if (e.CurrentSelection.Count == 0)
                 return;
+
+
             MeetsModel meets = e.CurrentSelection.FirstOrDefault() as MeetsModel;
 
             if (e.CurrentSelection != null)

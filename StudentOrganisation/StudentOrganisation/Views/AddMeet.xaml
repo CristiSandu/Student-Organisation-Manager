@@ -5,21 +5,22 @@
              Title="Add Meet"
              >
     <ContentPage.Content>
-        <StackLayout Spacing="24">
-            <StackLayout Padding="16,16,16,0" Spacing="16">
-                <Frame Style="{StaticResource FrameAddNews}" >
-                    <StackLayout>
-                        <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
-                        <Entry x:Name="MeetTitle" Text="{Binding Title}"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Style="{StaticResource FrameAddNews}" >
-                    <StackLayout>
-                        <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
-                        <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
-                    </StackLayout>
-                </Frame>
-                <Grid>
+        <ScrollView>
+            <StackLayout Spacing="24">
+                <StackLayout Padding="16,16,16,0" Spacing="16">
+                    <Frame Style="{StaticResource FrameAddNews}" >
+                        <StackLayout>
+                            <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
+                            <Entry x:Name="MeetTitle" Text="{Binding Title}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Style="{StaticResource FrameAddNews}" >
+                        <StackLayout>
+                            <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
+                            <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="* "/>
                             <ColumnDefinition Width="*"/>
@@ -29,30 +30,31 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource FrameAddNews}" >
+                            <StackLayout>
+                                <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
+                                <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
+                            <StackLayout>
+                                <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
+                                <Entry x:Name="MeetLink" Text="{Binding link}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                    <Frame Style="{StaticResource FrameAddNews}" >
                         <StackLayout>
-                            <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
-                            <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
+                            <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
+                            <DatePicker x:Name="MeetDate" TextColor="Gray" Date="{Binding Date}"/>
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
-                        <StackLayout>
-                            <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
-                            <Entry x:Name="MeetLink" Text="{Binding link}"/>
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-                <Frame Style="{StaticResource FrameAddNews}" >
-                    <StackLayout>
-                        <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
-                        <DatePicker x:Name="MeetDate" TextColor="Gray" Date="{Binding Date}"/>
-                    </StackLayout>
-                </Frame>
 
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                    <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>
+                    <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
+                </StackLayout>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
-                <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>
-                <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked" />
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using StudentOrganisation.Views;
+using System.Windows.Input;
 
 namespace StudentOrganisation
 {
     public partial class MainPage : ContentPage
     {
+
+        public ICommand Command => new Command<string>(async (url) => await Email.ComposeAsync(new EmailMessage { To = new List<string> { url } }));
+
         IFirebaseAuthentication auth;
         Models.User usr;
         string _IdUser;
@@ -22,6 +26,7 @@ namespace StudentOrganisation
         {
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
+            
         }
 
         public MainPage(string id)
@@ -29,6 +34,8 @@ namespace StudentOrganisation
             InitializeComponent();
             auth = DependencyService.Get<IFirebaseAuthentication>();
             _IdUser = id;
+            TapCommand.Command = Command;
+            linkUser.TextColor = Color.FromHex("#00A4EF");
         }
 
         protected async override void OnAppearing()
@@ -59,8 +66,12 @@ namespace StudentOrganisation
 
                 IsCurrentUser = oauthToken == currentUserToken;
                 IsPresentSwitch.IsVisible = IsCurrentUser;
-                chaneStars.IsEnabled = !IsCurrentUser;
 
+                string role = await SecureStorage.GetAsync("Role");
+                if ( role == "3" && !IsCurrentUser || role == "2" && usr.Role == 0)
+                {
+                    chaneStars.IsEnabled = true;
+                }
                 usr.Id = oauthToken;
                 BindingContext = usr;
                 NameLabel.Text = usr.Name + " " + usr.SecondName;
@@ -99,6 +110,8 @@ namespace StudentOrganisation
             {
                 Console.WriteLine($"CapturePhotoAsync THREW: {ex.Message}");
             }
+            await Task.Delay(2000);
+            OnAppearing();
         }
 
         private async void Switch_Toggled(object sender, ToggledEventArgs e)
@@ -116,7 +129,7 @@ namespace StudentOrganisation
         {
             try
             {
-                string stars = await DisplayPromptAsync("Change Stars", "How manny you want to put ?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+                string stars = await DisplayPromptAsync("Change Stars", "How many stars do you want to add?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
                 int nrStars = int.Parse(stars) + usr.Stars;
 
                 await UserProvider.AddStarForUser(usr, int.Parse(stars));
