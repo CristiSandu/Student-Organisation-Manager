@@ -11,10 +11,10 @@ namespace StudentOrganisation.Models
     {
         public int Statistics1 { get; set; }
         public string Description1 { get; set; }
-        
+
         public int Statistics2 { get; set; }
         public string Description2 { get; set; }
-        
+
         public int Statistics3 { get; set; }
         public string Description3 { get; set; }
 
@@ -26,7 +26,7 @@ namespace StudentOrganisation.Models
 
 
         public async Task MainStatGen()
-        {/*
+        {
             List<string> str = new List<string> { "MVP", "Alpha", "Beta", "Gold" };
             List<string> str1 = new List<string> { "Mobile", "Limbaje", "AI", "IoT", "Azure", "Gaming" };
 
@@ -35,17 +35,35 @@ namespace StudentOrganisation.Models
             Dictionary<string, int> dict = await Services.UserProvider.CountPerRole();
             Statistics2 = dict["Junior"];
 
+            string val = "";
+            int max = 0;
             Dictionary<string, int> dict2 = await Services.UserProvider.CountPerHighlits();
-            List<String> myKeys = dict2.Keys.ToList();
-            var list = myKeys.Except(str).ToList();
-            Statistics3 = dict2[list[0]];
-            Description3 = $"{list[0].ToUpper()}";
+            foreach (string s in str)
+            {
+                if (dict2[s] > max)
+                {
+                    max = dict2[s];
+                    val = s;
+                }
+            }
+            Statistics3 = max;
+            Description3 = val;
 
+
+            val = "";
+            max = 0;
             Dictionary<string, int> dict3 = await Services.UserProvider.CountPerPath();
-            List<String> myKeys3 = dict3.Keys.ToList();
-            var list3 = myKeys3.Except(str1).ToList();
-            Statistics4 = dict3[list3[0]];
-            Description4 = $"{list3[0].ToUpper()}";*/
+
+            foreach (string s in str1)
+            {
+                if (dict3[s] > max)
+                {
+                    max = dict3[s];
+                    val = s;
+                }
+            }
+            Statistics4 = max;
+            Description4 = val;
         }
     }
 }
