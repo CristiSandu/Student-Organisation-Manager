@@ -57,6 +57,7 @@ namespace StudentOrganisation
                 usr = await UserProvider.GetFirestoreUser(oauthToken);
 
                 IsCurrentUser = oauthToken == currentUserToken;
+                IsPresentSwitch.IsVisible = IsCurrentUser;
 
                 usr.Id = oauthToken;
                 BindingContext = usr;
@@ -69,7 +70,6 @@ namespace StudentOrganisation
                 IsPresentLabel.Text = usr.IsPresent ? "Present" : "Not Present";
                 IsPresentLabelBackground.BackgroundColor = usr.IsPresent ?  Color.FromHex("#7FBA00") : Color.FromHex("#F25022");
 
-                IsPresentSwitch.IsEnabled = IsCurrentUser;
 
             }
             catch (Exception ex)

@@ -89,7 +89,7 @@
             <yummy:PancakeView x:Name="IsPresentLabelBackground" CornerRadius="8" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Padding="4">
                 <Label x:Name="IsPresentLabel" TextColor="White"/>
             </yummy:PancakeView>
-            <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" HorizontalOptions="End" Toggled="Switch_Toggled"/>
+            <Switch x:Name="IsPresentSwitch" VerticalOptions="Start" HorizontalOptions="End" IsVisible="false" Toggled="Switch_Toggled"/>
         </StackLayout>
         
     </Grid>
