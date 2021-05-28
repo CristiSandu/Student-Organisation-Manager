@@ -6,7 +6,7 @@
              Title="Statistics" >
     <ContentPage.Content>
         <RefreshView x:Name="refreshViewStat" RefreshColor="Teal" Refreshing="refreshView_Refreshing">
-                <Grid Padding="2" ColumnSpacing="2" RowSpacing="2" AbsoluteLayout.LayoutBounds="0.5,1,350,575" AbsoluteLayout.LayoutFlags="PositionProportional" >
+                <Grid Padding="8,8,8,0" ColumnSpacing="4" RowSpacing="4"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".00*" />
                     <RowDefinition Height="*" />
@@ -44,10 +44,12 @@
 
                 <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" BackgroundColor="{StaticResource MicrosoftBlue}" Grid.Row="2" CornerRadius="0">
                     <StackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center">
-                        <StackLayout Padding="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <StackLayout Padding="0,0,0,10" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label x:Name="NrUser3" Text="{Binding Statistics3}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Label Text="Max Distinction" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Label x:Name="DescriptionNrUser3" Text="{Binding Description3}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <StackLayout Spacing="-4" >
+                                <Label Text="Max " FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="DescriptionNrUser3" Text="{Binding Description3}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </StackLayout>
                         </StackLayout>
 
                     </StackLayout>
@@ -57,8 +59,10 @@
                     <StackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                         <StackLayout Padding="0,0,0,10" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label x:Name="NrUser4" Text="{Binding Statistics4}" Style="{StaticResource MainTitleStyle}" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Label Text="Max Path" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Label x:Name="DescriptionNrUser4" Text="{Binding Description4}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <StackLayout Spacing="-4" >
+                                <Label Text="Max Path" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="DescriptionNrUser4" Text="{Binding Description4}"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

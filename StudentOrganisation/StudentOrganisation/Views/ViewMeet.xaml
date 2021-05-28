@@ -7,7 +7,7 @@
              Title="Event"
              >
     <StackLayout VerticalOptions="CenterAndExpand" Padding="10,0,10,0">
-        <Frame Style="{StaticResource FrameAddNews}" BorderColor="Transparent" VerticalOptions="CenterAndExpand"  BackgroundColor="White">
+        <Frame Style="{StaticResource FrameAddNews}" BackgroundColor="{AppThemeBinding Light={StaticResource TextDarkMode}, Dark={StaticResource DarkModeBackground}}" BorderColor="Transparent" VerticalOptions="CenterAndExpand" >
             <StackLayout Spacing="24" VerticalOptions="CenterAndExpand" Padding="0,0,0,16" >
                 <StackLayout Padding="16,16,16,0" Spacing="16">
                     <StackLayout Orientation="Horizontal" >

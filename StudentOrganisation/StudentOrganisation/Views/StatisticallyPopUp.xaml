@@ -6,11 +6,11 @@
              xmlns:rg="http://rotorgames.com">
 
     <StackLayout VerticalOptions="Center" Padding="10" >
-        <Frame BackgroundColor="White" CornerRadius="20">
+        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource TextDarkMode}, Dark={StaticResource DarkModeBackground}}" CornerRadius="20">
             <StackLayout>
                 <microcharts:ChartView  x:Name="chartView" Chart="{Binding Chr}" HeightRequest ="300" WidthRequest="150" />
                 <StackLayout Orientation="Horizontal" >
-                    <Label Text="{Binding Name}" TextColor="{StaticResource DefaultTextColor}" FontAttributes="Bold" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="{Binding Name}" TextColor="{AppThemeBinding Light={StaticResource DefaultTextColor}, Dark={StaticResource TextDarkMode}}" FontAttributes="Bold" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
                     <Button x:Name="BackButton" ImageSource="arrow.png" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" Clicked="BackButton_Clicked" />
                 </StackLayout>
             </StackLayout>

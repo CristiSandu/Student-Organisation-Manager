@@ -41,13 +41,13 @@ namespace StudentOrganisation.Models
             }
             else if (name.ToLower() == "stars")
             {
-                List<Models.User> list_usr = await Services.UserProvider.GetUsersWithMoreStars(5);
+                List<Models.User> list_usr = await Services.UserProvider.GetUsersWithMoreStars(3);
                 statisticsModel.Name = "The moste stars";
                 Random rand = new Random();
                 Color chartColor;
                 foreach (var user in list_usr)
                 {
-                    chartColor = Color.FromRgb(rand.Next(150), rand.Next(150), rand.Next(150));
+                    chartColor = Color.FromRgb(rand.Next(255), rand.Next(255), rand.Next(255));
                     entry = new Entry(user.Stars)
                     {
                         Color = SKColor.Parse(chartColor.ToHex().ToString()),
@@ -59,7 +59,7 @@ namespace StudentOrganisation.Models
                     entry_list.Add(entry);
                 }
 
-                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse(Color.Transparent.ToHex()) };
 
                 return statisticsModel;
             }
@@ -70,7 +70,7 @@ namespace StudentOrganisation.Models
                 Color chartColor;
                 foreach (var kvp in dictEvMoths)
                 {
-                    chartColor = Color.FromRgb(rand.Next(150), rand.Next(150), rand.Next(150));
+                    chartColor = Color.FromRgb(rand.Next(255), rand.Next(255), rand.Next(255));
                     string i = new DateTime(2015, kvp.Key, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("en")).Substring(0, 2);
                     int j = 0;
                     entry = new Entry(kvp.Value)
@@ -83,7 +83,9 @@ namespace StudentOrganisation.Models
 
                     entry_list.Add(entry);
                 }
-                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+
+                statisticsModel.Chr = new LineChart { Entries = entry_list, LabelOrientation = Microcharts.Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, LabelTextSize = 40f, BackgroundColor = SKColor.Parse(Color.Transparent.ToHex()) };
+
                 return statisticsModel;
             }
             else
@@ -108,7 +110,7 @@ namespace StudentOrganisation.Models
                 entry_list.Add(entry);
             }
 
-            statisticsModel.Chr = new DonutChart { Entries = entry_list, LabelTextSize = 40f, BackgroundColor = SKColor.Parse("#FFFFFF") };
+            statisticsModel.Chr = new DonutChart { Entries = entry_list, LabelTextSize = 40f, BackgroundColor = SKColor.Parse(Color.Transparent.ToHex()) };
             return statisticsModel;
         }
     }

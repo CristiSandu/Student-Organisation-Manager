@@ -23,19 +23,20 @@
 
     <ContentPage.Content>
         <RefreshView x:Name="refreshView" RefreshColor="Teal" Refreshing="refreshView_Refreshing">
-            <Grid Padding="0,0,0,0">
+            <Grid Padding="8,8,8,0">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="12*"/>
                 </Grid.RowDefinitions>
 
-                <Frame Padding="10" BackgroundColor="Transparent">
+                <Frame Padding="4"  CornerRadius="10" >
                     <SearchBar  x:Name="searchBar"
                        Grid.Row="0"
                        HeightRequest="50"  
                        TextChanged="searchBar_SearchButtonPressed"
                        Placeholder="Filter"
+                       TextColor="{StaticResource DefaultTextColor}"
                        HorizontalOptions="FillAndExpand"/>
                 </Frame>
 
@@ -50,7 +51,7 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="8" Padding="16">
+                            <Grid Margin="8" Padding="0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="3*"/>
@@ -75,9 +76,9 @@
                                 <Label
                                        Grid.Column="1"
                                        Text="{Binding Name}"
+                                    Style="{StaticResource TitleStyle}"
                                        VerticalOptions="Center"
                                        HorizontalOptions="Start"
-                                       FontSize="Small"
                                     />
 
                                 <StackLayout

@@ -4,7 +4,7 @@
              x:Class="StudentOrganisation.Views.NewsTab"
              xmlns:converter ="clr-namespace:StudentOrganisation.Convertors"
              xmlns:viewModels ="clr-namespace:StudentOrganisation.ViewModels"
-             Title="News">
+             Title="Home">
 
  
 

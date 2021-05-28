@@ -13,7 +13,9 @@
             <Color x:Key="DefaultTextColor">#737373</Color>
             <Color x:Key="DeleteRed">#FF3300</Color>
             <Color x:Key="TextDarkMode">#FBFAFB</Color>
+            <Color x:Key="DarkModeBackground">#2E2E2E</Color>
 
+            
             <Color x:Key="MicrosoftRed">#F25022</Color>
             <Color x:Key="MicrosoftGreen">#7FBA00</Color>
             <Color x:Key="MicrosoftBlue">#00A4EF</Color>

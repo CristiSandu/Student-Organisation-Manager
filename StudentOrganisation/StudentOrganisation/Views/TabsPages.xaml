@@ -8,7 +8,7 @@
              NavigationPage.HasNavigationBar="False" 
             xmlns:view="clr-namespace:StudentOrganisation.Views"
             xmlns:local2="clr-namespace:StudentOrganisation">
-    <NavigationPage Title="News" IconImageSource="home.png" BarTextColor="White" >
+    <NavigationPage Title="Home" IconImageSource="home.png" BarTextColor="White" >
         <x:Arguments>
             <view:NewsTab/>
         </x:Arguments>
