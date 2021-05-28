@@ -32,5 +32,6 @@ namespace StudentOrganisation.Views
         {
             await Navigation.PopAsync();
         }
+
     }
 }

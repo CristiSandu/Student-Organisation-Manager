@@ -26,7 +26,7 @@
                                    Style="{StaticResource TitleStyle}"/>
                             <Label x:Name="MeetLink"
                                    Text="aici"
-                                   TextColor="Blue"
+                                   TextColor="{StaticResource MicrosoftBlue}"
                                    TextDecorations="Underline"
                                    Style="{StaticResource TitleStyle}">
                                 <Label.GestureRecognizers>

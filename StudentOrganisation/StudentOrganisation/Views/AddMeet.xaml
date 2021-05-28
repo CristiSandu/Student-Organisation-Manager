@@ -7,15 +7,15 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="24">
-                <StackLayout Padding="16,16,16,0" Spacing="16">
+                <StackLayout Padding="16,16,16,0" Spacing="8">
                     <Frame Style="{StaticResource FrameAddNews}" >
-                        <StackLayout>
+                        <StackLayout Spacing="0">
                             <Label x:Name="DescriprionTitle" Text="Title" Style="{StaticResource TitleStyle}" />
                             <Entry x:Name="MeetTitle" Text="{Binding Title}"/>
                         </StackLayout>
                     </Frame>
                     <Frame Style="{StaticResource FrameAddNews}" >
-                        <StackLayout>
+                        <StackLayout Spacing="0">
                             <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TitleStyle}" />
                             <Editor x:Name="MeetDescription" HeightRequest="100" Text="{Binding Description}"/>
                         </StackLayout>
@@ -30,25 +30,51 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource FrameAddNews}" >
-                            <StackLayout>
+                            <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionLocation" Text="Location" Style="{StaticResource TitleStyle}" />
                                 <Entry x:Name="MeetLocation" Text="{Binding Location}"/>
                             </StackLayout>
                         </Frame>
                         <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
-                            <StackLayout>
+                            <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionLink" Text="Link" Style="{StaticResource TitleStyle}" />
                                 <Entry x:Name="MeetLink" Text="{Binding link}"/>
                             </StackLayout>
                         </Frame>
                     </Grid>
-                    <Frame Style="{StaticResource FrameAddNews}" >
-                        <StackLayout>
-                            <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
-                            <DatePicker x:Name="MeetDate" TextColor="Gray" Date="{Binding Date}"/>
-                        </StackLayout>
-                    </Frame>
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="* "/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource FrameAddNews}" >
+                            <StackLayout Spacing="0">
+                                <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TitleStyle}" />
+                                <DatePicker x:Name="MeetDate" TextColor="Gray" Date="{Binding Date}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
+                            <StackLayout Spacing="0">
+                                <Label x:Name="meetRole" Text="Meet Role" Style="{StaticResource TitleStyle}" />
+                                <Picker x:Name="meetRoleSel" Title="Role" SelectedIndex="{Binding Role}">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>For Juniors and Above</x:String>
+                                            <x:String>For Members and Above</x:String>
+                                            <x:String>For Mentors and Above</x:String>
+                                            <x:String>For Admins</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                    
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
                     <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource ButtonCheckedStyle}" Clicked="SaveBtn_Clicked"/>

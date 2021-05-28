@@ -14,12 +14,17 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <!--<item name="colorAccent">#FF4081</item>-->
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
   </style>
 
   <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">@color/primary_material_dark</item>
   </style>
 
   <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
