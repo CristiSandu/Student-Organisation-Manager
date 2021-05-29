@@ -44,7 +44,20 @@
 
             <Frame Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" BackgroundColor="{StaticResource AccentColorDark}" Padding="10" CornerRadius="10"/>
 
-            <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="3" WidthRequest="700" HeightRequest="700" Aspect="AspectFill" BorderColor="{StaticResource AccentColorDark}" BorderThickness="2" />
+            <ic:CircleImage x:Name="testProfile"  Grid.ColumnSpan="3"  Aspect="AspectFit" BorderColor="{StaticResource AccentColorDark}" BorderThickness="2" >
+                <ic:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">30</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </ic:CircleImage.WidthRequest>
+                <ic:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">30</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </ic:CircleImage.HeightRequest>
+            </ic:CircleImage>
 
             <Button x:Name="addFoto" Grid.ColumnSpan="3"  BackgroundColor="Transparent"  Clicked="Photo_Clicked"/>
 
