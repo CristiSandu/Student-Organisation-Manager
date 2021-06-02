@@ -36,7 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.tfp.blank-Signed.apk
+        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.studentorganisation-Signed.apk
   
   iOS:
     runs-on: macos-latest
@@ -51,4 +51,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
+        path: StudentOrganisation/StudentOrganisation.iOS/bin/iPhoneSimulator/Debug/StudentOrganisation.iOS.app
