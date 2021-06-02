@@ -37,8 +37,8 @@ jobs:
       with:
         name: MLSA UPB
         path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.StudentOrganisation-Signed.apk
-    - name: Xamarin.Android Signed Build
-      uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
+    - name: Generate Xamarin Form Android APK
+      uses: fahimshahrierrasel/Xamarin-Droid-Builder@1.0.2
   
   
   iOS:
