@@ -36,7 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.studentorganisation-Signed.apk
+        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.studentorganisation.apk
   
   iOS:
     runs-on: macos-latest
