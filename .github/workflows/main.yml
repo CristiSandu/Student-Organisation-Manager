@@ -39,8 +39,9 @@ jobs:
         path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.StudentOrganisation-Signed.apk
     - name: Xamarin.Android Signed Build
       uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
-
-  
+      with:
+        name: MLSA UPB
+        path: StudentOrganisation/StudentOrganisation.Android
   
   iOS:
     runs-on: macos-latest
