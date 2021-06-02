@@ -34,3 +34,13 @@ jobs:
         dotnet add package mdoc --version 5.3.5.2
         msbuild StudentOrganisation/StudentOrganisation.Android/StudentOrganisation.Android.csproj
   
+  iOS:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: iOS
+      run: |
+        nuget restore
+        dotnet new console
+        dotnet add package mdoc --version 5.3.5.2
+        msbuild StudentOrganisation/StudentOrganisation.iOS/StudentOrganisation.iOS.csproj
