@@ -27,7 +27,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Android
       run: |
-        cd StudentOrganisation
         nuget restore
         dotnet build 
         
@@ -37,6 +36,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: iOS
       run: |
-        cd StudentOrganisation
         nuget restore
         dotnet build StudentOrganisation.iOS/StudentOrganisation.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
