@@ -6,6 +6,8 @@ jobs:
   Practice:
     runs-on: macos-latest
     steps:
+    - name: Setup Xamarin
+      uses: maxim-lobanov/setup-xamarin@v1
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
@@ -30,5 +32,5 @@ jobs:
         nuget restore
         dotnet new console
         dotnet add package mdoc --version 5.3.5.2
-        dotnet build StudentOrganisation/
+        dotnet build 
   
