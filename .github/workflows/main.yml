@@ -30,7 +30,7 @@ jobs:
         cd StudentOrganisation
         nuget restore
         cd StudentOrganisation.Android
-        msbuild StudentOrganisation.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        dotnet build StudentOrganisation.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   iOS:
     runs-on: macos-latest
@@ -40,4 +40,4 @@ jobs:
       run: |
         cd StudentOrganisation
         nuget restore
-        msbuild StudentOrganisation.iOS/StudentOrganisation.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        dotnet build StudentOrganisation.iOS/StudentOrganisation.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
