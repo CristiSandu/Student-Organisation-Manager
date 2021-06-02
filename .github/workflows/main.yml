@@ -29,8 +29,7 @@ jobs:
       run: |
         cd StudentOrganisation
         nuget restore
-        cd StudentOrganisation.Android
-        dotnet build StudentOrganisation.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        dotnet build 
         
   iOS:
     runs-on: macos-latest
