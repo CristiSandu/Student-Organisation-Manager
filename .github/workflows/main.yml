@@ -33,6 +33,10 @@ jobs:
         dotnet new console
         dotnet add package mdoc --version 5.3.5.2
         msbuild StudentOrganisation/StudentOrganisation.Android/StudentOrganisation.Android.csproj
+    - uses: actions/upload-artifact@v2
+      with:
+        name: MLSA UPB
+        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.tfp.blank-Signed.apk
   
   iOS:
     runs-on: macos-latest
@@ -44,3 +48,7 @@ jobs:
         dotnet new console
         dotnet add package mdoc --version 5.3.5.2
         msbuild StudentOrganisation/StudentOrganisation.iOS/StudentOrganisation.iOS.csproj
+    - uses: actions/upload-artifact@v2
+      with:
+        name: MLSA UPB
+        path: StudentOrganisation/StudentOrganisation.iOS/bin/iPhoneSimulator/Debug/Blank.iOS.app
