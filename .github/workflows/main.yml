@@ -28,13 +28,7 @@ jobs:
     - name: Android
       run: |
         nuget restore
+        dotnet new console
+        dotnet add package mdoc --version 5.3.5.2
         dotnet build 
-        
-  iOS:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: iOS
-      run: |
-        nuget restore
-        dotnet build StudentOrganisation.iOS/StudentOrganisation.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+  
