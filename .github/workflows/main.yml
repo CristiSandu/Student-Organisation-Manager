@@ -36,19 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/com.companyname.StudentOrganisation-Signed.apk
-    - name: Xamarin.Android Signed Build
-      uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
-      with:
-        csproj_path: StudentOrganisation/StudentOrganisation.Android/StudentOrganisation.Android.csproj
-        configuration: "Release"
-        mono_version: "preview"
-        xamarin_android_version: "preview"
-    
-    - uses: actions/upload-artifact@v2
-      with:
-        name: MLSA UPB
-        path: StudentOrganisation/*.Android/bin/Android/Release/**Signed.apk
+        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/**Signed.apk
   
   iOS:
     runs-on: macos-latest
