@@ -1,54 +1,60 @@
 name: CI on Push and Pull Request
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   Practice:
     runs-on: macos-latest
     steps:
-    - name: Setup Xamarin
-      uses: maxim-lobanov/setup-xamarin@v1
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Show what's in the directory
-      run: |
-        ls
-    - name: Show what all is in the parent directory
-      run: |
-        cd ..
-        ls
-    
+      - name: Setup Xamarin
+        uses: maxim-lobanov/setup-xamarin@v1
+      - uses: actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: Show what's in the directory
+        run: |
+          ls
+      - name: Show what all is in the parent directory
+        run: |
+          cd ..
+          ls
+
   Android:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Android
-      run: |
-        nuget restore
-        dotnet new console
-        dotnet add package mdoc --version 5.3.5.2
-        msbuild StudentOrganisation/StudentOrganisation.Android/StudentOrganisation.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-    - uses: actions/upload-artifact@v2
-      with:
-        name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/**Signed.apk
-  
+      - uses: actions/checkout@v1
+      - name: Android
+        run: |
+          nuget restore
+          dotnet new console
+          dotnet add package mdoc --version 5.3.5.2
+          msbuild StudentOrganisation/StudentOrganisation.Android/StudentOrganisation.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+      - uses: actions/upload-artifact@v2
+        with:
+          name: MLSA UPB
+          path: StudentOrganisation/StudentOrganisation.Android/bin/Debug/**Signed.apk
+
   iOS:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: iOS
-      run: |
-        nuget restore
-        dotnet new console
-        dotnet add package mdoc --version 5.3.5.2
-        msbuild StudentOrganisation/StudentOrganisation.iOS/StudentOrganisation.iOS.csproj
-    - uses: actions/upload-artifact@v2
-      with:
-        name: MLSA UPB
-        path: StudentOrganisation/StudentOrganisation.iOS/bin/iPhoneSimulator/Debug/StudentOrganisation.iOS.app
+      - uses: actions/checkout@v1
+      - name: iOS
+        run: |
+          nuget restore
+          dotnet new console
+          dotnet add package mdoc --version 5.3.5.2
+          msbuild StudentOrganisation/StudentOrganisation.iOS/StudentOrganisation.iOS.csproj
+      - uses: actions/upload-artifact@v2
+        with:
+          name: MLSA UPB
+          path: StudentOrganisation/StudentOrganisation.iOS/bin/iPhoneSimulator/Debug/StudentOrganisation.iOS.app
