@@ -5,7 +5,7 @@ Mobile application made for the internal organization of the Microsoft Learn Stu
 
 | Login And Register                                                                                       | Home and Meets Page                                                                                      |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/main/ImagesRm/14.jpg) | ![](https://github.com/CristiSandu/Student-Organisation-Manager/tree/main/ImagesRm/18.png) |
+| ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/main/ImagesRm/14.jpg) | ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/main/ImagesRm/18.png) |
 
 ## Permissions Hierarchy
 
