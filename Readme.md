@@ -2,9 +2,9 @@
 
 ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/11.png)
 
-![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/14.jpg)
-
-![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/18.png)
+|                                                                                                          |                                                                                                          |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/14.jpg) | ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/18.png) |
 
 ![](https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/3.png)
 
