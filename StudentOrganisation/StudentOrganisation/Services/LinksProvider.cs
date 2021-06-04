@@ -20,7 +20,7 @@ namespace StudentOrganisation.Services
         {
             IQuerySnapshot query = await _cloud
                                     .Collection(LinksModel.CollectionPath)
-                                    .OrderBy("title")
+                                    .OrderBy("date")
                                     .GetAsync();
 
             IEnumerable<LinksModel> links = query.ToObjects<LinksModel>();
