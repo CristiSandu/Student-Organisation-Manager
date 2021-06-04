@@ -68,7 +68,7 @@ namespace StudentOrganisation
                 IsPresentSwitch.IsVisible = IsCurrentUser;
 
                 string role = await SecureStorage.GetAsync("Role");
-                if ( role == "3" && !IsCurrentUser || role == "2" && usr.Role == 0)
+                if ( (role == "3" && !IsCurrentUser) || (role == "2" && usr.Role == 0))
                 {
                     chaneStars.IsEnabled = true;
                 }
