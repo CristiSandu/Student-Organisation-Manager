@@ -2,7 +2,7 @@
 
 Mobile application made for the internal organization of the Microsoft Learn Student Ambassadors UPB.
 
-<img src="https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/11.png" width="500" height="500">
+<img src="https://github.com/CristiSandu/Student-Organisation-Manager/blob/description_readme/ImagesRm/11.png" width="460" height="405">
 
 | Login And Register                                                                                       | Home and Meets Page                                                                                      |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
